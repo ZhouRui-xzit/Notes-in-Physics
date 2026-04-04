@@ -52,6 +52,7 @@
 #let thm-counter = counter("theorem")
 #let def-counter = counter("definition")
 #let exm-counter = counter("example")
+#let prob-counter = counter("problem")
 // 带自动编号的定理环境（使用 figure 包装以支持引用）
 #let prop(title: none, label: none, body) = {
   thm-counter.step()
@@ -199,6 +200,54 @@
 }
 
 
+// 同样修改 prob
+#let prob(title: none, label: none, body) = {
+  prob-counter.step()
+  context {
+    let num = prob-counter.get().first()
+    let full-title = if title != none {
+      [Problem #num (#title)]
+    } else {
+      [Problem #num]
+    }
+    
+    let fig = figure(
+      kind: "problem",
+      supplement: [Problem],
+      numbering: _ => numbering("1", num),
+      showybox(
+        breakable: true,
+        title-style: (
+          color: black,
+          weight: "bold",
+          boxed-style: (
+            anchor: (x: left, y: horizon),
+            radius: (top: 5pt, bottom: 0pt),
+          )
+        ),
+        frame: (
+          title-color: rgb("#616466").darken(20%),
+          body-color: rgb("#b4bbc4"),
+          border-color: rgb("#afdbb8").darken(30%),
+          radius: 5pt,
+          thickness: (left: 2pt),
+        ),
+        body-style: (
+          align: left,
+        ),
+        title: full-title,
+        body
+      )
+    )
+    
+    if label != none {
+      [#fig #label]
+    } else {
+      fig
+    }
+  }
+}
+
 
 // Remark 环境 - 无盒子，只有标题和内容
 #let remark(title: "Remark", body) = {
@@ -229,6 +278,24 @@
     ]
   )
 }
+
+
+#let sol(title: "Solution", body) = {
+  block(
+    width: 100%,
+    breakable: true,
+    [
+      #text(style: "italic", weight: "bold")[#title.]
+      #h(0.5em)
+      #body
+      #h(1fr)
+      $qed$
+    ]
+  )
+}
+
+
+
 // 使用 showybox 创建更美观的定理环境
 
 

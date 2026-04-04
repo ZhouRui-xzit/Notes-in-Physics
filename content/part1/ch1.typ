@@ -194,7 +194,7 @@
 可以证明  $ 
   sum_(sigma) u_l (vb(p),sigma) u_m^* (vb(p),sigma) &= P_(l m) (vb(p),E_vb(p))\ 
   sum_(sigma) v_l (vb(p),sigma) v_m^* (vb(p),sigma) &= (-1)^(2j) P_(l m) (-vb(p),-E_vb(p))
-  $
+  $<eq:spin_sum_Plm>
 下面引入函数  $ 
     Delta_(+) (x-y) = 
     integral tilde(dd(p,3)) 
@@ -206,11 +206,11 @@
       P_(l m) (vb(p),E_vb(p)) e^(i p (x-y)) -
       P_(l m) (-vb(p),-E_vb(p)) e^(-i p (x-y))
      ]\ 
-     &=P_(l m) (-i partial_x) Delta(x-y)
+     &=P_(l m) (-i partial_x) Delta_"PJ" (x-y)
   $
-其中 $Delta(x-y) = Delta_(+) (x-y) - Delta_(+) (y-x)$ 称为Pauli-Jordan函数. 对于类空间隔 $abs(x-y)>0$,不妨取 $x^0=y^0,r=abs(vb(x-y))$,则
+其中 $Delta_"PJ"(x-y) = Delta_(+) (x-y) - Delta_(+) (y-x)$ 称为Pauli-Jordan函数. 对于类空间隔 $abs(x-y)>0$,不妨取 $x^0=y^0,r=abs(vb(x-y))$,则
   $ 
-    Delta(r) &= 
+    Delta_"PJ" (r) &= 
     integral dd(vb(p),3)/((2pi)^3 2 E_vb(p)) 
     [
       e^(i vb(p) dot.c vb(r)  ) -
@@ -236,7 +236,7 @@
   
 
 
-== 自由传播子
+
 
 == Lorentz群的有限维表示
 本节我们将探讨Lorentz群有限维表示的基本性质.首先我们引入旋量指标 $a,b$,则@eq:field_Lorentz_covariance 可以写作  $ 
@@ -593,33 +593,272 @@
 利用 $F_(mu nu)$ 的反对称性，我们发现 $F_(mu nu)$ 不受规范变换的影响.
 有趣的是在 $d=4$ 维时空中有, 反对称性给出 $F_(mu nu)$ 的独立分量为 $6$,但是 $(1,0) plus.o (0,1)$ 表示给出的粒子最多存在 $3$ 个自旋自由度.即我们通过Lorentz群表示论的方法构造的量子场理论总可能带来冗余的自由度，我们将在后文论述如何消去这些冗余自由度.
 
-最好我们给出$(1,0) plus.o (0,1)$ 实际是无质量矢量场的一个有效表示.一般地，考虑无质量粒子对应的表示 $(a,b)$,为了消去 $X O Y$ 上的冗余自由度，我们要求  $ 
-    (upright(J)_y - upright(K)_x) ket(p\,sigma_A\, sigma_B) =0 \ 
-     (upright(J)_x + upright(K)_y) ket(p\,sigma_A\, sigma_B) =0 
+最后，我们给出$(1,0) plus.o (0,1)$ 实际是无质量矢量场的一个有效表示. 一般地，对于洛伦兹群有效表示 $(A,B)$,我们姑且用 $ket(k\,sigma_A\,sigma_B)$ 表示它的标准单粒子态. 为了消除XOY平面平移带来的自由度，我们要求  $ 
+    J_y+ K_x ket(k\,sigma_A\,sigma_B) = 0\ 
+    -J_x+K_y ket(k\,sigma_A\,sigma_B) = 0
   $
-
-    
-
-   
+进一步，引入  $ 
+    L_+ =J_y+ K_x + i(-J_x+K_y)\ 
+    L_- =J_y+ K_x - i(-J_x+K_y)  
+  $
+我们注意到在幺正表示下，取  $ 
+    vb(N) = vb(J) + i vb(K)\ 
+    vb(N)^dagger = vb(J) - i vb(K) 
+  $
+则  $ 
+    N_+  = J_x + i J_y + i (K_x + i K_y) = i L_+\
+    N^dagger_-  = J_x - i J_y - i (K_x - i K_y) = -i L_-
+  $
+即  $ 
+    N_+  ket(k\,sigma_A\,sigma_B) = 0\
+    N^dagger_-  ket(k\,sigma_A\,sigma_B) = 0
+  $
+这要求螺旋度必须取为 $sigma_A-sigma_B$ 的形式. 因此当我们用 $(A,B)$ 描述无质量粒子时，其螺旋度为 $A-B$. 对于 $(1,0) plus.o (0,1)$ 表示，它可以描述螺旋度为 $plus.minus 1$ 的无质量粒子. 值得注意，该表示只有两个自由度，当我们直接用 $A^mu$ 描述时，我们总要消去一些非物理的自由度. 
   
-    
-
-
 
 
 
 == 自由标量场
 
-
-== 自由矢量场
-
-
+=== 自由标量场的路径积分
+满足Klein-Gordon方程的自由标量场的拉氏量可以写作  $ 
+    cal(L) &= -1/2 partial_mu phi partial^mu phi - 1/2 m^2 phi^2\ 
+    &=-1/2 phi (-partial^2 + m^2) phi
+  $
+我们考虑场对应的路径积分  $ 
+    Z[J] &= 
+    integral D phi exp[i integral dd(x) (cal(L) + J phi)] \ 
+    &= integral D phi exp[-i/2 integral dd(x) [phi (-partial^2 + m^2) phi + J phi]] \ 
+    &= exp[i integral dd(x) dd(y)  
+      J(x) Delta_F (x-y) J(y) 
+    ]
+  $
+最后一步利用了@eq:gaussian_functional_integral.
+其中 $Delta_F (x-y) $ 满足  $ 
+      (-partial^2 + m^2) Delta_F (x-y) = delta^4 (x-y)
+  $ 
+利用泛函导数得到  $ 
+    braket(0,bf(T)phi(x) phi(y),0) 
+    = (1/i)^2 evaluated((delta^2 Z[J])/(delta J(x) delta J(y)))_(J=0)\ 
+    =1/i Delta_F (x-y)
+  $
+上述结果可以进一步推广为：
+  $ 
+      braket(0,bf(T)phi(x_1) dots.c phi(x_n)phi(y_1)dots.c phi(y_n),0) 
+      &= 1/i^n sum_(pi)
+      product_(i=1)^n Delta_F (x_i-y_(pi(i)))
+  $
+其中 $pi$ 是 $n$ 个元素的置换. 该结果被称为Wick定理.
+  
+  
 
 == 自由Dirac场
 
+  
 
+=== 自由Dirac场的路径积分 
+满足Dirac方程的自由Dirac场的拉氏量可以写作  $ 
+    cal(L) &= overline(psi) (i slashed(partial)-m) psi\ 
+    &=-overline(psi) (-i slashed(partial)+m) psi\ 
+  $
+于是Dirac场的路径积分  $ 
+     Z[overline(eta), eta] &=
+      integral cal(D) psi cal(D) overline(psi)
+      exp[i integral dd(x) (cal(L) + overline(eta) psi + overline(psi) eta)] \
+      &=exp[
+        i integral dd(x) dd(y)
+        overline(eta) (x) S_F (x-y) eta(y)
+      ]
+  $ 
+第二步利用了@eq:gaussian_integral_grassmann. 
+其中 $S_F (x-y)$ 满足  $ 
+    (-i slashed(partial)_x + m) S_F (x-y) = delta^4 (x-y)
+  $
+由此我们得到  $ 
+    braket(0,bf(T) psi(x) overline(psi)(y),0) 
+    = (1/i)^2 evaluated(
+      dv(, overline(eta)(x),d:delta)  Z[overline(eta), eta] dv(, eta(y),d:delta)
+    )_(overline(eta)=eta=0)\ 
+    =1/i S_F (x-y)
+  $
+
+我们也可以将该结果进行推广到一般形式：
+  $ 
+    braket(0,bf(T) psi(x_1) dots.c psi(x_n) overline(psi)(y_1) dots.c overline(psi)(y_n),0) 
+    &=(1/i)^(2n)  evaluated(dv(, overline(eta) (x_1),d:delta)   dv(, overline(eta) (x_n),d:delta) 
+    Z[overline(eta),eta]   dv(, eta(y_1),d:delta) 
+    dots.c dv(, eta(y_n),d:delta))_(overline(eta)=eta=0)\ 
+    &= (1/i)^(n) sum_(pi) (-1)^(pi) product_(i=1)^n S_F (x_i-y_(pi(i)))
+  $
+  
+
+== 自由矢量场
+
+=== 有质量矢量场的路径积分
+对于有质量矢量场，我们将其作用量写作规范固定后的形式  $ 
+    S = integral dd(x) [-1/4 F_(mu nu) F^(mu nu) - 1/2 m^2 A_mu A^mu - 1/(2 xi) (partial_mu A^mu)^2]
+  $<eq:massive_vector_field_action>
+我们可以丢去所有散度项得到二次形  $ 
+    S = integral dd(x,4) #h(0.3em)
+   { -1/2 A_mu [g^(mu nu) (-partial^2+m^2)+(1-1/xi) partial^mu partial^nu] A_nu }
+  $
+此时 $A^mu$ 的运动方程是  $ 
+    [g_(mu nu) (-partial^2+m^2)+(1-1/xi) partial_mu partial_nu] A^nu (x) = 0
+  $
+等式两边再取散度得到  $ 
+     (-partial^2 + xi m^2) partial_mu A^mu (x) = 0
+  $
+则我们可以我们将 $Phi(x)=partial_mu A^mu$ 看作质量为 $sqrt(xi) m$ 的标量场. 因此， @eq:massive_vector_field_action 在路径积分不存在自由度冗余，那么  $ 
+     Z[J] = 
+     integral cal(D) A exp[i S + i integral dd(x) J_mu A^mu]
+      = exp[i/2 integral dd(x) dd(y) J_mu (x) D^(mu nu) (x-y) J_nu (y)]
+  $
+其中#footnote()[见@prob:propagator_Vector]  $ 
+    D_(mu nu ) (x) = 
+    integral dd(p,4)/(2pi)^4 e^(i p x) /(p^2+m^2-i epsilon) 
+    [
+      g_(mu nu)
+      +(xi-1) ( p_mu p_nu)/(p^2+xi m^2-i epsilon)
+    ]
+  $<eq:massive_vector_field_propagator>
+当 $m->0$ 时，我们可以得到无质量矢量场的传播子  $ 
+    D_(mu nu)^"photon" (x) = 
+      integral dd(p,4)/(2pi)^4 e^(i p x) /(p^2-i epsilon) 
+    [
+      g_(mu nu)
+      +(xi-1) ( p_mu p_nu)/(p^2-i epsilon)
+    ]
+  $
+注意 $S-$ 矩阵是规范不变的，于是我们可以选择不同的规范参数 $xi$ 来计算 $S-$ 矩阵元素，最终结果应该是相同的. 例如在Feynman规范 $xi=1$ 下，传播子简化为  $ 
+    D^"photon"_(mu nu) (x) = 
+    integral dd(p,4)/(2pi)^4 g_(mu nu)/(p^2+m^2-i epsilon)  e^(i p x)
+  $ 
+对于 $xi=0$, 我们称为Landau规范，此时传播子为  $ 
+    D^"photon"_(mu nu) (x) = 
+    integral dd(p,4)/(2pi)^4 e^(i p x) /(p^2-i epsilon) 
+    [
+      g_(mu nu)
+      - ( p_mu p_nu)/(p^2-i epsilon)
+    ]
+  $
+对于有质量矢量场，取 $xi arrow.r oo$ 时，传播子变为  $ 
+    D_(mu nu) (x) = 
+    integral dd(p,4)/(2pi)^4 e^(i p x) /(p^2+m^2-i epsilon) 
+    [g_(mu nu)+
+    ( p_mu p_nu)/(p^2+m^2-i epsilon)
+    ]
+  $
+
+  
+   
 
 == 无质量矢量场
+
+
+
+== 自由传播子
+为了给出不同时空处场算符的关联，我们引入_传播子_:
+  $ 
+    1/i Delta_(l m) := 
+    braket(0,bf(T) psi_l (x) psi^dagger_m (x),0) 
+  $
+注意该定义对于相互作用场和自由场都是适用的，本节我们只考虑自由场的情形.我们首先注意到
+  $ 
+     braket(0,bf(T) psi_l (x) psi^dagger_m (x),0)  &= 
+     theta(x^0-y^0) braket(0, psi_l (x) psi^dagger_m (y),0) 
+     plus.minus  theta(y^0-x^0) braket(0, psi^dagger_m (y) psi_l (x),0)\ 
+     &=theta(x^0-y^0) braket(0, psi^+_l (x) psi^(+ dagger)_m (y),0) 
+     plus.minus  theta(y^0-x^0) braket(0, psi^(-dagger)_m (y) psi^-_l (x),0)\ 
+     &=theta(x^0-y^0) braket(0, [psi^+_l (x), psi^(+ dagger)_m]_(minus.plus ) ,0) plus.minus 
+      theta(y^0-x^0) braket(0, [psi^(-dagger)_m (y), psi^-_l (x)]_(minus.plus ) ,0)
+  $
+其中第一步利用了时序乘积的定义，第二步利用了 $psi^+,psi^(- dagger)$ 会湮灭真空. 进一步，我们可以得到
+  $ 
+     braket(0, [psi^+_l (x), psi^(+ dagger)_m]_(minus.plus ) ,0) &= 
+     integral tilde(dd(p,3)) 
+     sum_(sigma) u_l (vb(p),sigma) u_m^* (vb(p),sigma) e^(i p (x-y))\
+      braket(0, [psi^(-dagger)_m (y), psi^-_l (x)]_(minus.plus ) ,0) &=
+      integral tilde(dd(p,3))
+      sum_(sigma) v_l (vb(p),sigma) v_m^* (vb(p),sigma) e^(-i p (x-y))
+  $
+利用@eq:spin_sum_Plm，我们有  $ 
+      braket(0,bf(T) psi_l (x) psi^dagger_m (x),0)  &= 
+      theta(x^0-y^0) + P_(l m) (1/i partial_x) Delta_(+) (x-y)\ 
+      & +
+      theta(y^0-x^0)  P_(l m) (1/i partial_x) Delta_(+) (y-x)\ 
+      &= P_(l m) (1/i partial_x) (-i) Delta_"F" (x-y)
+  $<eq:free_propagator1>
+其中  $ 
+     - i Delta_"F" (x-y) = 
+      theta(x^0-y^0) Delta_(+) (x-y) +
+      theta(y^0-x^0) Delta_(+) (y-x)
+  $
+称为Feynman传播子. 注意到 $theta(t)$ 可以利用如下复积分表示#footnote()[见@prob:theta_t]：
+  $ 
+    theta(t) = -1/(2pi i) integral_(- oo)^oo 
+    dd(s) e^(-i s t) / (s + i epsilon)  
+  $<eq:theta_integral_representation>
+由此，我们可以将 $Delta_F$ 写作  $ 
+   Delta_F (x-y) = 
+   -1/(2pi)^4 integral dd(s) integral  dd(vb(p),3)/(2 E_vb(p)) 
+   [
+    e^(i p (x-y)-i s t)/(s+i epsilon) +
+    e^(-i p (x-y)+i s t)/(s+i epsilon)
+   ]  
+  $
+我们取  $ 
+    vb(q) equiv vb(p), q^0 equiv s+p^0  
+  $
+则有  $ 
+        Delta_F (x-y) &= 
+   -1/(2pi)^4 integral dd(q,4) e^(i q (x-y))/(2 E_vb(q))
+   [
+1/(q^0-sqrt(vb(q)^2+m^2)+i epsilon) +1/ (-q^0-sqrt(vb(q)^2+m^2)+i epsilon)
+   ]\ 
+   &=1/(2pi)^4 integral dd(q,4) e^(i q (x-y))/(q^2 + m^2 - i epsilon)
+  $
+注意Feynman传播子的动量一般是off-shell，且其存在极点 $q^2=-m^2.$ 事实上， $Delta_F$ 恰是Klein-Gordon方程的逆：
+  $ 
+    (partial^2 - m^2) Delta_F (x-y) = - delta^4 (x-y)
+  $
+  
+
+将Feynman传播子代入@eq:free_propagator1,我们得到  $ 
+     Delta_(l m) (x-y) &= 
+    P_(l m) (-i partial_x)  
+    1/(2pi)^4 integral dd(q,4) e^(i q (x-y))/(q^2 + m^2 - i epsilon) \ 
+    &= 1/(2pi)^4 integral dd(q,4) (P_(l m) (q))/(q^2 + m^2 - i epsilon)
+    e^(i q (x-y))
+     \ 
+  $
+下面我们考虑 $Delta_(l m) (x)$ 的Fourier变换：
+  $ 
+    Delta_(l m) (p) &= 
+    integral dd(x,4) e^(-i p x) Delta_(l m) (x) =
+      1/(2pi)^4 integral dd(q,4) integral dd(x,4) (P_(l m) (q))/(q^2 + m^2 - i epsilon)
+    e^(i (q-p) x)\ 
+    &=(P_(l m) (p))/(p^2 + m^2 - i epsilon)
+  $
+对于标量场，由于 $u=v equiv 1,$则有  $ 
+    P_(l m) =1  
+  $
+对于Dirac场， $ 
+    P_(l m) (p) = sum_sigma u_l (vb(p),sigma) u_m^* (vb(p),sigma) =
+    (- slashed(p)+m)beta 
+  $
+
+  
+  
+  
+  
+   
+  
+
+
+  
+  
+  
+
 
 
 
@@ -629,3 +868,23 @@
 === 矢量场的C,P,T变换
 
 == 习题
+#prob(label: <prob:theta_t>)[证明@eq:theta_integral_representation.
+  ]
+
+#prob(label: <prob:propagator_Vector>)[证明
+  @eq:massive_vector_field_propagator
+  ]
+#sol()[
+  注意到算子 $(-partial^2+m^2) g_(mu nu )+(1-1/xi) partial_mu partial_nu$ 在动量空间是
+   $square_(mu nu) = (p^2+m^2) g_(mu nu ) - (1-1/xi) partial_mu partial_nu $，此外 $D_(mu nu) (x)$ 在动量空间是  $ 
+       D_(mu nu) (p) =  1/(p^2+m^2-i epsilon) 
+    [
+      g_(mu nu)
+      +(xi-1) ( p_mu p_nu)/(p^2+xi m^2-i epsilon)
+    ]
+     $
+    因此我们需要证明  $ 
+         square^(mu nu) D_(nu rho) = tensor(delta,+mu,-rho)
+      $
+      
+] 
