@@ -1,10 +1,10 @@
 #import "lib.typ":*
 
 #let mycolors = (
-  coverrgb: rgb("#283e46"),      
-  titlergb: rgb("#6894de"),      
-  headingcolor: rgb("#4ea8ba"),  // 深青色
-  refcolor: rgb("#6983a8")       // 蓝灰色
+  coverrgb: rgb("#131414"),      
+  titlergb: rgb("#15181d"),      
+  headingcolor: rgb("#2d2f30"),  // 深青色
+  refcolor: rgb("#f53607")       // 蓝灰色
 )
 
 #show: mybook.with(

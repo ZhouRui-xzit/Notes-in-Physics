@@ -100,10 +100,12 @@ pagebreak()
   set align(left+top)
   set page(paper: "a4", margin: (x:40pt, y:40pt))
   // title page
-  set text(font: ("Libertinus Serif", "FZShuSong-Z01"), size: 12pt)
-  show strong: text.with(font: ("Libertinus Serif", "FZHei-B01"), size: 12pt)
-  show emph: text.with(font: ("Libertinus Serif", "FZKai-Z03"), size: 12pt)
-  show math.equation: set text(font: ("New Computer Modern Math",), size: 12pt)
+  set text(font: ("Libertinus Serif", "Source Han Serif SC"), size: 12pt)
+  show strong: text.with(font: ("Libertinus Serif", "Source Han Sans SC"), size: 12pt)
+  show emph: text.with(font: ("Libertinus Serif", "LXGW WenKai"), size: 12pt)
+  show math.equation: set text(font: ("Latin Modern Math",), size: 12pt)
+
+
 
 
 
