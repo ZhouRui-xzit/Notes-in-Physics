@@ -339,7 +339,7 @@ ket(p_1\,sigma_1\,dots.c\,p_N\,sigma_N)$ 是自由态，即粒子之间不存在
     e^(-i H t) ket(psi^+) 
     stretch(=)^(t arrow.r -infinity) 
     e^(-i H_0 t) ket(Phi) 
-  $
+  $<eq:rel_sac_free>
 等价地，我们有  $ 
     U(Lambda) e^(-i H t)  stretch(=)^(t arrow.r -infinity) 
     U_0(Lambda) e^(-i H_0 t) ket(Phi)
@@ -376,7 +376,7 @@ ket(p_1\,sigma_1\,dots.c\,p_N\,sigma_N)$ 是自由态，即粒子之间不存在
 
 利用散射态我们可以定义散射矩阵  $ 
     S_(beta alpha) = braket(psi^-_beta,psi^+_alpha) 
-  $
+  $<eq:def_S_mat>
 由此我们可以通过 $S_(beta alpha)$ 得到多粒子态相互作用的信息.为此，我们当然希望散射矩阵具有Lorentz不变性：
   $ 
     S_(beta alpha) = 
@@ -817,7 +817,7 @@ $N$ 个动量完备关系到每个$e^(-i H Delta t )$后面，则有  $
   $
 即相互作用泛函可以通过泛函导数作用在自由泛函上得到. 
     
-= 习题
+== 习题
 
 #prob()[
   本习题我们将讨论 $S^C_(vb(q'),vb(q))$ 在包含一些关于动量的奇异结构时，其仍然满足集团分解原理.

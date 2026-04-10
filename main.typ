@@ -30,7 +30,7 @@
 #include "content/part1/ch7.typ"
 
 
-#part(2, "Modern Methods", mycolors)
+#part(2, "Temperature Field Theory", mycolors)
 #include "content/part2/ch8.typ"
 
 
