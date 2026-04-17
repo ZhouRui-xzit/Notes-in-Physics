@@ -235,7 +235,7 @@ sum_(sigma' ) D_(sigma' sigma) (W(Lambda, p)) U(L(Lambda p))  ket(k\,sigma')\
     p_2\/m, (gamma-1) p_2 p_1\/vb(p)^2, 1+(gamma-1) p_2^2\/vb(p)^2, (gamma-1) p_2 p_3\/vb(p)^2;
     p_3\/m, (gamma-1) p_3 p_1\/vb(p)^2, (gamma-1) p_3 p_2\/vb(p)^2, 1+(gamma-1) p_3^2\/vb(p)^2
    )
-  $ 
+  $<eq:standard_Lorentz_transformation>
 可以证明，若 $tensor(Lambda,+mu,-nu)$ 恰恰是三维旋转 $scr(R)$, 我们就有  $ 
      W(scr(R),p) = scr(R)
   $
@@ -814,7 +814,7 @@ $N$ 个动量完备关系到每个$e^(-i H Delta t )$后面，则有  $
           } 
         ]\ 
         &= exp[i cal(L)_I (1/i dv(, J(x),d:delta))]  Z_0 [J]
-  $
+  $<eq:interaction_functional>
 即相互作用泛函可以通过泛函导数作用在自由泛函上得到. 
     
 == 习题

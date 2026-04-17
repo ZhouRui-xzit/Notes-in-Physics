@@ -629,7 +629,7 @@
     Z[J] &= 
     integral D phi exp[i integral dd(x) (cal(L) + J phi)] \ 
     &= integral D phi exp[-i/2 integral dd(x) [phi (-partial^2 + m^2) phi + J phi]] \ 
-    &= exp[i integral dd(x) dd(y)  
+    &= exp[i/2 integral dd(x) dd(y)  
       J(x) Delta_F (x-y) J(y) 
     ]
   $
@@ -654,10 +654,313 @@
 
 == 自由Dirac场
 
-  
+== Clifford代数
+自由Dirac场 $psi(x)$ 来自于Lorentz群的$(1/2,0) plus.o (0,1/2)$ 表示，我们不妨称为Dirac表示，其生成元为  $ 
+    cal(S) = mat(
+      S_L^(mu nu),0;
+      0, S_R^(mu nu)
+    ) = i/4 mat(
+      sigma^mu overline(sigma)^nu - sigma^nu overline(sigma)^mu,0;
+      0, overline(sigma)^mu sigma^nu  - overline(sigma)^nu sigma^mu
+    )
+  $
+为了给出该表示的一般性质，我们引入 $gamma^mu$ 矩阵  $ 
+    gamma^mu = mat(
+      0, sigma^mu;
+      overline(sigma)^mu,0
+    ) 
+  $
+其满足  $ 
+   cal(S)^(mu nu) = i/4 [gamma^mu, gamma^nu]  
+  $
+其满足Clifford代数关系  $ 
+    {gamma^mu, gamma^nu} = -2 g^(mu nu) 
+  $
+进一步，我们有  $ 
+    [cal(S)^(mu nu), gamma^rho] = i (g^(nu rho) gamma^mu - g^(mu rho) gamma^nu) 
+  $
+于是它给出 $gamma^mu$ 满足Lorentz协变性：
+  $ 
+    D^(-1) (lambda) gamma^mu D(Lambda) = tensor(Lambda,+mu,-nu) gamma^nu   
+  $
+类似地  $ 
+     D^(-1) (lambda) cal(S)^(mu nu ) D(Lambda) = tensor(Lambda,+mu,-rho) 
+     tensor(Lambda,+nu, - sigma) cal(S)^(rho sigma)
+  $
+我们也记 $beta=gamma^0$,于是我们发现  $ 
+    beta gamma^i beta = -gamma^i\ 
+    beta gamma^0 beta = gamma^0  
+  $
+进一步  $ 
+     beta cal(S)^(i j) beta = cal(S)^(i j)\ 
+     beta cal(S)^(i 0) beta = -cal(S)^(i 0)\ 
+  $
+此外，我们发现 $gamma^mu,cal(S)^(mu nu)$ 尽管都不是幺正的，但是其满足  $ 
+    beta  (gamma^mu)^dagger beta = gamma^mu\
+    beta (cal(S)^(mu nu))^dagger beta = cal(S)^(mu nu)
+  $
+于是对于Lorentz变换，我们有  $ 
+    beta D^dagger (Lambda) beta =  D^(-1) (Lambda)
+  $<eq:Dirac_pseudo_unitary>
+我们称其为_赝幺正关系_
 
-=== 自由Dirac场的路径积分 
-满足Dirac方程的自由Dirac场的拉氏量可以写作  $ 
+为了方便，我们再引入  $ 
+    gamma^5 = i gamma^0 gamma^1  gamma^2 gamma^3  = mat(
+      -1,0;
+      0,1
+    )
+  $
+我们容易发现  $ 
+    gamma_5^dagger = gamma_5\ 
+    gamma_5^2 = 1\ 
+    {gamma^mu, gamma_5} = 0
+  $
+此外，由于  $ 
+    beta gamma^5 beta = - gamma^5\
+    [cal(S)^(mu nu), gamma^5] = 0
+  $
+我们称 $gamma_5$ 是_赝标量_.  
+  
+   
+
+另一个重要的矩阵是
+  $ 
+    cal(C) = 
+    mat(-epsilon^(a b),0;0,-epsilon_(dot(a) dot(b))) =
+    mat(
+      0, 1, 0,0;
+      -1,0,0,0;
+      0,0,0,-1;
+      0,0,1,0
+    )
+  $
+其满足  $ 
+    cal(C) gamma^5 cal(C)^(-1) = gamma^5\ 
+    cal(C) gamma^mu cal(C)^(-1) = - (gamma^mu)^T\ 
+    cal(C) cal(S)^(mu nu) cal(C)^(-1) = - (cal(S)^(mu nu))^T 
+  $
+
+本节最后，我们梳理一些 $gamma^mu$ 矩阵的典型结果：
+
+#prop()[
+    $ 
+      beta bf(1) beta = bf(1) \ 
+      beta (i gamma_5) beta = i gamma_5\
+      beta gamma^0 beta = gamma^0\
+      beta gamma^i beta = - gamma^i\ 
+      beta gamma^0 gamma_5  beta = - gamma^ gamma_5 0\ 
+      beta gamma^i gamma_5  beta = gamma^i gamma_5 
+    $<eq:gamma_matrix_properties_P>
+]  
+
+#prop()[
+    $ 
+      cal(C) bf(1) cal(C)^(-1) = bf(1)\ 
+      cal(C) (i gamma_5) cal(C)^(-1) = i gamma_5\ 
+    cal(C) (gamma^mu) cal(C)^(-1) = - (gamma^mu)^T\
+    cal(C) (gamma^mu gamma_5) cal(C)^(-1) = (gamma^mu gamma_5)^T
+    $<eq:gamma_matrix_properties_C>
+] 
+
+更复杂的，我们有#prop()[
+      $ 
+      gamma_5 cal(C) bf(1)^* cal(C)^(-1) gamma_5 = bf(1)\ 
+       gamma_5cal(C) (i gamma_5)^* cal(C)^(-1)  gamma_5 = -i gamma_5\ 
+    gamma_5  cal(C) (gamma^0)^* cal(C)^(-1)  gamma_5=  gamma^0 \ 
+        gamma_5  cal(C) (gamma^i)^* cal(C)^(-1)  gamma_5= - gamma^i \ 
+         gamma_5  cal(C) (gamma^0 gamma_5)^* cal(C)^(-1)  gamma_5=  gamma^0 \ 
+        gamma_5  cal(C) (gamma^i gamma_5)^* cal(C)^(-1)  gamma_5= - gamma^i
+    $<eq:gamma_matrix_properties_T>
+] 
+
+
+=== Dirac场的结构
+下面我们考察Dirac场的具体结构，我们取其为  $ 
+    psi_l (x) =  sum_(s = plus.minus ) integral dd(p,3)/((2pi)^3 2 E_vb(p)) 
+   [ u_l (vb(p),s)  
+    a_(vb(p),s) e^(i p x)
+    + v_l (vb(p),s)   
+    b^dagger_(vb(p),s) e^(-i p x)]
+  $
+此处 $u_l,v_l$ 是 $4-$ 旋量，代入@eq:ulvl_rotation_transformation，我们可以将其分解为 $2-$ 旋量的形式  $ 
+    sum_(sigma') u_(l plus.minus ) (vb(p),sigma') bf(J)^((1\/2))_(sigma',sigma)  
+    &= sum_(l') 1/2 vb(sigma)_(l l') u_(l' plus.minus ) (0,sigma)\ 
+    sum_(sigma') v_(l plus.minus ) (vb(p),sigma') bf(J)^(*(1\/2))_(sigma',sigma) 
+    &= -sum_(l') 1/2 vb(sigma)_(l l') v_(l' plus.minus ) (0,sigma)
+  $
+注意到 $bf(J)^((1\/2))_(sigma',sigma),bf(J)^(*(1\/2))_(sigma',sigma) $ 和 $1/2 vb(sigma)$ 只相差一个相似变换，于是我们取  $ 
+     bf(J)^((1\/2)) &= 1/2 vb(sigma),\
+      bf(J)^(*(1\/2)) &= -1/2 sigma_2 vb(sigma) sigma_2
+  $
+由此我们解出  $ 
+    u_(l plus.minus ) (0, sigma) &=sqrt(m) c_(plus.minus  ) delta_(m,sigma)\ 
+    v_(l plus.minus ) (0, sigma) &=sqrt(m) -i d_(plus.minus  ) (sigma_2)_(m,sigma) 
+  $
+下面我们用 $+,-$ 分别标记 $sigma=plus.minus  1/2$,于是上式等价于  $ 
+    u_+ (vb(0)) &=sqrt(m)  mat(c_+;0;c_-;0),
+    u_- (vb(0)) &=sqrt(m)  mat(0;c_+;0;c_-),\
+    v_+ (vb(0)) &= sqrt(m) mat(0;d_+;0;d_-),
+    v_- (vb(0)) &=sqrt(m)  -mat( d_+;0; d_-;0)
+  $
+对于有限动量态，我们有  $ 
+    u_plus.minus  (vb(p)) = D(L(p)) u_plus.minus  (vb(0)),\
+    v_plus.minus  (vb(p)) = D(L(p)) v_plus.minus  (vb(0)) 
+  $
+为了让 $psi_l$ 具有空间反演对称性，我们首先注意到  $ 
+    P a(vb(p),sigma) P^(-1) = eta^* a(-vb(p),sigma),\ 
+    P b^dagger(vb(p),sigma) P^(-1) = eta^c b^dagger(-vb(p),sigma)
+  $
+于是我们有
+  $ 
+    P psi_l (x) P^(-1)  
+    = sum_(sigma = plus.minus ) integral tilde(dd(vb(p)))
+    [
+      eta^* u_l (-vb(p),s) a_(vb(p),s) e^(i p (cal(P)x))
+      + eta^c v_l (-vb(p),s) b^dagger_(vb(p),s) e^(-i p (cal(P)x))
+    ]
+  $
+注意到  $ 
+    gamma^0 scr(S)^(i 0) gamma^0 = - scr(S)^(i 0)
+  $
+于是
+  $ 
+     u_plus.minus  (vb(-p)) = beta D(L(p)) beta u_plus.minus  (vb(0)),\
+    v_plus.minus  (vb(-p)) =beta D(L(p)) beta v_plus.minus  (vb(0))  
+  $
+其中 $beta=gamma^0$. 
+由此如果 $u_plus.minus (0),v_plus.minus (0) $ 正好是 $beta$ 的本征向量，即  $ 
+    beta u_plus.minus (0) = b_u  u_plus.minus  (0),\
+    beta v_plus.minus (0) = b_v  v_plus.minus  (0) 
+  $
+其中 $b_u^2=b_v^2=1$, 现在我们就有  $ 
+    P psi_l (x) P^(-1) =  sum_(sigma = plus.minus ) integral tilde(dd(vb(p)))
+    [
+      eta^*  b_u  beta _l (vb(p),s) a_(vb(p),s) e^(i p x)
+      + eta^c b_v beta v_l (vb(p),s) b^dagger_(vb(p),s) e^(-i p x)
+    ]
+  $<eq:dirac_field_parity_transformation01>
+下面我们考察和式：
+  $ 
+    N(0) = sum_sigma u_l (0,sigma) u_l'^* (0,sigma) =m (1+b_u beta)\ 
+    M(0) = sum_sigma v_l (0,sigma) v_l'^* (0,sigma) = m (1+b_v beta)
+  $
+进一步  $ 
+    N(vb(p)) =  sum_sigma u_l (p,sigma) u_l'^* (p,sigma)
+    = m/2D(L(p))(1+b_u beta) D^dagger (L(p))\
+    M(vb(p)) =  sum_sigma v_l (p,sigma) v_l'^* (p,sigma)
+    = m/2 D(L(p))(1+b_v beta) D^dagger (L(p))
+  $
+注意到  $ 
+    D(L(p)) beta D^dagger (L(p)) = beta 
+  $
+进一步，
+    $ 
+      \ 
+      D(L(p))  D^dagger (L(p)) &=  D(L(p))  beta D^(-1) (L(p)) beta 
+      \ 
+      &= [ D(L(p))  gamma^0 D^(-1) (L(p)) ] beta \
+      &= 
+      tensor(L(p),-mu,+0) gamma^mu beta \
+      &=-p_mu/m gamma^mu beta
+  $
+其中最后一步利用了@eq:standard_Lorentz_transformation. 至此我们得到  $ 
+      N(vb(p))  = sum_sigma u_l (p,sigma) u_l'^* (p,sigma) 
+      = [-slashed(p)+b_u m] beta\
+      M(vb(p))  = sum_sigma v_l (p,sigma) v_l'^* (p,sigma)
+      = [-slashed(p)+b_v m] beta
+  $
+进一步，我们引入  $ 
+    overline(u)_plus.minus  (vb(p),sigma) = u^dagger_plus.minus  (vb(p),sigma) beta,\
+    overline(v)_plus.minus  (vb(p),sigma) = v^dagger_plus.minus  (vb(p),sigma) beta 
+  $
+于是有  $ 
+    N'(vb(p)) = sum_sigma u_l (p,sigma) overline(u)_l' (p,sigma)
+    = -slashed(p)+b_u m\
+    M'(vb(p)) = sum_sigma v_l (p,sigma) overline(v)_l' (p,sigma)
+    = -slashed(p)+b_v m 
+  $
+类似引入共轭场算符  $ 
+    overline(psi)_l (x) = psi^dagger_l (x) beta = 
+    sum_(sigma = plus.minus ) integral tilde(dd(vb(p)))
+    [
+      overline(u)_l (vb(p),s) a^dagger_(vb(p),s) e^(-i p x)
+      +  overline(v)_l (vb(p),s) b_(vb(p),s) e^(i p x)
+    ] 
+  $
+此时我们考虑对易关系  $ 
+    [psi_l (x), overline(psi)_m (y)]_(minus.plus ) = 
+    integral dd(vb(p),3)/((2pi)^3 2 E_vb(p))
+    [
+      (-i slashed(partial)+b_u m)_(l m) e^(i p (x-y)) minus.plus 
+      (-i slashed(partial)+b_u m)_(l m) e^(-i p (x-y))
+    ]  
+  $
+注意到  $ 
+    Delta_(+) (x-y) = 
+    integral dd(vb(p),3)/((2pi)^3 2 E_vb(p)) e^(i p (x-y)) 
+  $
+在类空时是偶函数，则 $partial_mu  Delta_(+) (x-y)$在类空时是积函数，为此我们必须将对易关系取为费米子型对易关系，且取
+ $b_u=-b_v = -1$,则有  $ 
+     psi_l (x) = 
+     integral tilde(dd(vb(p),3)) 
+      sum_(sigma = plus.minus ) 
+      [
+        u_l (vb(p),s)  
+        a_(vb(p),s) e^(i p x)
+        + v_l (vb(p),s)   
+        b^dagger_(vb(p),s) e^(-i p x)]\ 
+    overline(psi)_l (x) =
+      integral tilde(dd(vb(p),3)) 
+        sum_(sigma = plus.minus ) 
+        [
+          overline(u)_l (vb(p),s) a^dagger_(vb(p),s) e^(-i p x)
+          +  overline(v)_l (vb(p),s) b_(vb(p),s) e^(i p x)
+        ]\
+   $<eq:dirac_field_expansion>
+     
+=== Dirac 旋量
+本节我们给出Dirac旋量 $u_plus.minus  (vb(p)), v_plus.minus  (vb(p))$ 的一般性质，首先注意到  $ 
+    beta u_plus.minus (vb(0)) = u_plus.minus (vb(0)),\
+    beta v_plus.minus (vb(0)) = - v_plus.minus (vb(0)) 
+  $
+对于第一个等式，我们有  $ 
+   [D(L(p)) beta  D^(-1)(L(p))] D(L(p)) u_plus.minus  (vb(0)) = u(vb(p))
+  $
+即 $u_plus.minus  (vb(p))$ 是 $ [D(L(p)) beta  D^(-1)(L(p))] =-slashed(p)\/m beta$ 的本征向量，且其本征值为 $+1$. 同样地，$v_plus.minus  (vb(p))$ 是 $-slashed(p)\/m beta$ 的本征向量，且其本征值为 $-1$. 上述本征方程也可以写作  $ 
+    (slashed(p)+ m ) u_plus.minus  (vb(p)) = 0,\
+    (-slashed(p) +  m ) v_plus.minus  (vb(p)) = 0 
+  $<eq:dirac_spinor_eigenvalue_equation>
+我们也可以将其看作Dirac粒子的 on-shell条件. 由此，我们还可以得到@eq:dirac_field_expansion 中场算符满足Dirac方程：
+  $ 
+    (-i slashed(partial)+m) psi_l (x) = 0 
+  $<eq:dirac_field_equation>
+对@eq:dirac_spinor_eigenvalue_equation 取厄米共轭，我们得到Dirac共轭旋量满足:
+  $ 
+    overline(u)_(plus.minus ) (vb(p)) (slashed(p)+ m ) = 0,\
+    overline(v)_(plus.minus ) (vb(p)) (-slashed(p) +  m ) = 0 
+  $
+于是共轭Dirac场满足  $ 
+    overline(psi)_l  (i slashed(partial)+m) = 0
+  $<eq:dirac_conjugate_field_equation>
+我们上节给出了旋量 $u,v $的完备关系：
+  $ 
+    sum_sigma u_sigma (vb(p)) overline(u)_sigma (vb(p)) = -slashed(p)+m,\
+    sum_sigma v_sigma (vb(p)) overline(v)_sigma (vb(p)) = -slashed(p)-m 
+  $<eq:dirac_spinor_completeness>
+类似的我们有Dirac旋量的正交归一化关系：
+  $ 
+    overline(u)_sigma (vb(p)) u_sigma' (vb(p)) &= 2 m delta_(sigma sigma'),\
+    overline(v)_sigma (vb(p)) v_sigma' (vb(p)) &= -2 m delta_(sigma sigma'),\
+    overline(u)_sigma (vb(p)) v_sigma' (vb(p)) &= 0
+  $<eq:dirac_spinor_orthonormality>
+进一步，我们有  $ 
+     overline(u)_sigma (vb(p)) gamma^mu  u_sigma' (vb(p)) &= 2 p^mu delta_(sigma sigma'),\ 
+    overline(v)_sigma (vb(p)) gamma^mu  v_sigma' (vb(p)) &= 2 p^mu delta_(sigma sigma'),\
+  $<eq:dirac_spinor_current1>
+     
+
+=== Dirac场的路径积分
+满足Dirac方程@eq:dirac_field_equation,@eq:dirac_conjugate_field_equation 的自由Dirac场的拉氏量可以写作  $ 
     cal(L) &= overline(psi) (i slashed(partial)-m) psi\ 
     &=-overline(psi) (-i slashed(partial)+m) psi\ 
   $
@@ -848,26 +1151,136 @@
   $
 
   
+
+== 标量场的C,P,T变换
+== 旋量场的C,P,T变换
+
+=== 空间反演对称
+@eq:dirac_field_parity_transformation01 以及 $b_u=-b_v=-1$ 要求体系满足空间反演对称必须有  $ 
+    eta^* = -eta^c 
+  $
+为此，我们约定 $eta = eta^c=-i$,则有  $ 
+    P psi (x) P^(-1) = eta^* beta psi(cal(P) x)
+  $ <eq:dirac_field_parity_transformation02>
+其中我们发现 $D((cal(P))) =beta$ 就是旋量空间的空间反演矩阵.
+
+考虑质心系下的一对正反Dirac粒子：
+  $ 
+    ket(Psi) =  integral tilde(dd(vb(p))) f(vb(p))
+    a^dagger_sigma (vb(p)) b^dagger_sigma' (-vb(p)) ket(0)
+  $
+于是我们有  $ 
+    P ket(phi) &= 
+    integral tilde(dd(vb(p))) f(vb(p)) 
+    [P a^dagger_sigma (vb(p)) P^(-1)] [P b^dagger_sigma' (-vb(p)) P^(-1)] ket(0) \
+    &=eta eta^c  integral tilde(dd(vb(p))) f(vb(p))
+    a^dagger_sigma (vb(-p)) b^dagger_sigma' (vb(p)) ket(0)\ 
+    &=(-1)  integral tilde(dd(vb(p))) f(vb(-p))
+    a^dagger_sigma (vb(p)) b^dagger_sigma' (vb(-p)) ket(0)\ 
+    &= (-1) (-1)^l ket(phi)
+  $
+其中 $l$ 是波函数 $f(vb(p))$ 的角动量. 由此我们得到正反Dirac粒子得到的束缚态内禀宇称是 $-1$.
+
+下面我们考虑Dirac双线形：
+  $ 
+    overline(psi) A psi$.其中 $A$ 是由 $bf(1), i gamma_5, gamma^mu, gamma^mu gamma_5$ 线性组合而成的矩阵.不难发现
+      $ 
+        P overline(psi) A psi P^(-1) = 
+        overline(psi)( beta A beta)  psi 
+      $
+利用@eq:gamma_matrix_properties_P，我们有
+#prop()[
+    $ 
+        P overline(psi)  psi P^(-1) = overline(psi)  psi\ 
+        P overline(psi) i gamma_5 psi P^(-1) = - overline(psi)  i gamma_5 psi\
+        P overline(psi) gamma^mu psi P^(-1) = tensor(cal(P),-nu,+mu)   overline(psi) gamma^nu psi\
+        P overline(psi) gamma^mu gamma_5 psi P^(-1) = - tensor(cal(P),-nu,+mu)   overline(psi) gamma^nu gamma_5 psi
+    $
+注意其中 $overline(psi) i gamma_5 psi, gamma^mu gamma_5$ 分别是赝标量和轴矢量.
+]   
+
+=== 荷共轭变换
+下面我们考虑荷共轭算符，其满足  $ 
+    C a^dagger (vb(p),sigma) C^(-1) = eta b^dagger (vb(p),sigma),\
+    C b^dagger (vb(p),sigma) C^(-1) = eta^c a^dagger (vb(p),sigma)
+  $
+于是我们有  $ 
+    C psi (x) C^(-1) = 
+    integral tilde(dd(vb(p)))
+    sum_sigma 
+    [
+      eta^* u (vb(p),sigma) b (vb(p),sigma) e^(i p x) + 
+      eta^c v (vb(p),sigma) a^dagger (vb(p),sigma) e^(-i p x)
+    ]\
+  $
+注意到  $ 
+    u (vb(p),sigma) = cal(C) overline(v)_s^T\ 
+    v (vb(p),sigma) = cal(C) overline(u)_s^T 
+  $<eq:dirac_spinor_charge_conjugation>
+于是我们得到  $ 
+      C psi (x) C^(-1) = cal(C) overline(psi)^T (x)\ 
+      C overline(psi) (x) C^(-1) =  psi^T (x)cal(C)\ 
+  $
+下面我们考虑双线形：
+  $ 
+     C overline(psi) A psi C^(-1) =  psi^T cal(C) A  cal(C) overline(psi)^T  =
+     overline(psi) [cal(C)^(-1) A^T cal(C)] psi
+  $
+其中我们利用了  $ 
+    cal(C)^(-1) = cal(C)^T = - cal(C) 
+  $
+利用@eq:gamma_matrix_properties_C，我们有
+#prop()[
+    $ 
+     C overline(psi)  psi C^(-1) = overline(psi)  psi\ 
+     C overline(psi) i gamma_5 psi C^(-1) =+ overline(psi)  i gamma_5 psi\
+     C overline(psi) gamma^mu psi C^(-1) = - overline(psi) gamma^mu psi\
+     C overline(psi) gamma^mu gamma_5 psi C^(-1) = + overline(psi) gamma^mu gamma_5 psi
+    $
+]
+
+=== 时间反演对称
+  
+== 矢量场的C,P,T变换
   
   
   
-   
-  
-
-
-  
-  
-  
 
 
 
-
-
-=== 标量场的C,P,T变换
-=== 旋量场的C,P,T变换
-=== 矢量场的C,P,T变换
 
 == 习题
+
+
+
+#prob()[
+  对于有质量Dirac粒子，求解本征方程@eq:dirac_spinor_eigenvalue_equation.
+] 
+
+#prob()[
+  证明正交关系@eq:dirac_spinor_orthonormality. 
+]
+
+#prob()[
+  证明Gordon恒等式：  $ 
+      2 m overline(u)_sigma (vb(p')) gamma^mu u_sigma' (vb(p)) =
+      overline(u)_sigma (vb(p')) ( (p'+p)^mu - 2 i sigma^(mu nu) (p'-p)_nu ) u_sigma' (vb(p))\ 
+      -2 m overline(v)_sigma (vb(p')) gamma^mu v_sigma' (vb(p)) =
+      overline(v)_sigma (vb(p')) ( (p'+p)^mu - 2 i sigma^(mu nu) (p'-p)_nu ) v_sigma' (vb(p))
+    $
+  从而证明@eq:dirac_spinor_current1
+]
+
+#prob()[
+  证明@eq:dirac_spinor_charge_conjugation
+]
+
+#prob()[
+  证明一对正反Dirac粒子构成的束缚态在色共轭下是奇的，而不是偶的.
+]
+
+
+
 #prob(label: <prob:theta_t>)[证明@eq:theta_integral_representation.
   ]
 
@@ -888,3 +1301,5 @@
       $
       
 ] 
+
+

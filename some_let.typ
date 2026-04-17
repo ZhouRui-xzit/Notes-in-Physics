@@ -226,9 +226,9 @@
           )
         ),
         frame: (
-          title-color: rgb("#616466").darken(20%),
-          body-color: rgb("#b4bbc4"),
-          border-color: rgb("#afdbb8").darken(30%),
+          title-color: rgb("#e1a988").darken(20%),
+          body-color: rgb("#e1a988"),
+          border-color: rgb("#e1a988").darken(30%),
           radius: 5pt,
           thickness: (left: 2pt),
         ),
