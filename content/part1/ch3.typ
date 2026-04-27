@@ -1,10 +1,9 @@
 #import "../../lib.typ":*
 
-= 标量理论
-==  $phi^3$ 理论的Feynman规则
-== $phi^4$ 理论的Feynman规则
-== 树图阶散射振幅
-==  $phi^3$ 理论的1-loop修正
-==  $phi^4$ 理论的1-loop修正  
-
-
+= 时空对称性与Penrose图
+== Killing矢量场与最大对称时空
+== Weyl变换
+== 守恒律
+== Minkowski空间的Penrose图
+== Schwarzschild时空的Penrose图
+== dS和AdS时空的Penrose图

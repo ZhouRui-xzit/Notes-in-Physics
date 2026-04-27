@@ -22,7 +22,9 @@
 #part(1, "Spacetime", mycolors)
 #include "content/part1/ch1.typ"
 #include "content/part1/ch2.typ"
-
+#include "content/part1/ch3.typ"
+#include "content/part1/ch4.typ"
+#include "content/part1/ch5.typ"
 
 #part(2, "Einstein's Gravity", mycolors)
 #include "content/part2/ch5.typ"

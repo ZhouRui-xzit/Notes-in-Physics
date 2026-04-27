@@ -96,7 +96,7 @@
     
     // 然后使用 fig 变量
     if label != none {
-      [#fig #label]
+      [#fig#label]
     } else {
       fig
     }
@@ -144,7 +144,7 @@
     )
     
     if label != none {
-      [#fig #label]
+      [#fig#label]
     } else {
       fig
     }
@@ -192,7 +192,7 @@
     )
     
     if label != none {
-      [#fig #label]
+      [#fig#label]
     } else {
       fig
     }
@@ -241,7 +241,7 @@
     )
     
     if label != none {
-      [#fig #label]
+      [#fig#label]
     } else {
       fig
     }
