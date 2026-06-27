@@ -67,7 +67,7 @@
   $ 
 其可以由Gamma函数表示：
   $ 
-    I_nu = 1/(2alpha^(sfrac(nu+1,2))) Gamma((nu+1) / 2)
+    I_nu = 1/(2alpha^(frac(nu+1,2))) Gamma((nu+1) / 2)
   $ 
 对参数 $alpha$ 求导显然有
   $ 
@@ -108,13 +108,13 @@
     integral_0^(+infinity) dd(y) e^(-(x^2+y^2)) 
     x^(2mu-1) y^(2nu-1),#h(1em)mu,nu >0 \ 
     &=4 integral_0^(+infinity) e^(-r^2) r^(2(mu+nu)-1) 
-    dd(r) integral_0^(sfrac(pi,2))  cos^(2mu-1) theta 
+    dd(r) integral_0^(frac(pi,2))  cos^(2mu-1) theta 
     sin^(2nu-1) theta dd(theta) \ 
     &=Gamma(mu+nu) dot.c B(mu,nu)
   $ 
 其中第二步利用了极坐标换元，最后一步引入了beta函数：
   $ 
-    B(mu,nu) := 2  integral_0^(sfrac(pi,2))  cos^(2mu-1) theta 
+    B(mu,nu) := 2  integral_0^(frac(pi,2))  cos^(2mu-1) theta 
     sin^(2nu-1) theta dd(theta) ,#h(2em)mu,nu>0
   $ 
 我们立刻可以联系Gamma函数和beta函数的关系：
@@ -125,14 +125,14 @@
   $ 
     B(mu,nu) = integral_0^1 dd(eta) eta^(mu-1) (1-eta)^(nu-1) 
   $ 
-特别地，取 $mu=nu=sfrac(1,2)$,我们得到
+特别地，取 $mu=nu=frac(1,2)$,我们得到
   $ 
-    B(1/2,1/2) = 2integral_0^(sfrac(pi,2)) dd(theta) =pi
+    B(1/2,1/2) = 2integral_0^(frac(pi,2)) dd(theta) =pi
   $
 利用@BGamma,我们得到  $ 
     Gamma(1/2)^2 = Gamma(1)dot.c B(1/2,1/2) = pi 
   $ 
-即有 $Gamma(sfrac(1,2))=sqrt(pi)$.
+即有 $Gamma(frac(1,2))=sqrt(pi)$.
 
 作为一个基本的例子，我们考察 $n-$维球体积问题： 
 #exm()[对于 $n-$维球坐标，我们有  $ 
@@ -145,15 +145,15 @@
       V_n &= integral dd(r,[n]) =
         2pi R^n / n B((n-1)/2,1/2) B((n-2)/2,1/2) 
         dots.c B(1,1/2) \ 
-        &= 2pi R^n / n (Gamma(sfrac(n-1,2)) Gamma(sfrac(1,2)))/Gamma(sfrac(n,2)) 
-        (Gamma(sfrac(n-2,2)) Gamma(sfrac(1,2))) / Gamma(sfrac((n-1),2)) 
-        dots.c (Gamma(1) Gamma(1/2))/Gamma(sfrac(3,2))\ 
-        &=2pi R^n/n Gamma^(n-2)(1/2) 1/Gamma(sfrac(n,2))\ 
-        &=pi^(sfrac(n,2)) / (sfrac(n,2))! R^n
+        &= 2pi R^n / n (Gamma(frac(n-1,2)) Gamma(frac(1,2)))/Gamma(frac(n,2)) 
+        (Gamma(frac(n-2,2)) Gamma(frac(1,2))) / Gamma(frac((n-1),2)) 
+        dots.c (Gamma(1) Gamma(1/2))/Gamma(frac(3,2))\ 
+        &=2pi R^n/n Gamma^(n-2)(1/2) 1/Gamma(frac(n,2))\ 
+        &=pi^(frac(n,2)) / (frac(n,2))! R^n
     $ 
   对 $R$ 求导，我们得到 $n$ 维球表面积：
     $ 
-      S_n = (2pi^(sfrac(n,2)))/Gamma(sfrac(n,2)) R^(n-1) 
+      S_n = (2pi^(frac(n,2)))/Gamma(frac(n,2)) R^(n-1) 
     $ 
    ] 
   

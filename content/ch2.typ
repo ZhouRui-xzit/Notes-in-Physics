@@ -1,3 +1,3 @@
 #import "../lib.typ": *
 
-= 气体动理论
+= Introduction to Classical Ensemble Theory
