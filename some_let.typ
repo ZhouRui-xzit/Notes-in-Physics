@@ -9,6 +9,9 @@
 
 
 #import "@preview/showybox:2.0.4": showybox // 美观的盒子环境
+#import "@preview/theorion:0.6.0": make-frame, set-theorion-numbering
+#import "@preview/theorion:0.6.0": cosmos
+#import cosmos.fancy: fancy-box
 
 
 
@@ -48,255 +51,137 @@
 
 
 
-// 定义计数器
-#let thm-counter = counter("theorem")
-#let def-counter = counter("definition")
-#let exm-counter = counter("example")
-#let prob-counter = counter("problem")
-// 带自动编号的定理环境（使用 figure 包装以支持引用）
-#let prop(title: none, label: none, body) = {
-  thm-counter.step()
-  context {
-    let num = thm-counter.get().first()
-    let full-title = if title != none {
-      [Proposition #num (#title)]
-    } else {
-      [Proposition #num]
-    }
-    
-    // 先定义 fig 变量
-    let fig = figure(
-      kind: "theorem",
-      supplement: [命题],
-      numbering: _ => numbering("1", num),
-      showybox(
-        breakable: true,
-        title-style: (
-          color: black,
-          weight: "bold",
-          boxed-style: (
-            anchor: (x: left, y: horizon),
-            radius: (top: 5pt, bottom: 0pt),
-          )
-        ),
-        frame: (
-          title-color: rgb("#e6d2b8").darken(20%),
-          body-color: rgb("#e6d2b8"),
-          border-color: rgb("#e6d2b8").darken(30%),
-          radius: 5pt,
-          thickness: (left: 2pt),
-        ),
-        body-style: (
-          align: left,
-        ),
-        title: full-title,
-        body
-      )
-    )
-    
-    // 然后使用 fig 变量
-    if label != none {
-      [#fig #label]
-    } else {
-      fig
-    }
-  }
+// Theorion 定理环境。四类环境分别计数，并继承章编号。
+#let theorem-colors = (
+  proposition: (border: rgb("#9b6b3f"), body: rgb("#fbf5ed")),
+  definition: (border: rgb("#2f6f8f"), body: rgb("#eef7fa")),
+  example: (border: rgb("#3f7a55"), body: rgb("#eff8f1")),
+  problem: (border: rgb("#a6533c"), body: rgb("#fff1ed")),
+)
+
+#let colored-theorem-render(colors) = fancy-box.with(
+  get-border-color: _ => colors.border,
+  get-body-color: _ => colors.body,
+  get-symbol: _ => none,
+  breakable: true,
+)
+
+#let (
+  proposition-counter,
+  proposition-box,
+  proposition,
+  show-proposition,
+) = make-frame(
+  "proposition",
+  "Proposition",
+  inherited-levels: 1,
+  render: colored-theorem-render(theorem-colors.proposition),
+)
+
+#let (
+  definition-counter,
+  definition-box,
+  definition,
+  show-definition,
+) = make-frame(
+  "definition",
+  "Definition",
+  inherited-levels: 1,
+  render: colored-theorem-render(theorem-colors.definition),
+)
+
+#let (
+  example-counter,
+  example-box,
+  example,
+  show-example,
+) = make-frame(
+  "example",
+  "Example",
+  inherited-levels: 1,
+  render: colored-theorem-render(theorem-colors.example),
+)
+
+#let (
+  problem-counter,
+  problem-box,
+  problem,
+  show-problem,
+) = make-frame(
+  "problem",
+  "Problem",
+  inherited-levels: 1,
+  render: colored-theorem-render(theorem-colors.problem),
+)
+
+// 只启用上面的彩色环境，不让 Theorion 接管 remark/proof/solution。
+#let show-colored-theorems(body) = {
+  show: show-proposition
+  show: show-definition
+  show: show-example
+  show: show-problem
+  body
 }
 
-// 同样修改 def
-#let def(title: none, label: none, body) = {
-  def-counter.step()
-  context {
-    let num = def-counter.get().first()
-    let full-title = if title != none {
-      [Definition #num (#title)]
-    } else {
-      [Definition #num]
-    }
-    
-    let fig = figure(
-      kind: "definition",
-      supplement: [Definition],
-      numbering: _ => numbering("1", num),
-      showybox(
-        breakable: true,
-        title-style: (
-          color: black,
-          weight: "bold",
-          boxed-style: (
-            anchor: (x: left, y: horizon),
-            radius: (top: 5pt, bottom: 0pt),
-          )
-        ),
-        frame: (
-          title-color: cmyk(30.61%, 1.22%, 0%, 3.92%).darken(20%),
-          body-color: cmyk(30.61%, 1.22%, 0%, 3.92%),
-          border-color: cmyk(30.61%, 1.22%, 0%, 3.92%).darken(30%),
-          radius: 5pt,
-          thickness: (left: 2pt),
-        ),
-        body-style: (
-          align: left,
-        ),
-        title: full-title,
-        body
-      )
-    )
-    
-    if label != none {
-      [#fig #label]
-    } else {
-      fig
-    }
-  }
+// 兼容原来的短名称和 label 参数；新正文也可以直接使用完整名称。
+#let legacy-theorem(frame, title: "", label: none, body) = {
+  let item = frame(title: title, body)
+  if label == none { item } else { [#item #label] }
 }
 
-// 同样修改 exm
-#let exm(title: none, label: none, body) = {
-  exm-counter.step()
-  context {
-    let num = exm-counter.get().first()
-    let full-title = if title != none {
-      [Example #num (#title)]
-    } else {
-      [Example #num]
-    }
-    
-    let fig = figure(
-      kind: "example",
-      supplement: [Example],
-      numbering: _ => numbering("1", num),
-      showybox(
-        breakable: true,
-        title-style: (
-          color: black,
-          weight: "bold",
-          boxed-style: (
-            anchor: (x: left, y: horizon),
-            radius: (top: 5pt, bottom: 0pt),
-          )
-        ),
-        frame: (
-          title-color: rgb("#afdbb8").darken(20%),
-          body-color: rgb("#afdbb8"),
-          border-color: rgb("#afdbb8").darken(30%),
-          radius: 5pt,
-          thickness: (left: 2pt),
-        ),
-        body-style: (
-          align: left,
-        ),
-        title: full-title,
-        body
-      )
-    )
-    
-    if label != none {
-      [#fig #label]
-    } else {
-      fig
-    }
-  }
-}
+#let prop(title: "", label: none, body) = legacy-theorem(
+  proposition,
+  title: title,
+  label: label,
+  body,
+)
+#let def(title: "", label: none, body) = legacy-theorem(
+  definition,
+  title: title,
+  label: label,
+  body,
+)
+#let exm(title: "", label: none, body) = legacy-theorem(
+  example,
+  title: title,
+  label: label,
+  body,
+)
+#let prob(title: "", label: none, body) = legacy-theorem(
+  problem,
+  title: title,
+  label: label,
+  body,
+)
 
+// Remark 独立且不带 QED；Proof 与 Solution 保持无框，并在末尾带 QED。
+#let remark(title: "Remark", body) = block(
+  width: 100%,
+  breakable: true,
+  inset: (left: 0.8em),
+  stroke: (left: 1.5pt + rgb("#7a6b8f")),
+  [
+    #text(style: "italic", weight: "semibold", fill: rgb("#665876"))[#title.]
+    #h(0.5em)
+    #body
+  ],
+)
 
-// 同样修改 prob
-#let prob(title: none, label: none, body) = {
-  prob-counter.step()
-  context {
-    let num = prob-counter.get().first()
-    let full-title = if title != none {
-      [Problem #num (#title)]
-    } else {
-      [Problem #num]
-    }
-    
-    let fig = figure(
-      kind: "problem",
-      supplement: [Problem],
-      numbering: _ => numbering("1", num),
-      showybox(
-        breakable: true,
-        title-style: (
-          color: black,
-          weight: "bold",
-          boxed-style: (
-            anchor: (x: left, y: horizon),
-            radius: (top: 5pt, bottom: 0pt),
-          )
-        ),
-        frame: (
-          title-color: rgb("#e1a988").darken(20%),
-          body-color: rgb("#e1a988"),
-          border-color: rgb("#e1a988").darken(30%),
-          radius: 5pt,
-          thickness: (left: 2pt),
-        ),
-        body-style: (
-          align: left,
-        ),
-        title: full-title,
-        body
-      )
-    )
-    
-    if label != none {
-      [#fig #label]
-    } else {
-      fig
-    }
-  }
-}
+#let qed-environment(title, body) = block(
+  width: 100%,
+  breakable: true,
+  [
+    #text(style: "italic", weight: "semibold")[#title.]
+    #h(0.5em)
+    #body
+    #h(1fr)
+    #box($qed$)
+  ],
+)
 
-
-// Remark 环境 - 无盒子，只有标题和内容
-#let remark(title: "Remark", body) = {
-  block(
-    width: 100%,
-    breakable: true,
-    [
-      #text(style: "italic", weight: "bold")[#title.]
-      #h(0.5em)
-      #body
-      #h(1fr)
-      $qed$
-    ]
-  )
-}
-
-// Proof 环境 - 无盒子，斜体 Proof 开头，QED 符号结尾
-#let proof(title: "Proof", body) = {
-  block(
-    width: 100%,
-    breakable: true,
-    [
-      #text(style: "italic", weight: "bold")[#title.]
-      #h(0.5em)
-      #body
-      #h(1fr)
-      $qed$
-    ]
-  )
-}
-
-
-#let sol(title: "Solution", body) = {
-  block(
-    width: 100%,
-    breakable: true,
-    [
-      #text(style: "italic", weight: "bold")[#title.]
-      #h(0.5em)
-      #body
-      #h(1fr)
-      $qed$
-    ]
-  )
-}
-
-
-
-// 使用 showybox 创建更美观的定理环境
+#let proof(title: "Proof", body) = qed-environment(title, body)
+#let solution(title: "Solution", body) = qed-environment(title, body)
+#let sol = solution
 
 
 
@@ -315,6 +200,7 @@
       par()[#text(size:0.5em)[#h(0.0em)]]
   }
   counter(heading).update(0)
+  set-theorion-numbering("A.1")
     set figure(numbering: (..nums) => {
     let section = counter(heading).get().first()
     numbering("(A.1)", section, ..nums)

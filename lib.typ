@@ -104,6 +104,7 @@ pagebreak()
   show strong: text.with(font: ("Libertinus Serif", "Noto Sans CJK SC"), size: 12pt)
   show emph: text.with(font: ("Libertinus Serif", "LXGW WenKai"), size: 12pt)
   show math.equation: set text(font: ("New Computer Modern Math",), size: 12pt)
+  show: show-colored-theorems
 
 
 
