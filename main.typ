@@ -1,10 +1,10 @@
 #import "lib.typ":*
 
 #let mycolors = (
-  coverrgb: rgb("#3b1a08"),      // deep espresso
-  titlergb: rgb("#d4622a"),      // terracotta orange
-  headingcolor: rgb("#b84c1a"),  // deep orange-red
-  refcolor: rgb("#0a5eab")       // steel blue
+  coverrgb: rgb("#357259"),      // deep espresso
+  titlergb: rgb("#2ca6b8da"),      // terracotta orange
+  headingcolor: rgb("#24555cda"),  // deep orange-red
+  refcolor: rgb("#f73707")       // steel blue
 )
 
 #show: mybook.with(
@@ -12,7 +12,7 @@
   authors: [Rotor],
   version: [0.1.0],
   date: datetime.today().display(),
-  cover-image: "fig/cover.png",
+  cover-image: "fig/cover.jpg",
   mycolors: mycolors,
 )
 
