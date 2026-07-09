@@ -1,6 +1,6 @@
 #import "@preview/hydra:0.6.2": * // 页眉
 
-#import "@preview/physica:0.9.6": * // 物理符号库
+#import "@preview/physica:0.9.8": * // 物理符号库
 #import "@preview/ytableausp:0.1.0": * // Young tableaux
 
 #import "@preview/cetz:0.4.2":* // 示意图

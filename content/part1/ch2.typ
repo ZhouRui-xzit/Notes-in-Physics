@@ -358,14 +358,14 @@ $ .其中我们将 $E$ 称为_外源_, $P$ 称为_传播子_, $V$ 称为_顶点_
   $G(q_1,dots.c,q_n)$ 在 $q^2=-m^2$ 处具有极点,其中 $m$ 是某个粒子的单粒子态质量，且该极点的留数为  $ 
       G & arrow.r ((-2i)(sqrt(vb(q)^2+m^2)))/(q^2+m^2- i epsilon) 
       (2pi)^4 delta^4 (q_1+dots.c+q_n)\ 
-      & times sum_sigma M_(0bar.v(vb(p),sigma)) (q_2,dots.c,q_r) 
+      & times sum_sigma M_(0 bar.v(vb(p)\,sigma)) (q_2,dots.c,q_r) 
       M_((vb(q),sigma)bar.v\0) (q_(r+1),dots.c,q_n)
     $<eq:G_pole_structure>
     其中  $ 
         integral dd(x_1,4) dots.c dd(x_r,4) e^(-i q_1 x_1 ) dots.c e^(-i q_r x_r) 
         braket(0,bf(T)[A_1 (x_1) dots.c A_r (x_r)], Psi_(vb(p),sigma)) 
         \ 
-        =(2pi)^4 delta^4 (q_1+dots.c+q_r-p) M_(0bar.v(vb(p),sigma)) (q_2,dots.c,q_r)
+        =(2pi)^4 delta^4 (q_1+dots.c+q_r-p) M_(0bar.v(vb(p)\,sigma)) (q_2,dots.c,q_r)
       $
       $ 
         integral dd(x_(r+1),4) dots.c dd(x_n,4) e^(-i q_(r+1) x_(r+1) ) dots.c e^(-i q_n x_n) 
@@ -572,7 +572,7 @@ $ .其中我们将 $E$ 称为_外源_, $P$ 称为_传播子_, $V$ 称为_顶点_
 #sol()[
   为了证明该结构，首先将@eq:G_pole_structure 写作如下形式  $ 
     G &arrow.r sum_sigma integral dd(k,4) \ 
-    & times  [(2pi)^4 delta^4 (q_1+dots.c+q_r-k) M_(0bar.v(k,sigma)) (q_2,dots.c,q_r) \]  \ 
+    & times  [(2pi)^4 delta^4 (q_1+dots.c+q_r-k) M_(0bar.v(k\,sigma)) (q_2,dots.c,q_r) \]  \ 
     & times  [(-i)/(2pi)^4 1/(k^2+m^2- i epsilon)] \
     & times [(2pi)^4 delta^4 (q_(r+1)+dots.c+q_n+k) M_((k,sigma)bar.v\0) (q_(r+2),dots.c,q_n)]
   $

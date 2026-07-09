@@ -70,5 +70,5 @@
 
 == Yukawa理论的1-loop修正
 == Yukawa理论的重整化及其 $beta$ 函数  
-== 线性Sigma模型
+
 
