@@ -1,5 +1,286 @@
-#import "some_let.typ":* // 一些自定义函数
+#import "some_let.typ": *
 
+// ---------------------------------------------------------------------------
+// Visual system
+// ---------------------------------------------------------------------------
+
+// Keep the original four-color API working, while allowing a richer palette
+// to be supplied by main.typ.  All defaults are chosen for good contrast on
+// paper and for the cyan / sakura / night-sky colors of the cover artwork.
+#let book-palette(colors) = (
+  night: colors.at("night", default: rgb("#163b49")),
+  deep: colors.at("headingcolor", default: rgb("#317782")),
+  cyan: colors.at("titlergb", default: rgb("#36a6b6")),
+  sakura: colors.at("refcolor", default: rgb("#d86483")),
+  gold: colors.at("gold", default: rgb("#e2b55b")),
+  ink: colors.at("ink", default: rgb("#26363f")),
+  muted: colors.at("muted", default: rgb("#657b85")),
+  paper: colors.at("paper", default: rgb("#fcfefe")),
+  panel: colors.at("panel", default: rgb("#edf7f8")),
+  cover: colors.at("coverrgb", default: rgb("#173b49")),
+)
+
+#let heading-font = (
+  "Noto Sans Display",
+  "Noto Sans CJK SC",
+  "FZHei-B01",
+)
+
+#let body-font = (
+  "Libertinus Serif",
+  "Noto Serif CJK SC",
+)
+
+#let math-font = ("New Computer Modern Math",)
+
+#let orbit-mark(color, dot-color, size: 92pt) = box(
+  width: size,
+  height: size,
+  [
+    #place(center, circle(
+      radius: size * 0.42,
+      stroke: 0.8pt + color.transparentize(44%),
+    ))
+    #place(center, rotate(32deg, ellipse(
+      width: size * 0.92,
+      height: size * 0.34,
+      stroke: 0.8pt + color.transparentize(35%),
+    )))
+    #place(center, circle(
+      radius: size * 0.09,
+      fill: color.transparentize(20%),
+    ))
+    #place(top + right, dx: -size * 0.10, dy: size * 0.27, circle(
+      radius: size * 0.035,
+      fill: dot-color,
+    ))
+  ],
+)
+
+#let running-footer(colors, numbering: "1") = context {
+  let p = book-palette(colors)
+  align(center)[
+    #box(
+      fill: p.panel,
+      radius: 99pt,
+      inset: (x: 9pt, y: 3pt),
+      stroke: 0.6pt + p.cyan.transparentize(62%),
+    )[
+      #text(
+        font: heading-font,
+        size: 8pt,
+        weight: "semibold",
+        fill: p.deep,
+      )[#counter(page).display(numbering)]
+    ]
+  ]
+}
+
+#let running-header(colors) = context {
+  let p = book-palette(colors)
+  block(width: 100%)[
+    #grid(
+      columns: (1fr, auto),
+      align: (left, right),
+      column-gutter: 1em,
+      text(
+        font: heading-font,
+        size: 7.4pt,
+        weight: "semibold",
+        tracking: 0.13em,
+        fill: p.muted,
+      )[QFT · CALCULATOR NOTES],
+      text(
+        font: heading-font,
+        size: 8.3pt,
+        fill: p.deep,
+      )[#hydra(2)],
+    )
+    #v(4pt)
+    #line(
+      length: 100%,
+      stroke: 0.65pt + p.cyan.transparentize(42%),
+    )
+  ]
+}
+
+#let chapter-heading(it, colors) = {
+  let p = book-palette(colors)
+  pagebreak(weak: true)
+  counter(figure.where(kind: image)).update(0)
+  counter(figure.where(kind: table)).update(0)
+
+  context {
+    let number = counter(heading).display(it.numbering)
+    let kicker = if it.supplement == [Appendix] {
+      [APPENDIX · REFERENCE SECTOR]
+    } else {
+      [QUANTUM FIELD SECTOR]
+    }
+    block(
+      width: 100%,
+      breakable: false,
+      above: 4pt,
+      below: 22pt,
+      [
+        #grid(
+          columns: (auto, 1fr),
+          column-gutter: 13pt,
+          align: (left + top, left + top),
+          box(
+            fill: p.night,
+            radius: 6pt,
+            inset: (x: 10pt, y: 7pt),
+            stroke: 0.8pt + p.cyan.transparentize(20%),
+            text(
+              font: heading-font,
+              size: 17pt,
+              weight: "bold",
+              fill: white,
+            )[#number],
+          ),
+          [
+            #set par(justify: false, first-line-indent: 0pt)
+            #text(
+              font: heading-font,
+              size: 7.5pt,
+              weight: "semibold",
+              tracking: 0.18em,
+              fill: p.sakura,
+            )[#kicker]
+            #v(2pt)
+            #text(
+              font: heading-font,
+              size: 24pt,
+              weight: "bold",
+              fill: p.ink,
+              hyphenate: false,
+            )[#it.body]
+          ],
+        )
+        #v(8pt)
+        #grid(
+          columns: (34pt, 1fr, 7pt),
+          align: horizon,
+          line(length: 100%, stroke: 2pt + p.sakura),
+          line(length: 100%, stroke: 0.7pt + p.cyan.transparentize(35%)),
+          circle(radius: 3.2pt, fill: p.gold),
+        )
+      ],
+    )
+  }
+}
+
+#let section-heading(it, colors) = {
+  let p = book-palette(colors)
+  counter(math.equation).update(0)
+  context {
+    let number = counter(heading).display(it.numbering)
+    block(
+      width: 100%,
+      breakable: false,
+      above: 13pt,
+      below: 7pt,
+      [
+        #grid(
+          columns: (auto, 1fr),
+          column-gutter: 8pt,
+          align: (left + horizon, left + horizon),
+          box(
+            fill: p.panel,
+            radius: 4pt,
+            inset: (x: 6pt, y: 3pt),
+            stroke: 0.6pt + p.cyan.transparentize(45%),
+            text(
+              font: heading-font,
+              size: 9.5pt,
+              weight: "bold",
+              fill: p.deep,
+            )[#number],
+          ),
+          text(
+            font: heading-font,
+            size: 16pt,
+            weight: "bold",
+            fill: p.deep,
+          )[#it.body],
+        )
+        #v(4pt)
+        #line(
+          length: 100%,
+          stroke: 0.55pt + p.cyan.transparentize(64%),
+        )
+      ],
+    )
+  }
+}
+
+#let subsection-heading(it, colors) = {
+  let p = book-palette(colors)
+  context {
+    let number = counter(heading).display(it.numbering)
+    block(
+      width: 100%,
+      breakable: false,
+      above: 10pt,
+      below: 5pt,
+      [
+        #grid(
+          columns: (auto, auto, 1fr),
+          column-gutter: 6pt,
+          align: horizon,
+          circle(radius: 2.6pt, fill: p.sakura),
+          text(
+            font: heading-font,
+            size: 9pt,
+            weight: "semibold",
+            fill: p.muted,
+          )[#number],
+          text(
+            font: heading-font,
+            size: 13.2pt,
+            weight: "semibold",
+            fill: p.ink,
+          )[#it.body],
+        )
+      ],
+    )
+  }
+}
+
+#let subsubsection-heading(it, colors) = {
+  let p = book-palette(colors)
+  context {
+    let number = counter(heading).display(it.numbering)
+    block(
+      width: 100%,
+      breakable: false,
+      above: 8pt,
+      below: 4pt,
+      inset: (left: 9pt),
+      stroke: (left: 1.3pt + p.gold),
+      [
+        #text(
+          font: heading-font,
+          size: 10.5pt,
+          weight: "semibold",
+          fill: p.muted,
+        )[#number]
+        #h(0.55em)
+        #text(
+          font: heading-font,
+          size: 11.8pt,
+          weight: "semibold",
+          fill: p.ink,
+        )[#it.body]
+      ],
+    )
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Book template
+// ---------------------------------------------------------------------------
 
 #let mybook(
   title: [],
@@ -7,299 +288,298 @@
   version: [],
   date: [],
   cover-image: "",
-  mycolors:(),
-  doc,  
+  mycolors: (),
+  doc,
 ) = {
-   
+  let p = book-palette(mycolors)
 
-    // title page
-
-// title page
-set page(paper: "a4", margin: 0pt)
-// 背景图片
-image(cover-image, width: 100%, height: 100%)
-
-
-// 覆盖层 - 使用渐变效果
-place(
-  top + left,
-  rect(
+  // Cover: full-bleed illustration with a restrained information panel and
+  // orbit motifs.  The image remains the visual focus.
+  set page(
+    paper: "a4",
+    margin: 0pt,
+    numbering: none,
+    header: none,
+    footer: none,
+    fill: p.night,
+  )
+  place(top + left, image(
+    cover-image,
+    width: 100%,
+    height: 100%,
+    fit: "cover",
+  ))
+  place(top + left, rect(
+    width: 100%,
+    height: 100%,
+    fill: p.night.transparentize(68%),
+  ))
+  place(top + left, rect(
     width: 100%,
     height: 100%,
     fill: gradient.linear(
-      (mycolors.coverrgb.transparentize(70%), 0%),
-      (mycolors.coverrgb.lighten(30%).transparentize(70%), 50%),
-      (white.transparentize(0%), 100%),
-      angle: 90deg
-    )
-  )
-)
-place(
-  center + horizon,
-  dx: 0pt,
-  dy: -100pt,
-  block(
-    width: 80%,
-    align(center)[
-      // 信息表格
-      #box(
-        fill: white.transparentize(20%),
-        inset: 20pt,
-        radius: 8pt,
-        stroke: (paint: mycolors.titlergb.lighten(40%), thickness: 1pt),
-        [
-          // 主标题 - 添加在框内第一行
-          #text(
-            size: 25pt,
-            weight: "bold",
-            font: ("Arial", "FZHei-B01"),
-            fill: mycolors.titlergb,
-            //tracking: 0.01em
-          )[#title]
-          
-         
-          
-          // 装饰线
-          #line(length: 100%, stroke: (thickness: 2pt, paint: mycolors.titlergb))
-          
-         
-          
-          // 信息表格
-          #grid(
-            columns: (auto, 1fr),
-            column-gutter: 2em,
-            row-gutter: 0.8em,
-            align: (right, left),
-            
-            text(size: 14pt, weight: "bold", fill: mycolors.titlergb)[Author:],
-            text(size: 14pt, fill: mycolors.titlergb)[#authors],
-            
-            text(size: 14pt, weight: "bold", fill: mycolors.titlergb)[Version:],
-            text(size: 14pt, fill: mycolors.titlergb)[#version],
-            
-            text(size: 14pt, weight: "bold", fill: mycolors.titlergb)[Date:],
-            text(size: 14pt, fill: mycolors.titlergb)[#date],
-          )
-        ]
+      (p.night.transparentize(48%), 0%),
+      (p.night.transparentize(78%), 48%),
+      (p.night.transparentize(96%), 100%),
+      angle: 0deg,
+    ),
+  ))
+  place(top + right, dx: -34pt, dy: 34pt, orbit-mark(
+    white,
+    p.gold,
+    size: 100pt,
+  ))
+  place(top + right, dx: -38pt, dy: 142pt, text(
+    font: math-font,
+    size: 11pt,
+    fill: white.transparentize(18%),
+  )[$integral cal(D) phi e^(i S[phi])$])
+
+  place(bottom + left, dx: 42pt, dy: -62pt, block(
+    width: 66%,
+    fill: p.night.transparentize(12%),
+    stroke: 0.8pt + white.transparentize(55%),
+    radius: 10pt,
+    inset: (x: 20pt, y: 17pt),
+    [
+      #text(
+        font: heading-font,
+        size: 7.5pt,
+        weight: "semibold",
+        tracking: 0.20em,
+        fill: p.gold,
+      )[A HAND-CALCULATION FIELD GUIDE]
+      #v(4pt)
+      #text(
+        font: heading-font,
+        size: 29pt,
+        weight: "bold",
+        fill: white,
+      )[#title]
+      #v(8pt)
+      #line(
+        length: 100%,
+        stroke: 1.1pt + p.cyan,
       )
-    ]
+      #v(8pt)
+      #grid(
+        columns: (auto, 1fr, auto),
+        column-gutter: 9pt,
+        align: (left, left, right),
+        text(
+          font: heading-font,
+          size: 8pt,
+          weight: "semibold",
+          fill: white.transparentize(22%),
+        )[AUTHOR],
+        text(
+          font: heading-font,
+          size: 9pt,
+          fill: white,
+        )[#authors],
+        box(
+          fill: p.sakura.transparentize(16%),
+          radius: 99pt,
+          inset: (x: 8pt, y: 3pt),
+          text(
+            font: heading-font,
+            size: 7.5pt,
+            weight: "semibold",
+            fill: white,
+          )[v#version],
+        ),
+      )
+      #v(4pt)
+      #text(
+        font: heading-font,
+        size: 7.8pt,
+        fill: white.transparentize(28%),
+      )[#date · natural units · $hbar = c = 1$]
+    ],
+  ))
+  pagebreak(weak: false)
+
+  // Global typography and reusable environments.
+  set align(left + top)
+  set text(
+    font: body-font,
+    size: 11.2pt,
+    fill: p.ink,
+    lang: "en",
   )
-)
-// 底部装饰
-place(
-  bottom + center,
-  dy: -30pt,
-  text(size: 10pt, fill: mycolors.titlergb.lighten(20%))[
-    Build by #version
-  ]
-)
-
-pagebreak()
- // title page
-
-  set align(left+top)
-  set page(paper: "a4", margin: (x:40pt, y:40pt))
-  // title page
-  set text(font: ("Libertinus Serif", "Noto Serif CJK SC"), size: 12pt)
-  show strong: text.with(font: ("Libertinus Serif", "Noto Sans CJK SC"), size: 12pt)
-  show emph: text.with(font: ("Libertinus Serif", "LXGW WenKai"), size: 12pt)
-  show math.equation: set text(font: ("New Computer Modern Math",), size: 12pt)
+  set par(
+    justify: true,
+    first-line-indent: 1.45em,
+    leading: 0.68em,
+  )
+  show strong: set text(weight: "semibold", fill: p.ink)
+  show emph: text.with(
+    font: ("Libertinus Serif", "LXGW WenKai"),
+    style: "italic",
+  )
+  show math.equation: set text(font: math-font, size: 11.2pt)
   show: show-colored-theorems
 
-
-
-
-  
-  // outline
-  
-  show outline: it => {
-    show heading: set align(center)
-    set text(size: 16pt, fill: mycolors.headingcolor)
-    it
-  }
-
-show outline.entry.where(
-  level: 1
-): it => {
-  // 检查是否是 Part 条目（通过检查是否有编号）
-  let is-part = it.element.numbering == none
-  
-  if is-part {
-    // Part 条目：居中显示，没有填充线，显示页码
-    v(18pt, weak: true)
-    align(center)[
-      #text(size: 16pt, fill: mycolors.headingcolor, weight: "bold", font:("Arial", "FZHei-B01"))[
-        // 使用 text 包裹 link 来覆盖全局的 link 颜色设置
-        #text(fill: mycolors.headingcolor)[
-          #link(it.element.location())[#it.element.body]
-        ]
-      ]
-    ]
-    v(6pt, weak: true)
-  } else {
-    // 普通一级标题
-    v(12pt, weak: true)
-    text(size: 12pt, fill: mycolors.headingcolor, strong(it))
-  }
-}
-
-  show outline.entry.where(
-    level: 2
-  ): it => {
-    text(size: 12pt,fill: mycolors.headingcolor, it)
-  }
-
-  show outline.entry.where(
-    level: 3
-  ): it => {
-    text(size: 12pt,fill: mycolors.headingcolor, it)
-  }
-
-
-    
-// heading 
-
-
-// 需要为 Part 的 heading 添加特殊样式，使其不显示但在目录中显示
-show heading.where(level: 1): it => {
-  // 通过检查 numbering 属性来判断是否是 Part
-  // Part 的 numbering 是 none，普通章节有编号
-  if it.numbering == none {
-    // Part heading 不显示内容
-    []
-  } else {
-    // 普通 heading 正常显示
-    pagebreak(weak: true)
-        // 重置计数器
-    counter(figure.where(kind:image)).update(0)
-    counter(figure.where(kind:table)).update(0)
-    
-    align(center, text(
-      size: 18pt,
-      fill: mycolors.headingcolor,
-      weight: "bold",
-      it
-    ))
-    v(-1pt)
-  }
-}
-
   set heading(numbering: "1.1.")
-  set par(justify: true,first-line-indent: 2em) // 两端对齐，段前缩进2字符
-  show heading: it =>  {
-  it
-  par()[#text(size:0.5em)[#h(0.0em)]]
+  show heading.where(level: 1): it => {
+    if it.numbering == none { [] } else { chapter-heading(it, mycolors) }
   }
-  show figure: it =>  {
-      it
-      par()[#text(size:0.5em)[#h(0.0em)]]
-  }
+  show heading.where(level: 2): it => section-heading(it, mycolors)
+  show heading.where(level: 3): it => subsection-heading(it, mycolors)
+  show heading.where(level: 4): it => subsubsection-heading(it, mycolors)
 
-
-    // 自定义二级标题样式
-    show heading.where(level: 2): it => {
-      text(
-        size: 16pt,               // 字体大小
-        fill: mycolors.headingcolor,               // 字体颜色
-        it
-      )
-       v(-10pt)
-    }
-
-    // 自定义三级标题样式
-    show heading.where(level: 3): it => {
-      text(
-        size: 14pt,               // 字体大小
-        fill: mycolors.headingcolor,               // 字体颜色
-        it
-      )
-      v(-10pt)
-    }
-// heading 
-
-    // ref
-
+  // Equation and figure numbering follow the chapter / section hierarchy.
   set figure(numbering: (..nums) => {
-    let ch = counter(heading).get().first()
-    numbering("(1.1)", ch, ..nums)
+    let chapter = counter(heading).get().first()
+    numbering("(1.1)", chapter, ..nums)
   })
+  set math.equation(numbering: n => {
+    let count = counter(heading).get()
+    let chapter = count.first()
+    let section = count.at(1, default: 0)
+    numbering("(1.1.1)", chapter, section, n)
+  })
+  set math.equation(supplement: [eq])
+  set math.mat(row-gap: 0.85em, column-gap: 0.9em)
 
+  show figure.where(kind: table): set figure(supplement: [table])
+  show figure.where(kind: table): set figure.caption(position: top)
+  show figure.where(kind: image): set figure(supplement: [fig])
 
-   set math.equation(numbering: n => {
-  
-  // if you want change the number of number of displayed
-  // section numbers, modify it this way:
-  let count = counter(heading).get()
-  let h1 = count.first()
-  let h2 = count.at(1, default: 0)
-  numbering("(1.1.1)", h1, h2, n)
-})
-
-
-
-    set math.equation(supplement: [eq])
-    show figure.where(
-    kind: table
-    ): set figure(supplement: [table])
-    show figure.where(
-    kind: table
-    ): set figure.caption(position: top)
-    show figure.where(
-    kind: image
-    ): set figure(supplement: [fig])
-    show heading.where(level: 2): it => it + counter(math.equation).update(0)
-  
-
-    //show link: text.with(fill: mycolors.refcolor) // 网址链接
-    show ref: it =>{text(it,mycolors.refcolor,font: ("Libertinus Serif", "FZHei-B01"), size: 12pt)}
-
-    show ref: it => {
+  // One reference rule is easier to reason about than chained show rules.
+  show ref: it => {
     if query(it.target).len() == 0 {
-    return text(fill: red, "<???" + ">")
+      text(
+        font: heading-font,
+        weight: "semibold",
+        fill: p.sakura,
+      )[<???>]
+    } else {
+      text(
+        font: body-font,
+        weight: "medium",
+        fill: p.sakura,
+      )[#it]
     }
-    it
-    }
-
-    //ref 
-
-    set math.mat(row-gap:1em, column-gap:1em)
-
-    // Page
-    set page(paper: "a4",fill: white, margin: (x:40pt, y:60pt), numbering: "1", header: context {
-      align(right,  text(size: 13pt,fill: mycolors.headingcolor,hydra(2)))
-      v(-10pt)
-      line(length: 100%, stroke: black) 
-    }, footer: [
-        #align(center,context {counter(page).display("1")})
-        #line(length: 100%, stroke: black) 
-      ])
-    // page 
- // 修改脚注样式（在 mybook 函数中）
+  }
+  show footnote: set text(fill: p.sakura)
   show footnote.entry: it => {
-    set text(fill: mycolors.refcolor, size: 10pt)
-    set math.equation(numbering: none)  // 脚注中的公式不编号
-    show math.equation: set text(size: 10pt, font: "New Computer Modern Math")
+    set text(size: 9pt, fill: p.muted)
+    set math.equation(numbering: none)
+    show math.equation: set text(size: 9pt, font: math-font)
     it
   }
 
-    outline(title:"Table of Contents")
-   
+  // Main page style.  The header uses Hydra's current-heading lookup, while
+  // all layout remains native Typst 0.15 content and context code.
+  set page(
+    paper: "a4",
+    fill: p.paper,
+    margin: (x: 46pt, top: 58pt, bottom: 52pt),
+    numbering: "1",
+    header: running-header(mycolors),
+    footer: running-footer(mycolors),
+  )
+
+  // Contents pages use a quieter page style and only expose two hierarchy
+  // levels; the detailed subsubsections remain discoverable in the PDF.
+  {
     counter(page).update(1)
-  
+    set page(
+      margin: (x: 48pt, top: 48pt, bottom: 46pt),
+      numbering: "i",
+      header: none,
+      footer: running-footer(mycolors, numbering: "i"),
+    )
+    set par(first-line-indent: 0pt)
+
+    show outline: it => {
+      show heading: title => block(
+        width: 100%,
+        below: 18pt,
+        [
+          #text(
+            font: heading-font,
+            size: 7.5pt,
+            weight: "semibold",
+            tracking: 0.20em,
+            fill: p.sakura,
+          )[SPECTRUM MAP]
+          #v(3pt)
+          #text(
+            font: heading-font,
+            size: 25pt,
+            weight: "bold",
+            fill: p.ink,
+          )[#title.body]
+          #v(7pt)
+          #grid(
+            columns: (30pt, 1fr, 6pt),
+            align: horizon,
+            line(length: 100%, stroke: 2pt + p.sakura),
+            line(length: 100%, stroke: 0.7pt + p.cyan.transparentize(45%)),
+            circle(radius: 2.8pt, fill: p.gold),
+          )
+        ],
+      )
+      it
+    }
+    show outline.entry.where(level: 1): it => {
+      if it.element.numbering == none {
+        block(
+          width: 100%,
+          breakable: false,
+          above: 8pt,
+          below: 3pt,
+          fill: p.panel,
+          radius: 5pt,
+          inset: (x: 9pt, y: 5pt),
+          text(
+            font: heading-font,
+            size: 10.5pt,
+            weight: "bold",
+            fill: p.deep,
+            it,
+          ),
+        )
+      } else {
+        block(
+          above: 5pt,
+          below: 1pt,
+          text(
+            font: heading-font,
+            size: 9.8pt,
+            weight: "semibold",
+            fill: p.ink,
+            it,
+          ),
+        )
+      }
+    }
+    show outline.entry.where(level: 2): it => text(
+      font: body-font,
+      size: 9.2pt,
+      fill: p.muted,
+      it,
+    )
+
+    outline(title: [Contents], depth: 2)
+    pagebreak(weak: false)
+  }
+
+  counter(page).update(1)
   doc
 }
 
-// 在 mybook 外部定义，接受 mycolors 参数
+// ---------------------------------------------------------------------------
+// Divisions
+// ---------------------------------------------------------------------------
+
 #let part(number, title, mycolors) = {
-  heading(
-    level: 1,
-    outlined: true,
-    numbering: none,
-    [Part #numbering("I", number): #title]
-  )
-  
+  let p = book-palette(mycolors)
+
   pagebreak(weak: false)
-  
+
   [
     #set page(
       paper: "a4",
@@ -307,95 +587,112 @@ show heading.where(level: 1): it => {
       numbering: none,
       header: none,
       footer: none,
-      fill: mycolors.titlergb.lighten(95%)
+      fill: p.night,
     )
 
-    #place(
-      center + horizon,
-      {
-        showybox(
-          width: 75%,
-          frame: (
-            border-color: mycolors.titlergb.darken(10%),
-            title-color: mycolors.titlergb,
-            body-color: white,
-            radius: 20pt,
-            thickness: 4pt,
-          ),
-          shadow: (
-            offset: (x: 8pt, y: 8pt),
-            color: mycolors.titlergb.transparentize(50%)
-          ),
-          title-style: (
-            color: white,
-            weight: "bold",
-            align: center,
-            sep: 1.5em,
-            boxed-style: (
-              anchor: (x: center, y: horizon),
-              offset: (y: -0.5em),
-            )
-          ),
-          body-style: (
-            align: center,
-          ),
-          sep: (
-            dash: "solid",
-            thickness: 2pt,
-            gutter: 2em,
-          ),
-          // 标题显示 PART I
-          title: text(
-            size: 30pt,
-            font: ("Arial", "FZHei-B01"),
-            tracking: 0.15em,
-            weight: "black"
-          )[PART #numbering("I", number)],
-          [
-            #v(1.5em)
-            
-            // 正文显示标题
-            #text(
-              size: 28pt,
-              font: ("Arial", "FZHei-B01"),
-              weight: "bold",
-              fill: mycolors.titlergb.darken(10%)
-            )[#title]
-            
-            #v(1em)
-            
-            // 底部装饰
-            #box(
-              width: 50%,
-              height: 3pt,
-              fill: gradient.linear(
-                (mycolors.titlergb.transparentize(100%), 0%),
-                (mycolors.titlergb, 50%),
-                (mycolors.titlergb.transparentize(100%), 100%)
-              )
-            )
-            #v(1em)
-          ]
-        )
-      }
+    #heading(
+      level: 1,
+      outlined: true,
+      bookmarked: true,
+      numbering: none,
+      [Part #numbering("I", number): #title],
     )
-    
+
+    #place(top + right, dx: -34pt, dy: 24pt, text(
+      font: heading-font,
+      size: 138pt,
+      weight: "bold",
+      fill: white.transparentize(92%),
+    )[#numbering("I", number)])
+    #place(top + left, dx: 42pt, dy: 42pt, orbit-mark(
+      p.cyan,
+      p.sakura,
+      size: 116pt,
+    ))
+    #place(left + horizon, dx: 48pt, dy: 8pt, block(
+      width: 76%,
+      [
+        #text(
+          font: heading-font,
+          size: 8pt,
+          weight: "semibold",
+          tracking: 0.22em,
+          fill: p.gold,
+        )[PART #numbering("I", number) · THEORY SECTOR]
+        #v(7pt)
+        #text(
+          font: heading-font,
+          size: 32pt,
+          weight: "bold",
+          fill: white,
+        )[#title]
+        #v(12pt)
+        #grid(
+          columns: (42pt, 1fr, 8pt),
+          align: horizon,
+          line(length: 100%, stroke: 2.4pt + p.sakura),
+          line(length: 100%, stroke: 0.8pt + p.cyan.transparentize(24%)),
+          circle(radius: 3.6pt, fill: p.gold),
+        )
+        #v(12pt)
+        #text(
+          font: math-font,
+          size: 12pt,
+          fill: white.transparentize(22%),
+        )[$cal(L) arrow.r Z arrow.r Gamma arrow.r "observables"$]
+      ],
+    ))
+    #place(bottom + left, dx: 48pt, dy: -42pt, text(
+      font: heading-font,
+      size: 7.5pt,
+      tracking: 0.16em,
+      fill: white.transparentize(45%),
+    )[QFT FOR CALCULATORS · ROTOR])
+
     #pagebreak(weak: false)
   ]
 }
 
-// 在 lib.typ 中添加序章函数
 #let preface(title, body) = {
   pagebreak(weak: true)
-  
-  // 添加到目录但不编号
   heading(
     level: 1,
     outlined: true,
+    bookmarked: true,
     numbering: none,
-    [#title]
+    title,
   )
-  
-  // 序章内容
+
+  let p = book-palette((:))
+  block(
+    width: 100%,
+    breakable: false,
+    above: 5pt,
+    below: 22pt,
+    [
+      #text(
+        font: heading-font,
+        size: 7.5pt,
+        weight: "semibold",
+        tracking: 0.18em,
+        fill: p.sakura,
+      )[BEFORE THE CALCULATION]
+      #v(3pt)
+      #text(
+        font: heading-font,
+        size: 25pt,
+        weight: "bold",
+        fill: p.ink,
+      )[#title]
+      #v(7pt)
+      #grid(
+        columns: (32pt, 1fr, 7pt),
+        align: horizon,
+        line(length: 100%, stroke: 2pt + p.sakura),
+        line(length: 100%, stroke: 0.7pt + p.cyan.transparentize(45%)),
+        circle(radius: 3pt, fill: p.gold),
+      )
+    ],
+  )
   body
 }

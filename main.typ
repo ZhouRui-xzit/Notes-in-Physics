@@ -1,10 +1,16 @@
 #import "lib.typ":*
 
 #let mycolors = (
-  coverrgb: rgb("#357259"),      // deep espresso
-  titlergb: rgb("#2ca6b8da"),      // terracotta orange
-  headingcolor: rgb("#24555cda"),  // deep orange-red
-  refcolor: rgb("#f73707")       // steel blue
+  coverrgb: rgb("#163b49"),
+  titlergb: rgb("#36a6b6"),
+  headingcolor: rgb("#317782"),
+  refcolor: rgb("#d86483"),
+  night: rgb("#163b49"),
+  gold: rgb("#e2b55b"),
+  ink: rgb("#26363f"),
+  muted: rgb("#657b85"),
+  paper: rgb("#fcfefe"),
+  panel: rgb("#edf7f8"),
 )
 
 #show: mybook.with(

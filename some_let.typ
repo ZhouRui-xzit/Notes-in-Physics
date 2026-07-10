@@ -28,7 +28,7 @@
 
 
 #let stand(body) = {
- show: emph(body)
+  emph(body)
 }
 
 #let bf(body) = {
@@ -37,11 +37,7 @@
 
 
 #let slashed(body) = {
- math.cancel(body,angle: 30deg)
-}
-
-#let slashed(body) = {
- math.cancel(body,angle: 30deg)
+  math.cancel(body, angle: 30deg)
 }
 
 
@@ -53,16 +49,32 @@
 
 // Theorion 定理环境。四类环境分别计数，并继承章编号。
 #let theorem-colors = (
-  proposition: (border: rgb("#9b6b3f"), body: rgb("#fbf5ed")),
-  definition: (border: rgb("#2f6f8f"), body: rgb("#eef7fa")),
-  example: (border: rgb("#3f7a55"), body: rgb("#eff8f1")),
-  problem: (border: rgb("#a6533c"), body: rgb("#fff1ed")),
+  proposition: (
+    border: rgb("#597fb4"),
+    body: rgb("#f1f5fb"),
+    symbol: [∴],
+  ),
+  definition: (
+    border: rgb("#3696a3"),
+    body: rgb("#eef8f9"),
+    symbol: [◇],
+  ),
+  example: (
+    border: rgb("#6f9877"),
+    body: rgb("#f1f7f2"),
+    symbol: [↳],
+  ),
+  problem: (
+    border: rgb("#cf6b88"),
+    body: rgb("#fff2f6"),
+    symbol: [✦],
+  ),
 )
 
 #let colored-theorem-render(colors) = fancy-box.with(
   get-border-color: _ => colors.border,
   get-body-color: _ => colors.body,
-  get-symbol: _ => none,
+  get-symbol: _ => colors.symbol,
   breakable: true,
 )
 
@@ -109,7 +121,7 @@
   show-problem,
 ) = make-frame(
   "problem",
-  "Problem",
+  "Exercise",
   inherited-levels: 1,
   render: colored-theorem-render(theorem-colors.problem),
 )
@@ -153,15 +165,31 @@
   label: label,
   body,
 )
+// “Problem” and “Exercise” share one counter and one visual style.  The
+// exercise name reads more naturally in chapter-ending exercise sets, while
+// the problem/prob names remain available for compatibility.
+#let exercise(title: "", label: none, body) = legacy-theorem(
+  problem,
+  title: title,
+  label: label,
+  body,
+)
+#let exc = exercise
 
 // Remark 独立且不带 QED；Proof 与 Solution 保持无框，并在末尾带 QED。
 #let remark(title: "Remark", body) = block(
   width: 100%,
   breakable: true,
-  inset: (left: 0.8em),
-  stroke: (left: 1.5pt + rgb("#7a6b8f")),
+  fill: rgb("#f7f3fb"),
+  inset: (x: 0.9em, y: 0.7em),
+  radius: 4pt,
+  stroke: (left: 1.8pt + rgb("#8b6aa8")),
   [
-    #text(style: "italic", weight: "semibold", fill: rgb("#665876"))[#title.]
+    #text(
+      style: "italic",
+      weight: "semibold",
+      fill: rgb("#76588f"),
+    )[#title.]
     #h(0.5em)
     #body
   ],
@@ -170,12 +198,18 @@
 #let qed-environment(title, body) = block(
   width: 100%,
   breakable: true,
+  inset: (left: 0.8em),
+  stroke: (left: 1pt + rgb("#9fcdd3")),
   [
-    #text(style: "italic", weight: "semibold")[#title.]
+    #text(
+      style: "italic",
+      weight: "semibold",
+      fill: rgb("#317782"),
+    )[#title.]
     #h(0.5em)
     #body
     #h(1fr)
-    #box($qed$)
+    #box(text(fill: rgb("#cf6b88"))[$qed$])
   ],
 )
 
