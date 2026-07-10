@@ -179,9 +179,10 @@
     block(
       width: 100%,
       breakable: false,
-      above: 13pt,
-      below: 7pt,
+      above: 14pt,
+      below: 9pt,
       [
+        #set par(justify: false, first-line-indent: 0pt)
         #grid(
           columns: (auto, 1fr),
           column-gutter: 8pt,
@@ -193,14 +194,14 @@
             stroke: 0.6pt + p.cyan.transparentize(45%),
             text(
               font: heading-font,
-              size: 9.5pt,
+              size: 15pt,
               weight: "bold",
               fill: p.deep,
             )[#number],
           ),
           text(
             font: heading-font,
-            size: 16pt,
+            size: 15pt,
             weight: "bold",
             fill: p.deep,
           )[#it.body],
@@ -222,9 +223,10 @@
     block(
       width: 100%,
       breakable: false,
-      above: 10pt,
-      below: 5pt,
+      above: 15pt,
+      below: 15pt,
       [
+        #set par(justify: false, first-line-indent: 0pt)
         #grid(
           columns: (auto, auto, 1fr),
           column-gutter: 6pt,
@@ -232,13 +234,13 @@
           circle(radius: 2.6pt, fill: p.sakura),
           text(
             font: heading-font,
-            size: 9pt,
+            size: 12.5pt,
             weight: "semibold",
             fill: p.muted,
           )[#number],
           text(
             font: heading-font,
-            size: 13.2pt,
+            size: 12.5pt,
             weight: "semibold",
             fill: p.ink,
           )[#it.body],
@@ -255,21 +257,22 @@
     block(
       width: 100%,
       breakable: false,
-      above: 8pt,
-      below: 4pt,
+      above: 15pt,
+      below: 15pt,
       inset: (left: 9pt),
       stroke: (left: 1.3pt + p.gold),
       [
+        #set par(justify: false, first-line-indent: 0pt)
         #text(
           font: heading-font,
-          size: 10.5pt,
+          size: 11.4pt,
           weight: "semibold",
           fill: p.muted,
         )[#number]
         #h(0.55em)
         #text(
           font: heading-font,
-          size: 11.8pt,
+          size: 11.4pt,
           weight: "semibold",
           fill: p.ink,
         )[#it.body]
@@ -312,33 +315,22 @@
   place(top + left, rect(
     width: 100%,
     height: 100%,
-    fill: p.night.transparentize(68%),
+    fill: p.night.transparentize(84%),
   ))
   place(top + left, rect(
     width: 100%,
     height: 100%,
     fill: gradient.linear(
-      (p.night.transparentize(48%), 0%),
-      (p.night.transparentize(78%), 48%),
-      (p.night.transparentize(96%), 100%),
+      (p.night.transparentize(78%), 0%),
+      (p.night.transparentize(90%), 48%),
+      (p.night.transparentize(98%), 100%),
       angle: 0deg,
     ),
   ))
-  place(top + right, dx: -34pt, dy: 34pt, orbit-mark(
-    white,
-    p.gold,
-    size: 100pt,
-  ))
-  place(top + right, dx: -38pt, dy: 142pt, text(
-    font: math-font,
-    size: 11pt,
-    fill: white.transparentize(18%),
-  )[$integral cal(D) phi e^(i S[phi])$])
-
-  place(bottom + left, dx: 42pt, dy: -62pt, block(
+  place(bottom + left, dx: 42pt, dy: -252pt, block(
     width: 66%,
-    fill: p.night.transparentize(12%),
-    stroke: 0.8pt + white.transparentize(55%),
+    fill: p.paper.transparentize(22%),
+    stroke: 0.8pt + p.night.transparentize(68%),
     radius: 10pt,
     inset: (x: 20pt, y: 17pt),
     [
@@ -347,14 +339,14 @@
         size: 7.5pt,
         weight: "semibold",
         tracking: 0.20em,
-        fill: p.gold,
+        fill: p.sakura,
       )[A HAND-CALCULATION FIELD GUIDE]
       #v(4pt)
       #text(
         font: heading-font,
-        size: 29pt,
+        size: 28pt,
         weight: "bold",
-        fill: white,
+        fill: p.night,
       )[#title]
       #v(8pt)
       #line(
@@ -370,15 +362,15 @@
           font: heading-font,
           size: 8pt,
           weight: "semibold",
-          fill: white.transparentize(22%),
+          fill: p.muted,
         )[AUTHOR],
         text(
           font: heading-font,
           size: 9pt,
-          fill: white,
+          fill: p.ink,
         )[#authors],
         box(
-          fill: p.sakura.transparentize(16%),
+          fill: p.sakura,
           radius: 99pt,
           inset: (x: 8pt, y: 3pt),
           text(
@@ -391,9 +383,9 @@
       )
       #v(4pt)
       #text(
-        font: heading-font,
-        size: 7.8pt,
-        fill: white.transparentize(28%),
+          font: heading-font,
+          size: 7.8pt,
+          fill: p.muted,
       )[#date · natural units · $hbar = c = 1$]
     ],
   ))
@@ -417,7 +409,8 @@
     font: ("Libertinus Serif", "LXGW WenKai"),
     style: "italic",
   )
-  show math.equation: set text(font: math-font, size: 11.2pt)
+  show math.equation: set text(font: math-font)
+  show math.equation.where(block: true): set text(size: 11.2pt)
   show: show-colored-theorems
 
   set heading(numbering: "1.1.")
