@@ -386,7 +386,7 @@
           font: heading-font,
           size: 7.8pt,
           fill: p.muted,
-      )[#date · natural units · $hbar = c = 1$]
+      )[#date · natural units · $c = hbar = k_B = 1$]
     ],
   ))
   pagebreak(weak: false)

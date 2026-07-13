@@ -1,4 +1,4 @@
-#import "../lib.typ": preface
+#import "../lib.typ": preface, hbar
 #preface([Preface])[
 
 There is a certain kind of understanding that only comes from doing the calculation yourself.
@@ -19,6 +19,9 @@ and the intermediate steps no longer feel like obstacles.
 The path taken reflects this priority.
 We begin with path integrals, the language in which almost everything
 that follows is most naturally expressed.
+Throughout the book we use natural units, $c = hbar = k_B = 1$, where $k_B$
+is Boltzmann's constant.  Masses, energies, momenta, and temperatures are
+therefore expressed in compatible units.
 Free fields come next --- scalar, Dirac, and gauge --- first at zero temperature,
 then within the imaginary-time formalism at finite temperature.
 Interactions enter through $phi^3$ theory, chosen precisely because
