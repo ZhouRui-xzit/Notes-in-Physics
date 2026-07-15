@@ -20,18 +20,11 @@
   cover: colors.at("coverrgb", default: rgb("#173b49")),
 )
 
-#let heading-font = (
-  "Noto Sans Display",
-  "Noto Sans CJK SC",
-  "FZHei-B01",
-)
+#let heading-font = ("STIX Two Text",)
 
-#let body-font = (
-  "Libertinus Serif",
-  "Noto Serif CJK SC",
-)
+#let body-font = ("STIX Two Text",)
 
-#let math-font = ("New Computer Modern Math",)
+#let math-font = ("STIX Two Math",)
 
 #let orbit-mark(color, dot-color, size: 92pt) = box(
   width: size,
@@ -404,9 +397,9 @@
     first-line-indent: 1.45em,
     leading: 0.68em,
   )
-  show strong: set text(weight: "semibold", fill: p.ink)
+  show strong: set text(font: body-font, weight: "semibold", fill: p.ink)
   show emph: text.with(
-    font: ("Libertinus Serif", "LXGW WenKai"),
+    font: body-font,
     style: "italic",
   )
   show math.equation: set text(font: math-font)
