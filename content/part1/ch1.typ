@@ -1072,8 +1072,8 @@ $
 $ <eq:functional-derivative-local-potential>
 
 When derivatives of the field occur, integration by parts transfers derivatives
-from $delta phi$ to their coefficients.  For example, assuming that the
-boundary term vanishes,
+from $delta phi$ to their coefficients.  For example, in Euclidean signature
+and assuming that the boundary term vanishes,
 
 $
   (delta)/(delta phi (x))
@@ -1492,20 +1492,31 @@ $
   &arrow.r integral dd(x, [d_s])
 $ <eq:lattice-continuum-replacements>
 
-when the field varies smoothly on the scale $a$.  The continuum action is
+when the field varies smoothly on the scale $a$.  We use the mostly-plus
+Minkowski convention
+
+$
+  eta_(mu nu) = upright("diag") (-1,+1,dots,+1),
+  quad
+  partial_mu phi partial^mu phi
+  = -dot(phi)^2 + sum_(r=1)^(d_s) (partial_r phi)^2.
+$ <eq:mostly-plus-metric>
+
+Thus the continuum action is
 
 $
   S [phi]
   = integral dd(x, [D])
     [
-      1/2 partial_mu phi (x) partial^mu phi (x)
+      -1/2 partial_mu phi (x) partial^mu phi (x)
       - 1/2 m^2 phi (x)^2
     ].
 $ <eq:continuum-real-scalar-action>
 
-We use the mostly-minus Minkowski metric in
-@eq:continuum-real-scalar-action.  After $t=-i tau$, the Euclidean action has
-positive kinetic and mass terms.
+The minus sign in front of the kinetic contraction is therefore required to
+reproduce the positive $dot(phi)^2/2$ term in @eq:lattice-scalar-action.  After
+$t=-i tau$, the weight $e^(i S)$ becomes $e^(-S_E)$, where the Euclidean action
+has positive kinetic and mass terms.
 
 The spatial Dirac delta also has a finite-lattice origin.  The identity
 
@@ -1868,7 +1879,7 @@ Let $J_a (x)$ be a commuting source for a real multicomponent field.
   @eq:functional-derivative-field and
   @eq:functional-derivative-linear-source.  Carefully distinguish the Dirac
   delta function in spacetime from the Kronecker delta in the internal index.
-+ Let
++ Let the Euclidean functional be
   $F [phi]=integral dd(x,[d])
   [1/2 partial_mu phi partial^mu phi + V (phi)]$.
   Compute $(delta F)/(delta phi (x))$, state the boundary condition used, and check
