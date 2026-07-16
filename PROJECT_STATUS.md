@@ -1,6 +1,6 @@
 # QFT-for-Calculators Handoff
 
-Last updated: 2026-07-15
+Last updated: 2026-07-16
 
 ## Session startup
 
@@ -56,26 +56,27 @@ global passive transformation convention recorded in `AGENTS.md`.
   representations, its two oscillator families, invariant one-particle
   states, global `U(1)` charge, microcausality, and the covariant-derivative
   construction leading to scalar QED.
+- Section 2.4 develops the Maxwell connection in `(1/2,1/2)`, the
+  gauge-invariant field strength in `(1,0) direct-sum (0,1)`, the Maxwell and
+  Bianchi equations, canonical constraints, the physical polarization
+  quotient `k^perp / span(k)`, derived transverse and covariant completeness
+  projectors, radiation-gauge quantization, physical helicities `+1` and
+  `-1`, and field-strength microcausality.
 - Exercises cover Lorentz algebra and finite passive transformations, scalar
-  Hamiltonians, complex-scalar charge, and gauging the scalar phase symmetry.
+  Hamiltonians, complex-scalar charge, gauging the scalar phase symmetry, and
+  two complementary Maxwell problems: classical gauge redundancy, kinetic
+  zero modes, and constraint counting in one; explicit photon polarizations,
+  standard Lorentz transformations, and the equivalence of the transverse
+  canonical and ladder algebras in the other.
 
 ## Next work
 
-Implement Section 2.4, the massless vector field. The central distinction is:
-
-- `A^mu` is a covariant field in `(1/2,1/2)` with four components.
-- Physical massless spin-one states are Poincare representations with only
-  helicities `+1` and `-1`.
-- Equations of motion plus gauge equivalence remove the nonphysical
-  polarizations.
-
-Keep the global `U(1)` symmetry of the complex scalar conceptually distinct
-from local gauge redundancy. The Maxwell kinetic term makes the connection
-dynamical; local covariance alone does not.
-
-After the vector section, split the Dirac material into the two sections in
-the confirmed outline rather than compressing gamma-matrix algebra, classical
-solutions, and quantization into one section.
+Implement Section 2.5, Dirac spinors and the Dirac equation. Keep classical
+representation theory and solutions in 2.5, then reserve canonical
+anticommutators, the fermionic Fock space, and operator microcausality for
+2.6.  In 2.5, derive the gamma-matrix covariance and Dirac adjoint before the
+free action, solve rest-frame spinors first, and obtain general-momentum
+spinors by a standard Lorentz boost.
 
 ## Open decisions
 
@@ -85,16 +86,17 @@ solutions, and quantization into one section.
   `slash(p) := -gamma^mu p_mu` preserves the familiar equations
   `(slash(p)-m)u=0` and `(slash(p)+m)v=0`; this proposal is not yet a final
   project convention.
-- Decide how much constrained Hamiltonian analysis for the Maxwell and Dirac
-  fields belongs in the main text. Detailed algebra should normally go in
-  Section 2.8 exercises, while representation content and physical-state
-  interpretation remain in the main text.
+- Decide how much first-order constrained Hamiltonian analysis for the Dirac
+  field belongs in the main text. The Maxwell precedent keeps the physical
+  interpretation in the main section and moves detailed constraint algebra to
+  Section 2.8 exercises.
 
 ## Verification state
 
-- `main.typ` compiled successfully after the scalar-QED covariance exercise
-  was added.
-- The affected Chapter 2 body and exercise pages were visually inspected for
-  overflow, malformed equations, and unresolved references.
+- `main.typ` compiled successfully after Section 2.4 and its two Maxwell
+  exercises were added.
+- The Section 2.4 body pages and both Maxwell exercise pages were rendered and
+  visually inspected for overflow, malformed equations, and unresolved
+  references. A full PDF text scan found no unresolved-reference markers.
 - `tmp/` contains generated PDF review images and is not part of the
   checkpoint.

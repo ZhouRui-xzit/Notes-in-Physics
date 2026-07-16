@@ -994,6 +994,483 @@ inside the covariant derivative are worked out in
 
 == The Massless Vector Field
 
+Section 2.3 introduced a connection because a position-dependent phase cannot
+be differentiated covariantly by $tensor(partial,-mu)$ alone.  That
+construction fixed how $tensor(A,-mu)$ transforms and couples to charged
+matter, but it did not yet determine which parts of the connection are
+physical, whether they propagate, or which particles they create.  We now
+make the connection dynamical and answer those questions for the free Maxwell
+field.
+
+=== From a connection to gauge-invariant curvature
+
+Under a passive Lorentz transformation $x'=Lambda x+b$, the connection is a
+Lorentz covector,
+
+$
+  tensor(A',-mu) (x')
+  = tensor(Lambda,-mu,+nu) tensor(A,-nu) (x).
+$ <eq:maxwell-potential-lorentz-transformation>
+
+Its complexified component space is the vector representation
+$(1/2,1/2)$.  This spacetime transformation is distinct from the local
+$U (1)$ gauge transformation inherited from
+@eq:scalar-gauge-covariant-derivative,
+
+$
+  tensor(A,-mu) (x)
+  arrow.r
+  tensor(A,-mu) (x)+tensor(partial,-mu) alpha (x).
+$ <eq:maxwell-gauge-equivalence>
+
+The gauge transformation does not relate observations made in different
+frames.  It relates different connection variables used to describe the same
+local physical configuration.  In particular, the antisymmetric curvature
+
+$
+  tensor(F,-mu,-nu)
+  :=tensor(partial,-mu) tensor(A,-nu)
+    -tensor(partial,-nu) tensor(A,-mu)
+$ <eq:maxwell-field-strength>
+
+is unchanged by @eq:maxwell-gauge-equivalence.  On Minkowski spacetime, with
+the usual boundary conditions, equal field strengths imply locally that two
+potentials differ by a pure gauge.  Thus $tensor(F,-mu,-nu)$ captures the
+local gauge-invariant information, while $tensor(A,-mu)$ remains the useful
+connection variable for coupling, canonical quantization, and perturbation
+theory.
+
+The three representation-theoretic layers should be kept separate:
+
+$
+  tensor(A,-mu)
+  &in (1/2,1/2), \
+  tensor(F,-mu,-nu)
+  &in (1,0) "⊕" (0,1), \
+  cal(H)_"1 particle"
+  &=cal(H)_(lambda=+1) "⊕" cal(H)_(lambda=-1).
+$ <eq:maxwell-three-representation-layers>
+
+The first two lines are finite-dimensional Lorentz representations carried by
+local field components.  The last line is a unitary massless Poincare
+representation carried by physical states.  Gauge equivalence and the field
+equations are needed to pass from the first two descriptions to the last.
+
+=== Lorentz content of the field strength
+
+The antisymmetric tensor representation is obtained from the antisymmetric
+part of two vector representations.  After complexification,
+
+$
+  "∧"^2 (1/2,1/2)
+  = (1,0) "⊕" (0,1).
+$ <eq:two-form-lorentz-decomposition>
+
+To display the two irreducible pieces, fix the orientation by
+$tensor(epsilon,+0,+1,+2,+3)=+1$ and define the Lorentzian Hodge dual
+
+$
+  tensor(tilde(F),-mu,-nu)
+  :=1/2 tensor(epsilon,-mu,-nu,-rho,-sigma)
+       tensor(F,+rho,+sigma).
+$ <eq:maxwell-hodge-dual>
+
+On two-forms the mostly-plus Lorentzian metric gives
+$tilde(tilde(F))=-F$.  The complex combinations
+
+$
+  tensor(F^(plus.minus),-mu,-nu)
+  :=1/2 [
+    tensor(F,-mu,-nu)
+    minus.plus i tensor(tilde(F),-mu,-nu)
+  ]
+$ <eq:maxwell-self-dual-field-strengths>
+
+therefore satisfy
+
+$
+  tensor(tilde(F^(plus.minus)),-mu,-nu)
+  = plus.minus i tensor(F^(plus.minus),-mu,-nu).
+$ <eq:maxwell-self-duality-eigenvalues>
+
+The two eigenspaces transform as $(1,0)$ and $(0,1)$.  For a real Maxwell
+field they are complex conjugates rather than independent real fields.  This
+six-component Lorentz representation is not yet the two-dimensional physical
+polarization space: the Bianchi identity and the Maxwell equations still
+have to be imposed.
+
+=== Maxwell dynamics and classical constraints
+
+The simplest local gauge-invariant action with two derivatives is
+
+$
+  S_M [A]
+  =-1/4 integral dd(x,[4])
+    tensor(F,-mu,-nu) tensor(F,+mu,+nu).
+$ <eq:free-maxwell-action>
+
+Its sign is fixed so that the transverse modes have positive kinetic energy
+with the mostly-plus metric.  Varying the connection and integrating by parts
+gives
+
+$
+  tensor(partial,-mu) tensor(F,+mu,+nu)=0.
+$ <eq:vacuum-maxwell-equation>
+
+Because the field strength was defined as the curl of a potential, it also
+obeys the Bianchi identity
+
+$
+  tensor(partial,-rho) tensor(F,-mu,-nu)
+  +tensor(partial,-mu) tensor(F,-nu,-rho)
+  +tensor(partial,-nu) tensor(F,-rho,-mu)
+  =0,
+$ <eq:maxwell-bianchi-identity>
+
+or equivalently
+$tensor(partial,-mu) tensor(tilde(F),+mu,+nu)=0$.  The equation of motion and
+the Bianchi identity treat the two pieces in
+@eq:maxwell-self-dual-field-strengths symmetrically.
+
+The redundancy is already visible in the quadratic kinetic operator.  Up to
+a boundary term,
+
+$
+  S_M [A]
+  =1/2 integral dd(x,[4])
+    tensor(A,-mu)
+    [
+      tensor(eta,+mu,+nu) partial^2
+      -tensor(partial,+mu) tensor(partial,+nu)
+    ]
+    tensor(A,-nu).
+$ <eq:maxwell-degenerate-kinetic-operator>
+
+Acting on $tensor(partial,-nu)alpha$ makes the expression in square brackets
+vanish.  The Maxwell kinetic operator therefore has gauge _zero modes_ and
+cannot be _inverted_ until a gauge condition is chosen.
+
+The same fact appears in the canonical data.  Taking the lower components
+$tensor(A,-mu)$ as coordinates, their conjugate momenta are
+
+$
+  tensor(Pi,+mu)
+  :=(partial cal(L)_M)/
+    (partial (tensor(partial,-0) tensor(A,-mu)))
+  =-tensor(F,+0,+mu).
+$ <eq:maxwell-canonical-momenta>
+
+Antisymmetry immediately gives the primary constraint
+$tensor(Pi,+0)=0$.  The time component $tensor(A,-0)$ has no independent
+velocity and acts as a Lagrange multiplier.  Preserving the primary
+constraint yields Gauss's law,
+
+$
+  tensor(partial,-i) tensor(Pi,+i)=0.
+$ <eq:maxwell-gauss-constraint>
+
+Thus the four components of $tensor(A,-mu)$ are not four independent
+oscillators.  The two first-class constraints, together with the gauge
+directions they generate, remove two canonical pairs and leave two physical
+configuration-space degrees of freedom.  The detailed classical calculation
+is developed in @ex:maxwell-gauge-redundancy.
+
+=== Transverse modes and canonical quantization
+
+For the free field, impose radiation gauge,
+
+$
+  tensor(A,-0)=0,
+  quad
+  tensor(partial,+i) tensor(A,-i)=0.
+$ <eq:maxwell-radiation-gauge>
+
+With suitable falloff conditions this fixes the gauge freedom relevant for
+propagating radiation.  The remaining spatial field is transverse and obeys
+
+$
+  partial^2 tensor(A,-i) (x)=0.
+$ <eq:transverse-maxwell-wave-equation>
+
+Set $omega_k=abs(bold(k))$ and use the massless specialization of the
+invariant measure @eq:lorentz-invariant-mass-shell-measure.  Before choosing
+polarization vectors, it is useful to separate what follows from the field
+equations from what is merely a basis convention.  For a fixed nonzero null
+momentum, the Maxwell equation and gauge equivalence require
+
+$
+  k dot epsilon=0,
+  quad
+  tensor(epsilon,-mu)
+  "∼"
+  tensor(epsilon,-mu)+beta tensor(k,-mu).
+$ <eq:maxwell-polarization-quotient-data>
+
+Because $k^2=0$, the gauge direction $tensor(k,-mu)$ itself lies in the
+three-dimensional space $k^perp$ of transverse four-vectors.  The physical
+polarization space at momentum $k$ is therefore the quotient
+
+$
+  cal(P)_k
+  :=k^perp/(upright("span") (k)),
+  quad
+  upright("dim") cal(P)_k=3-1=2.
+$ <eq:maxwell-physical-polarization-space>
+
+The quotient removes the null direction and inherits a positive-definite
+inner product.  This is easiest to see in the radiation-gauge representative:
+$tensor(epsilon,-0)=0$ reduces $k dot epsilon=0$ to
+$bold(k) dot bold(epsilon)=0$.  The representatives then form the ordinary
+two-dimensional Euclidean plane perpendicular to $bold(k)$.
+
+Choose any real orthonormal basis $bold(e)_1 (k),bold(e)_2 (k)$ of this plane,
+
+$
+  bold(k) dot bold(e)_a (k)&=0, \
+  bold(e)_a (k) dot bold(e)_b (k)&=delta_(a b),
+  quad a,b=1,2.
+$ <eq:maxwell-linear-polarization-basis>
+
+A circular basis is obtained by the unitary change of basis
+
+$
+  bold(epsilon) (k,plus.minus 1)
+  :=1/sqrt(2) [
+    bold(e)_1 (k) plus.minus i bold(e)_2 (k)
+  ],
+$ <eq:maxwell-circular-polarization-basis>
+
+with the signs assigned so that $lambda$ agrees with the helicity eigenvalue
+in @eq:maxwell-momentum-and-helicity-eigenvalues.  The resulting four-vector
+representatives satisfy
+
+$
+  tensor(epsilon,-0) (k,lambda)&=0, \
+  tensor(k,+i) tensor(epsilon,-i) (k,lambda)&=0, \
+  tensor(epsilon,+i)^* (k,lambda)
+    tensor(epsilon,-i) (k,lambda')
+    &=delta_(lambda lambda'),
+  quad lambda,lambda'=plus.minus 1.
+$ <eq:maxwell-polarization-conditions>
+
+The first condition in @eq:maxwell-polarization-conditions selects the
+radiation-gauge representative, and the second expresses transversality.  The
+third is a normalization convention for the basis, not another equation of
+motion.  A rescaling of $tensor(epsilon,-i) (k,lambda)$ can be compensated by
+the inverse rescaling of $hat(a)_lambda (k)$; the canonical commutator fixes
+their relative normalization.
+
+Completeness is now a consequence rather than an additional assumption.  For
+an arbitrary spatial vector $tensor(v,-i)$, its transverse projection can be
+written either with the geometric projector or by expanding in the
+orthonormal polarization basis:
+
+$
+  tensor(v^T,-i)
+  &=[
+      tensor(delta,-i,-j)
+      -(tensor(k,-i) tensor(k,-j))/(bold(k)^2)
+    ]tensor(v,+j) \
+  &=sum_(lambda=plus.minus 1)
+    tensor(epsilon,-i) (k,lambda)
+    tensor(epsilon,-j)^* (k,lambda)
+    tensor(v,+j).
+$ <eq:maxwell-two-forms-of-transverse-projection>
+
+Since the equality holds for every $tensor(v,-i)$, the two kernels must be
+equal.  Hence
+
+$
+  sum_(lambda=plus.minus 1)
+    tensor(epsilon,-i) (k,lambda)
+    tensor(epsilon,-j)^* (k,lambda)
+  =tensor(delta,-i,-j)
+   -(tensor(k,-i) tensor(k,-j))/(bold(k)^2).
+$ <eq:maxwell-transverse-polarization-completeness>
+
+This spatial formula is tied to radiation gauge.  A covariant representative
+of the same physical projector requires a reference vector $tensor(n,+mu)$
+with $k dot n != 0$.  Choosing $n dot epsilon=0$ gives
+
+$
+  sum_(lambda=plus.minus 1)
+    tensor(epsilon,-mu) (k,lambda)
+    tensor(epsilon,-nu)^* (k,lambda)
+  =tensor(eta,-mu,-nu)
+   -(
+      tensor(k,-mu) tensor(n,-nu)
+      +tensor(n,-mu) tensor(k,-nu)
+    )/(k dot n)
+   +(n^2 tensor(k,-mu) tensor(k,-nu))/((k dot n)^2).
+$ <eq:maxwell-covariant-polarization-projector>
+
+Changing $tensor(n,+mu)$ changes this expression only by terms containing
+$tensor(k,-mu)$ or $tensor(k,-nu)$.  Such terms are gauge dependent and drop
+out after forming $tensor(F,-mu,-nu)$ or contracting with a conserved current.
+For the time direction used in radiation gauge,
+@eq:maxwell-covariant-polarization-projector reduces to
+@eq:maxwell-transverse-polarization-completeness.
+
+The operator field has the mode expansion
+
+$
+  tensor(hat(A),-i) (x)
+  =sum_(lambda=plus.minus 1) integral tilde(dd(k))
+   [
+     tensor(epsilon,-i) (k,lambda)
+       hat(a)_lambda (k)e^(i k dot x)
+     +tensor(epsilon,-i)^* (k,lambda)
+       hat(a)^dagger_lambda (k)e^(-i k dot x)
+   ].
+$ <eq:maxwell-transverse-mode-expansion>
+
+This is the scalar expansion @eq:real-scalar-mode-expansion with one crucial
+addition: the polarization vector intertwines the covariant field index with
+the helicity label of the oscillator.  The two transverse polarizations
+replace the single scalar oscillator at each momentum.
+
+The reduced equal-time canonical algebra is
+
+$
+  [tensor(hat(A),-i) (t,bold(x)),
+   tensor(hat(Pi),-j) (t,bold(y))]
+  =i tensor(delta^T,-i,-j) (bold(x)-bold(y)),
+$ <eq:maxwell-transverse-canonical-commutator>
+
+where the transverse delta distribution is
+
+$
+  tensor(delta^T,-i,-j) (bold(x))
+  :=integral (dd(k,[3]))/((2 pi)^3)
+    [
+      tensor(delta,-i,-j)
+      -(tensor(k,-i) tensor(k,-j))/(bold(k)^2)
+    ]e^(i bold(k) dot bold(x)).
+$ <eq:maxwell-transverse-delta>
+
+The projector is the canonical remnant of solving Gauss's law and removing
+the longitudinal gauge direction.  Equations
+@eq:maxwell-transverse-mode-expansion and
+@eq:maxwell-transverse-canonical-commutator are equivalent to
+
+$
+  [hat(a)_lambda (k),hat(a)^dagger_(lambda') (q)]
+  =2 omega_k (2 pi)^3 delta_(lambda lambda')
+    delta^((3)) (bold(k)-bold(q)),
+$ <eq:maxwell-ladder-commutators>
+
+with all annihilator--annihilator and creator--creator commutators equal to
+zero.  The explicit construction of the polarization vectors and both
+directions of this canonical-equivalence calculation are given in
+@ex:maxwell-polarizations-and-canonical-algebra.  After normal ordering, the
+four-momentum is
+
+$
+  tensor(hat(P),+mu)
+  =sum_(lambda=plus.minus 1) integral tilde(dd(k))
+    tensor(k,+mu)
+    hat(a)^dagger_lambda (k)hat(a)_lambda (k).
+$ <eq:maxwell-second-quantized-momentum>
+
+Both physical polarizations have positive energy
+$tensor(k,+0)=omega_k=abs(bold(k))$.
+
+=== One-particle states and helicity
+
+Define the one-particle states
+
+$
+  ket((k,lambda))
+  :=hat(a)^dagger_lambda (k)ket(0),
+  quad lambda=plus.minus 1.
+$ <eq:maxwell-one-particle-states>
+
+They have invariant normalization
+
+$
+  braket((k,lambda),(q,lambda'))
+  =2 omega_k (2 pi)^3 delta_(lambda lambda')
+    delta^((3)) (bold(k)-bold(q)),
+$ <eq:maxwell-one-particle-normalization>
+
+and satisfy
+
+$
+  tensor(hat(P),+mu) ket((k,lambda))
+  &=tensor(k,+mu) ket((k,lambda)), \
+  (hat(bold(k)) dot bold(J)) ket((k,lambda))
+  &=lambda ket((k,lambda)),
+$ <eq:maxwell-momentum-and-helicity-eigenvalues>
+
+where $hat(bold(k)):=bold(k)/abs(bold(k))$.  Thus the physical one-particle
+space is the direct sum of the two massless helicity representations, not the
+four-dimensional vector representation carried by the potential.
+
+This distinction can also be seen directly in a plane wave.  Its
+gauge-invariant amplitude is
+
+$
+  tensor(f,-mu,-nu) (k,lambda)
+  =i [
+    tensor(k,-mu) tensor(epsilon,-nu) (k,lambda)
+    -tensor(k,-nu) tensor(epsilon,-mu) (k,lambda)
+  ].
+$ <eq:maxwell-plane-wave-field-strength>
+
+Changing the polarization representative by
+$tensor(epsilon,-mu) arrow.r tensor(epsilon,-mu)+beta tensor(k,-mu)$ leaves
+@eq:maxwell-plane-wave-field-strength unchanged.  Under a Lorentz
+transformation, a chosen transverse polarization generally transforms into
+the standard polarization at the transformed momentum plus precisely such a
+multiple of $tensor(k,-mu)$.  The additional term is a gauge transformation,
+while the remaining little-group phase is the helicity transformation.  The
+field strength therefore transforms without the gauge ambiguity and its two
+self-dual sectors furnish the two helicities on shell.
+
+=== Gauge-invariant locality
+
+Radiation gauge makes the positive physical Hilbert space transparent, but
+the transverse projector in @eq:maxwell-transverse-delta is spatially
+nonlocal.  The gauge-dependent potential is therefore not the right object on
+which to formulate a gauge-independent locality statement.  Local
+observables are built from $tensor(F,-mu,-nu)$.
+
+Let $Delta_0 (x-y)$ denote the massless Pauli--Jordan distribution, normalized
+as in @eq:pauli-jordan-commutator with $m=0$.  Direct substitution of the
+transverse mode expansion gives
+
+$
+  [tensor(hat(F),-mu,-nu) (x),
+   tensor(hat(F),-rho,-sigma) (y)]
+  =i [
+    tensor(eta,-nu,-rho)
+      tensor(partial,-mu) tensor(partial,-sigma)
+    +tensor(eta,-mu,-sigma)
+      tensor(partial,-nu) tensor(partial,-rho)
+    -tensor(eta,-nu,-sigma)
+      tensor(partial,-mu) tensor(partial,-rho)
+    -tensor(eta,-mu,-rho)
+      tensor(partial,-nu) tensor(partial,-sigma)
+  ] Delta_0 (x-y),
+$ <eq:maxwell-field-strength-commutator>
+
+where all derivatives act on $x-y$.  Since the Pauli--Jordan distribution and
+its derivatives vanish at spacelike separation,
+
+$
+  [tensor(hat(F),-mu,-nu) (x),
+   tensor(hat(F),-rho,-sigma) (y)]
+  =0
+  quad "when" quad (x-y)^2>0.
+$ <eq:maxwell-field-strength-microcausality>
+
+The local curvature therefore satisfies microcausality even though a
+particular gauge potential can display nonlocal projectors.  This completes
+the chain begun in Section 2.3: local phase covariance introduces a
+connection, its curvature supplies local gauge-invariant observables, and
+quantization produces precisely the two helicities of a massless spin-one
+particle.
+
 == Dirac Spinors and the Dirac Equation
 
 == Quantization of the Dirac Field
@@ -1345,4 +1822,236 @@ $phi' (x)=e^(-i q alpha (x))phi (x)$.
   $m_A^2 tensor(A,-mu)tensor(A,+mu)$ is not.  Explain why local covariance
   determines how a connection couples to matter but does not, by itself,
   require the connection to have a Maxwell kinetic term.
+]
+
+#exercise(
+  title: "Classical gauge redundancy and Maxwell degrees of freedom",
+  label: <ex:maxwell-gauge-redundancy>,
+)[
+Start from the free Maxwell action @eq:free-maxwell-action and assume fields
+fall off sufficiently rapidly at spatial infinity.
+
++ Apply
+  $tensor(A,-mu) arrow.r tensor(A,-mu)+tensor(partial,-mu)alpha$ and verify
+  directly that $tensor(F,-mu,-nu)$, the Maxwell action, and both Maxwell
+  equations are unchanged.  Conversely, let two potentials have the same
+  field strength.  Show that their difference is a closed one-form and use
+  the Poincare lemma to explain why they are locally gauge equivalent on
+  Minkowski spacetime.
+
++ Expand the field strength in @eq:free-maxwell-action and integrate by parts
+  to derive the quadratic form @eq:maxwell-degenerate-kinetic-operator.  Call
+  its differential operator
+
+  $
+    tensor(K,+mu,+nu)
+    :=tensor(eta,+mu,+nu)partial^2
+      -tensor(partial,+mu)tensor(partial,+nu).
+  $
+
+  Show directly that
+
+  $
+    tensor(K,+mu,+nu)tensor(partial,-nu)alpha=0.
+  $
+
+  In momentum space, derive
+
+  $
+    tensor(K,+mu,+nu) (k)
+    =-k^2 tensor(eta,+mu,+nu)
+      +tensor(k,+mu)tensor(k,+nu),
+    quad
+    tensor(K,+mu,+nu) (k)tensor(k,-nu)=0.
+  $
+
+  Decompose a vector into parts transverse and longitudinal to a momentum with
+  $k^2 != 0$.  Lower one index to form
+  $tensor(K,+mu,-nu) (k)$, find its four eigenvalues, and explain why its
+  longitudinal zero eigenvalue makes the ungauge-fixed kinetic operator
+  noninvertible.  Relate this zero mode to
+  @eq:maxwell-gauge-equivalence rather than to the physical massless pole.
+
++ Define the spatial fields by
+
+  $
+    tensor(E,-i):=tensor(F,-0,-i),
+    quad
+    tensor(B,-i):=1/2 tensor(epsilon,-i,-j,-k)
+      tensor(F,-j,-k).
+  $
+
+  Verify, with the mostly-plus metric, that
+
+  $
+    cal(L)_M=1/2 [bold(E)^2-bold(B)^2].
+  $
+
+  Derive @eq:maxwell-canonical-momenta and show explicitly that
+  $tensor(Pi,+0)=0$ because the Lagrangian contains no
+  $tensor(partial,-0)tensor(A,-0)$.  Perform the Legendre transform and,
+  after one spatial integration by parts, obtain
+
+  $
+    H_M=integral dd(x,[3]) [
+      1/2 tensor(Pi,-i)tensor(Pi,+i)
+      +1/4 tensor(F,-i,-j)tensor(F,+i,+j)
+      -tensor(A,-0)tensor(partial,-i)tensor(Pi,+i)
+    ].
+  $
+
+  Explain why varying $tensor(A,-0)$ imposes Gauss's law rather than a new
+  evolution equation.
+
++ #block(breakable: false)[
+  Equip the spatial canonical variables with
+
+  $
+    {tensor(A,-i) (bold(x)),tensor(Pi,+j) (bold(y))}_"P.B."
+    =tensor(delta,-i,+j)delta^((3)) (bold(x)-bold(y)).
+  $
+  ]
+
+  Show that the smeared Gauss constraint
+
+  $
+    G [alpha]
+    :=-integral dd(x,[3])
+      alpha (bold(x))tensor(partial,-i)tensor(Pi,+i) (bold(x))
+  $
+
+  generates
+  $delta tensor(A,-i)=tensor(partial,-i)alpha$ and
+  $delta tensor(Pi,+i)=0$.  Count the phase-space dimensions removed by
+  $tensor(Pi,+0)=0$ and Gauss's law and recover two physical configuration
+  degrees of freedom at each spatial point.
+]
+
+#exercise(
+  title: "Photon polarizations and the transverse canonical algebra",
+  label: <ex:maxwell-polarizations-and-canonical-algebra>,
+)[
+This exercise constructs the polarization vectors explicitly and then checks
+the normalization of the reduced quantum theory.
+
++ Start with the standard positive-energy null momentum and two real linear
+  polarizations
+
+  $
+    tensor(k_*,+mu)&=(kappa,0,0,kappa), \
+    tensor(e_1,+mu)&=(0,1,0,0), \
+    tensor(e_2,+mu)&=(0,0,1,0),
+    quad kappa>0.
+  $
+
+  Solve $k_* dot epsilon=0$ before imposing a gauge condition.  Show that
+  the equivalence
+  $tensor(epsilon,+mu) "∼" tensor(epsilon,+mu)
+  +beta tensor(k_*,+mu)$ permits the radiation-gauge representative
+  $tensor(epsilon,+0)=tensor(epsilon,+3)=0$.  Verify that the two vectors
+  above form an orthonormal basis of the remaining plane.
+
+  Define
+
+  $
+    tensor(epsilon,+mu) (k_*,lambda)
+    :=1/sqrt(2) [
+      tensor(e_1,+mu)+i lambda tensor(e_2,+mu)
+    ],
+    quad lambda=plus.minus 1.
+  $
+
+  Using $tensor(J,-3)=-tensor(Sigma_V,+1,+2)$ and
+  @eq:vector-lorentz-generators, verify that these are helicity eigenvectors
+  with eigenvalues $lambda=plus.minus 1$.  Check their orthonormality and show
+  explicitly that their spatial completeness sum is
+  $upright("diag") (1,1,0)$, the transverse projector for momentum along the
+  third axis.
+
++ Let
+
+  $
+    tensor(k,+mu)
+    =(omega_k,omega_k hat(bold(k))),
+    quad omega_k>0,
+  $
+
+  and choose a spatial rotation $R (hat(bold(k)))$ that sends the third axis
+  to $hat(bold(k))$.  With the passive boost convention of
+  @ex:finite-lorentz-transformations, choose $chi_k$ so that
+
+  $
+    L (k)
+    :=R (hat(bold(k))) B_3 (chi_k),
+    quad
+    L (k)k_*=k.
+  $
+
+  Show that $chi_k=-ln (omega_k/kappa)$ and define
+
+  $
+    tensor(epsilon,+mu) (k,lambda)
+    :=tensor(L (k),+mu,-nu)
+      tensor(epsilon,+nu) (k_*,lambda).
+  $
+
+  Verify @eq:maxwell-polarization-conditions and
+  @eq:maxwell-transverse-polarization-completeness for the resulting arbitrary
+  null momentum.  Explain why changing $R (hat(bold(k)))$ by a rotation about
+  $hat(bold(k))$ changes a circular polarization only by its helicity phase.
+
++ #block(breakable: false)[
+  A general Lorentz transformation need not preserve the radiation-gauge
+  representative.  Let
+
+  $
+    tensor(k',+mu)&=tensor(Lambda,+mu,-nu)tensor(k,+nu), \
+    tensor(tilde(epsilon)',+mu)
+      &=tensor(Lambda,+mu,-nu)
+        tensor(epsilon,+nu) (k,lambda).
+  $
+
+  Choose
+
+  $
+    beta
+    :=-(tensor(tilde(epsilon)',+0))/(tensor(k',+0)),
+    quad
+    tensor(epsilon',+mu)
+    :=tensor(tilde(epsilon)',+mu)+beta tensor(k',+mu).
+  $
+  ]
+
+  Show that $tensor(epsilon',+0)=0$,
+  $k' dot epsilon'=0$, and the plane-wave field strength is unchanged by the
+  added term.  This is the compensating gauge transformation needed to return
+  to the chosen radiation-gauge representative.
+
++ Starting from @eq:maxwell-transverse-mode-expansion, use
+  $tensor(hat(Pi),-i)=tensor(partial,-0)tensor(hat(A),-i)$ in radiation gauge
+  and the ladder algebra @eq:maxwell-ladder-commutators to calculate the
+  equal-time commutator of $tensor(hat(A),-i)$ and $tensor(hat(Pi),-j)$.
+  Keep every factor of $2 omega_k$ and $2 pi$.  Use
+  @eq:maxwell-transverse-polarization-completeness to derive precisely
+  @eq:maxwell-transverse-canonical-commutator with the distribution
+  @eq:maxwell-transverse-delta.
+
++ Prove the converse direction.  At $t=0$, derive the inversion formula
+
+  $
+    hat(a)_lambda (k)
+    =integral dd(x,[3]) e^(-i bold(k) dot bold(x))
+      tensor(epsilon,+i)^* (k,lambda)
+      [
+        omega_k tensor(hat(A),-i) (0,bold(x))
+        +i tensor(hat(Pi),-i) (0,bold(x))
+      ].
+  $
+
+  Insert @eq:maxwell-transverse-canonical-commutator and use the fact that the
+  transverse projector acts as the identity on each polarization vector.
+  Recover @eq:maxwell-ladder-commutators, including its covariant factor
+  $2 omega_k (2 pi)^3$.  This establishes both directions of consistency
+  among @eq:maxwell-transverse-canonical-commutator,
+  @eq:maxwell-transverse-delta, and @eq:maxwell-ladder-commutators.
 ]
