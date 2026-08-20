@@ -1,6 +1,6 @@
 # QFT-for-Calculators Handoff
 
-Last updated: 2026-07-22
+Last updated: 2026-07-23
 
 ## Session startup
 
@@ -12,41 +12,21 @@ Last updated: 2026-07-22
 
 ## Current milestone
 
-Develop Chapter 2, *Free Quantum Fields*, using the mostly-plus metric and the
-global passive transformation convention recorded in `AGENTS.md`.
+Develop Chapter 3, *Free Fields at Finite Temperature*, by placing the
+Euclidean free-field machinery of Chapters 1 and 2 on the thermal circle.
 
-## Confirmed Chapter 2 outline
+## Confirmed Chapter 3 outline
 
-1. **2.1 Lorentz Symmetry and Relativistic Fields**
-   - Passive Lorentz and Poincare transformations.
-   - Finite-dimensional component representations versus unitary
-     one-particle Poincare representations.
-2. **2.2 The Real Scalar Field**
-   - Canonical commutators, invariant mass-shell modes, Fock space,
-     second quantization, one-particle states, and microcausality.
-3. **2.3 Complex Scalar Field**
-   - Lorentz representation `1 direct-sum 1`, independent particle and
-     antiparticle modes, global `U(1)` charge, and the gauge-connection bridge.
-4. **2.4 The Massless Vector Field**
-   - The potential as the Lorentz vector representation `(1/2,1/2)`.
-   - Gauge redundancy, Maxwell dynamics, constraints, transverse modes, and
-     physical helicities `+1` and `-1`.
-   - The field strength as `(1,0) direct-sum (0,1)` and causality of
-     gauge-invariant observables.
-5. **2.5 Weyl and Dirac Spinor Representations**
-   - Construct the conjugate Weyl representations from the two commuting
-     complex `su(2)` algebras.
-   - Form the Dirac direct sum, exponentiate its finite passive
-     representation, and derive the chiral gamma matrices and projectors.
-6. **2.6 The Dirac Equation and Its Solutions**
-   - Dirac adjoint and bilinears; free action, equation, and conserved current.
-   - Plane waves, rest spinors and standard boosts, normalization and spin
-     sums, and the massless chirality-helicity limit.
-7. **2.7 Quantization of the Dirac Field**
-   - Canonical anticommutators, particle and antiparticle modes, fermionic Fock
-     space, Hamiltonian, charge, one-particle states, and microcausality.
-8. **2.8 Propagators from Path Integrals**
-9. **2.9 Exercises**
+1. **3.1 The Imaginary-Time Formalism**
+   - Thermal trace, Euclidean-time circle, KMS condition, thermal generating
+     functionals, thermodynamics, and the zero-temperature limit.
+2. **3.2 Matsubara Frequencies**
+   - Fourier analysis for periodic bosons and antiperiodic fermions, thermal
+     delta functions, sum-integrals, and the zero-temperature limit.
+3. **3.3 Finite-Temperature Propagators: Scalar Field**
+4. **3.4 Finite-Temperature Propagators: Dirac Field**
+5. **3.5 Finite-Temperature Propagators: Gauge Field**
+6. **3.6 Sum-Integration and Useful Techniques**
 
 ## Completed
 
@@ -117,15 +97,32 @@ global passive transformation convention recorded in `AGENTS.md`.
   derive the general covariant photon propagator, conserved-current and
   field-strength gauge independence, and the Abelian Faddeev--Popov
   determinant in the other.
+- Section 3.1 defines the canonical thermal state and imaginary-time
+  evolution, derives the thermal circle and bosonic/fermionic boundary
+  conditions from the trace, relates them to the operator KMS condition, and
+  constructs normalized thermal generating functionals.  It distinguishes
+  correlator normalization from the thermodynamic partition function and
+  closes with the thermodynamic derivatives and zero-temperature limit.
+- Section 3.2 derives bosonic and fermionic Matsubara frequencies from their
+  thermal boundary conditions.  It proves orthogonality and completeness in a
+  finite periodic spatial box, defines the periodic and antiperiodic thermal
+  delta kernels, takes the spatial thermodynamic limit, and fixes the
+  `integral_(P_B)` and `integral_(P_F)` sum-integral conventions.  It also
+  records frequency conservation, the bosonic zero mode, the fermionic
+  thermal gap, and the continuous Euclidean-frequency limit as `T -> 0`.
 
 ## Next work
 
-Perform a complete Chapter 2 editorial and physics pass, then checkpoint the
-chapter before developing Section 3.1, the imaginary-time formalism.
+Implement Section 3.3, the finite-temperature scalar propagator.  Invert the
+real-scalar kernel on the bosonic Matsubara lattice, evaluate its
+imaginary-time form, separate vacuum and Bose--Einstein thermal pieces, and
+check periodicity, the Green equation, the equal-time derivative jump, and
+the zero-temperature limit.  Then state the oriented complex-scalar
+contractions without duplicating the Gaussian derivation.
 
 ## Open decisions
 
-- No open structural decisions remain for Chapter 2.
+- No open structural decisions currently block Section 3.3.
 
 ## Verification state
 
@@ -143,5 +140,15 @@ chapter before developing Section 3.1, the imaginary-time formalism.
   were added.  All five Section 2.8 body pages and both exercise pages were
   rendered and inspected for formula overflow, malformed fractions, source
   ordering, equation-number collisions, and unresolved references.
+- `main.typ` compiled successfully after Section 3.1 was added;
+  `git diff --check` reports no whitespace errors.  All four Section 3.1 pages
+  were rendered and inspected for overflow, malformed integrals, thermal
+  boundary-condition signs, equation-number collisions, and unresolved
+  references.
+- `main.typ` compiled successfully after Section 3.2 was added, and
+  `git diff --check` reports no whitespace errors.  All four Section 3.2 pages
+  were rendered and inspected for finite-box normalization,
+  Kronecker-versus-Dirac delta notation, sum-integral factors, formula
+  overflow, equation-number collisions, and unresolved references.
 - `tmp/pdfs/` contains generated PDF review images and extracted text and is
   not part of the checkpoint.
