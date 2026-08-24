@@ -1,4 +1,4 @@
-= Loop Calculations in $phi^3$
+= $phi^4$ Theory
 
 == The One-Loop Self-Energy
 

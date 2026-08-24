@@ -1,6 +1,6 @@
 # QFT-for-Calculators Handoff
 
-Last updated: 2026-07-23
+Last updated: 2026-08-24
 
 ## Session startup
 
@@ -12,8 +12,11 @@ Last updated: 2026-07-23
 
 ## Current milestone
 
-Develop Chapter 3, *Free Fields at Finite Temperature*, by placing the
-Euclidean free-field machinery of Chapters 1 and 2 on the thermal circle.
+Chapter 3, *Free Fields at Finite Temperature*, is complete.  Chapter 4,
+*From Correlation Functions to Scattering Amplitudes*, is underway.  Sections
+4.1 and 4.2 now carry the calculation from normalized perturbative
+correlators through connected functions, full-propagator amputation, and 1PI
+proper vertices.
 
 ## Confirmed Chapter 3 outline
 
@@ -23,10 +26,18 @@ Euclidean free-field machinery of Chapters 1 and 2 on the thermal circle.
 2. **3.2 Matsubara Frequencies**
    - Fourier analysis for periodic bosons and antiperiodic fermions, thermal
      delta functions, sum-integrals, and the zero-temperature limit.
-3. **3.3 Finite-Temperature Propagators: Scalar Field**
-4. **3.4 Finite-Temperature Propagators: Dirac Field**
-5. **3.5 Finite-Temperature Propagators: Gauge Field**
-6. **3.6 Sum-Integration and Useful Techniques**
+3. **3.3 Thermodynamics of Free Scalar Fields**
+   - Real-scalar functional determinant and pressure, the complex scalar
+     grand canonical Euclidean kernel, and sourced thermal propagators.
+4. **3.4 Thermodynamics of a Free Dirac Field**
+   - Grand canonical Grassmann determinant, finite-density pressure and
+     charge, and the sourced thermal propagator.
+5. **3.5 Thermodynamics of a Free Photon Field**
+   - Physical transverse functional determinant, blackbody thermodynamics,
+     and the radiation-gauge thermal propagator.
+6. **3.6 Matsubara Sums and Contour Methods**
+   - Bosonic and fermionic thermal kernels, contour derivations of the sums
+     used in Sections 3.3 and 3.4, determinant log-sums, and thermal moments.
 
 ## Completed
 
@@ -110,19 +121,76 @@ Euclidean free-field machinery of Chapters 1 and 2 on the thermal circle.
   `integral_(P_B)` and `integral_(P_F)` sum-integral conventions.  It also
   records frequency conservation, the bosonic zero mode, the fermionic
   thermal gap, and the continuous Euclidean-frequency limit as `T -> 0`.
+- Section 3.3 gives the first complete thermal free-field calculation.  It
+  starts from the periodic Euclidean path integral, diagonalizes the
+  real-scalar kernel in the finite-box Matsubara basis, evaluates its
+  trace-log, separates the vacuum term, and derives the pressure, energy
+  density, and massless limit.  It then derives the complex scalar's
+  chemical-potential Euclidean kernel from the phase-space path integral,
+  evaluates its determinant, and obtains the grand potential, pressure,
+  charge density, stability bound, and condensation boundary.  The sourced
+  Gaussian finally relates the same kernels to the real and charged thermal
+  propagators, including the two orientations at nonzero chemical potential.
+- Section 3.4 makes the grand canonical thermodynamics of one free Dirac
+  field its main line.  Starting from the conserved vector `U(1)` charge, it
+  derives the chemical-potential Euclidean Grassmann kernel in conventions
+  compatible with Chapter 2, evaluates its fermionic Matsubara determinant,
+  and obtains the pressure, charge density, energy density, zero-temperature
+  Fermi surface, and massless finite-density limits.  A final sourced
+  Gaussian treats the thermal propagator as the inverse of the same shifted
+  kernel and checks antiperiodicity and the canonical endpoint jump.
+- Section 3.5 provisionally treats the photon as a free massless spin-one
+  field on the reduced radiation-gauge space.  The transverse projector
+  derives the two physical helicities, the periodic determinant gives the
+  blackbody pressure, energy density, entropy, and Planck spectrum, and the
+  inverse kernel gives the transverse thermal propagator.  It also explains
+  why an equilibrium photon gas has zero chemical potential and defers a
+  full covariant gauge-fixed treatment.
+- Section 3.6 derives the bosonic sum in Equation 3.3.8 and the shifted
+  fermionic sum in Equation 3.4.14 by a unified contour method.  It introduces
+  thermal kernels whose poles and residues reproduce the two Matsubara
+  lattices, tracks the chemical-potential shift through the physical poles,
+  and integrates the convergent propagator sums back to the determinant
+  log-sums.  A CeTZ contour diagram displays the thermal and physical poles,
+  and a final set of Bose/Fermi moments recovers the massless coefficients.
+- Section 4.1 distinguishes the unnormalized sourced path integral `Z_M[J]`
+  from the normalized functional `cal(Z)_M[J]=Z_M[J]/Z_M[0]`, writes the
+  interaction solely as an `S_int` functional differential operator, and
+  explains why the denominator cancels only source-free vacuum-bubble
+  components.  It then uses regulated bare `phi^4` theory as a perturbative
+  calculation: the two-point function records all Wick topologies and
+  symmetry factors through second order, while the four-point function retains
+  all source-attached disconnected pairings alongside the contact graph, four
+  external-leg tadpole insertions, and three one-loop fish channels.  A final
+  transition defers connected generators, amputation, and 1PI organization to
+  Section 4.2.
+- Section 4.1 now illustrates the five two-point topologies through
+  `O(lambda^2)` and representative four-point leg and fish topologies.  The
+  diagrams have maintainable `tikz-feynman` sources in `Feynman/`, are
+  exported as SVG assets for Typst, and use a reproducible VS Code/Makefile
+  workflow based on LuaLaTeX and `dvisvgm`.
+- Section 4.2 uses `W_M[J]=-i log cal(Z)_M[J]` to extract connected functions
+  and applies the decomposition explicitly to the Section 4.1 four-point
+  result.  It defines amputation with the inverse full propagator, separates
+  that operation from the internal bridge criterion for 1PR/1PI graphs, and
+  introduces the Minkowski effective action and its proper vertices.  The
+  exact four-point reconstruction shows how full external propagators, 1PI
+  kernels, and possible 1PR kernels fit together.  Its proof exercise derives
+  the inverse-propagator identity, the three- and four-point proper-vertex
+  expansions, and the general bridge decomposition proving that derivatives
+  of the effective action generate amputated 1PI vertices.
 
 ## Next work
 
-Implement Section 3.3, the finite-temperature scalar propagator.  Invert the
-real-scalar kernel on the bosonic Matsubara lattice, evaluate its
-imaginary-time form, separate vacuum and Bose--Einstein thermal pieces, and
-check periodicity, the Green equation, the equal-time derivative jump, and
-the zero-temperature limit.  Then state the oriented complex-scalar
-contractions without duplicating the Gaussian derivation.
+Develop Section 4.3, *One-Particle Poles and Field Normalization*, beginning
+with the exact two-point function and relating its pole location and residue
+to the physical mass and asymptotic field.  Then use that result in the LSZ
+reduction formula of Section 4.4.
 
 ## Open decisions
 
-- No open structural decisions currently block Section 3.3.
+- The remaining Chapter 4 headings are provisional until Sections 4.3--4.5
+  are developed in detail.
 
 ## Verification state
 
@@ -150,5 +218,54 @@ contractions without duplicating the Gaussian derivation.
   were rendered and inspected for finite-box normalization,
   Kronecker-versus-Dirac delta notation, sum-integral factors, formula
   overflow, equation-number collisions, and unresolved references.
-- `tmp/pdfs/` contains generated PDF review images and extracted text and is
-  not part of the checkpoint.
+- `main.typ` compiled successfully after the field-theoretic Section 3.3 was
+  added, and `git diff --check` reports no whitespace errors.  All six
+  Section 3.3 pages, including the following outline transition, were rendered
+  and inspected for determinant powers, vacuum subtraction, shifted Matsubara
+  signs, chemical-potential convergence, sourced Gaussian normalization,
+  malformed fractions, formula overflow, equation-number collisions, and
+  unresolved references.
+- `main.typ` compiled successfully after Section 3.4 was reorganized around
+  grand canonical Dirac thermodynamics, and `git diff --check` reports no
+  whitespace errors.  Its pages were rendered and inspected for the
+  Minkowski-to-Euclidean gamma continuation, the sign of the chemical-
+  potential shift, Grassmann determinant and spin factors, particle and
+  antiparticle Fermi--Dirac weights, finite-density limits, long spinor
+  numerators, antiperiodic endpoint signs, malformed fractions, overflow,
+  equation-number collisions, and unresolved references.
+- `main.typ` compiled successfully after Section 3.5 was added, and
+  `git diff --check` reports no whitespace errors.  All three Section 3.5
+  pages and the transition to Section 3.6 were rendered and inspected for
+  transverse-projector indices, determinant powers, helicity factors,
+  homogeneous-mode notation, malformed fractions, overflow, equation-number
+  collisions, and unresolved references.
+- `main.typ` compiled successfully after Section 3.6 was added, and
+  `git diff --check` reports no whitespace errors.  All four Section 3.6
+  pages were rendered and inspected for contour orientation, thermal-kernel
+  residues, chemical-potential signs, bosonic and fermionic reflection
+  identities, long fractions, figure labels, cross-references to Equations
+  3.3.8 and 3.4.14, overflow, and unresolved references.
+- `main.typ` compiled successfully after the Section 4.1 normalization and
+  perturbative reorganization.  Physical pages 94--96 were rendered and
+  inspected for the normalized
+  functional fraction, source-argument attachment, interaction-operator
+  notation, disconnected pair partitions, second-order symmetry factors,
+  long-equation wrapping, overflow, and unresolved references;
+  `git diff --check` reports no whitespace errors.
+- `main.typ` compiled successfully after Section 4.2 was added, and
+  `git diff --check` reports no whitespace errors.  Physical pages 96--99
+  were rendered and inspected for connected-function factors, full-propagator
+  amputation, the 1PR/1PI distinction, effective-action signs, long-equation
+  wrapping, equation-number collisions, and unresolved references.
+- The Section 4.2 effective-action proof exercise was compiled and visually
+  inspected on physical page 100.  Its inverse-Hessian identity, explicit
+  three- and four-point formulas, bridge-decomposition argument, cross-
+  references, and one-page layout render correctly.
+- `make -C Feynman all` regenerated both Chapter 4 SVG diagrams, and
+  `main.typ` compiled successfully with the exported assets.  Book pages
+  95--96 were rendered at 180 PPI and inspected for missing tadpole loops,
+  distinguishable parallel propagators, external-label collisions, figure
+  overflow, and unresolved references; `git diff --check` reports no
+  whitespace errors.
+- Generated page-review images are kept outside the repository and are not
+  part of the checkpoint.

@@ -11,6 +11,13 @@
   work, next steps, open decisions, and the latest verification state. Use Git
   history for detailed change history rather than copying conversation logs.
 
+## User-facing communication
+
+- In conversation, prefer readable Unicode mathematics, such as
+  `p² = −m²`, `Z_φ`, and `φ_in/out`, over LaTeX or literal Typst syntax. Show
+  Typst syntax when discussing text that will be written into a `.typ` source
+  file or when the exact source notation is otherwise relevant.
+
 ## Physics conventions
 
 - The entire book uses natural units `c = hbar = k_B = 1`, with `k_B` denoting

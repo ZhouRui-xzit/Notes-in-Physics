@@ -1,4 +1,5 @@
-#import "../../lib.typ":*
+#import "../../lib.typ": *
+#import "@preview/cetz:0.4.2"
 
 = Free Fields at Finite Temperature
 
@@ -40,7 +41,7 @@ $
   chevron.l hat(cal(O)) chevron.r_beta
   :=upright("Tr") [hat(rho)_beta hat(cal(O))]
   =1/Z_beta upright("Tr")
-    [e^(-beta hat(H)) hat(cal(O))].
+  [e^(-beta hat(H)) hat(cal(O))].
 $ <eq:thermal-expectation-value>
 
 Unlike the vacuum, a thermal state selects a timelike four-velocity.  In the
@@ -73,7 +74,7 @@ eigenstates into the trace in @eq:canonical-thermal-state:
 $
   Z_beta
   =integral cal(D) phi_0
-    bra(phi_0) e^(-beta hat(H)) ket(phi_0).
+  bra(phi_0) e^(-beta hat(H)) ket(phi_0).
 $ <eq:thermal-trace-field-basis>
 
 Time slicing the matrix element gives the same Euclidean construction as in
@@ -83,19 +84,19 @@ at the initial slice.  Consequently,
 $
   Z_beta
   =integral_(phi (beta,bold(x))=phi (0,bold(x)))
-    cal(D) phi e^(-S_(E,beta) [phi]),
+  cal(D) phi e^(-S_(E,beta) [phi]),
 $ <eq:bosonic-thermal-path-integral>
 
 where, for the free scalar,
 
 $
   S_(E,beta) [phi]
-  :=integral_0^beta dd(tau) integral dd(x,[3])
-    [
-      1/2 (partial_tau phi)^2
-      +1/2 (bold(nabla) phi)^2
-      +1/2 m^2 phi^2
-    ].
+  :=integral_0^beta dd(tau) integral dd(x, [3])
+  [
+    1/2 (partial_tau phi)^2
+    +1/2 (bold(nabla) phi)^2
+    +1/2 m^2 phi^2
+  ].
 $ <eq:thermal-scalar-euclidean-action>
 
 The action is Euclidean: with the fixed rotation $t=-i tau$, the Minkowski
@@ -118,9 +119,8 @@ For fermions the trace must instead be evaluated with the coherent states of
 Chapter 1.  The minus sign in the coherent-state trace gives
 
 $
-  Psi (tau+beta,bold(x))&=-Psi (tau,bold(x)), \
-  overline(Psi) (tau+beta,bold(x))
-    &=-overline(Psi) (tau,bold(x)).
+            Psi (tau+beta,bold(x)) & =-Psi (tau,bold(x)), \
+  overline(Psi) (tau+beta,bold(x)) & =-overline(Psi) (tau,bold(x)).
 $ <eq:fermionic-thermal-circle>
 
 Thus bosonic integration variables are periodic and fermionic integration
@@ -147,7 +147,7 @@ is required and
 $
   cal(G)_(A B,beta) (tau)
   =1/Z_beta upright("Tr")
-    [e^(-beta hat(H))hat(A) (tau)hat(B) (0)].
+  [e^(-beta hat(H))hat(A) (tau)hat(B) (0)].
 $ <eq:thermal-two-point-trace>
 
 Cyclicity of the trace moves $hat(A)$ once around the thermal circle and gives
@@ -195,11 +195,11 @@ $
   cal(Z)_beta [J]
   :=frac(
     integral_("periodic") cal(D) phi
-      exp[-S_(E,beta) [phi]
-        +integral_0^beta dd(tau) integral dd(x,[3])
-          J (X)phi (X)],
+    exp[-S_(E,beta) [phi]
+      +integral_0^beta dd(tau) integral dd(x, [3])
+      J (X)phi (X)],
     integral_("periodic") cal(D) phi
-      e^(-S_(E,beta) [phi])
+    e^(-S_(E,beta) [phi])
   ).
 $ <eq:normalized-thermal-generating-functional>
 
@@ -212,8 +212,8 @@ imaginary-time-ordered thermal Green functions:
 $
   G_(E,beta)^((n)) (X_1,dots,X_n)
   :=chevron.l
-    T_tau phi (X_1)dots phi (X_n)
-    chevron.r_beta
+  T_tau phi (X_1)dots phi (X_n)
+  chevron.r_beta
   =[
     (delta^n cal(Z)_beta [J])/
     (delta J (X_1)dots delta J (X_n))
@@ -236,8 +236,8 @@ $
   cal(Z)_(0,beta) [J]
   =exp[
     1/2 integral_0^beta dd(tau_x) integral_0^beta dd(tau_y)
-      integral dd(x,[3])dd(y,[3])
-      J (X)G_beta (X-Y)J (Y)
+    integral dd(x, [3])dd(y, [3])
+    J (X)G_beta (X-Y)J (Y)
   ],
   quad
   G_beta=cal(K)_(E,beta)^(-1).
@@ -256,9 +256,9 @@ spatial volume $V$, the Helmholtz free energy, mean energy, and pressure of a
 homogeneous system are
 
 $
-  F_beta&=-1/beta log Z_beta, \
-  E_beta&=-(partial log Z_beta)/(partial beta), \
-  p_beta&=1/(beta V) log Z_beta.
+  F_beta & =-1/beta log Z_beta, \
+  E_beta & =-(partial log Z_beta)/(partial beta), \
+  p_beta & =1/(beta V) log Z_beta.
 $ <eq:thermodynamic-derivatives-of-partition-function>
 
 The pressure formula assumes the thermodynamic limit and fixed temperature.
@@ -271,8 +271,8 @@ thermal trace projects onto it:
 
 $
   lim_(beta arrow.r infinity)
-    chevron.l hat(cal(O)) chevron.r_beta
-  =mel(0,hat(cal(O)),0).
+  chevron.l hat(cal(O)) chevron.r_beta
+  =mel(0, hat(cal(O)), 0).
 $ <eq:zero-temperature-thermal-limit>
 
 At the same time, $S_beta^1 times RR^3$ opens into $RR^4$, and the thermal
@@ -328,9 +328,9 @@ A temporal plane wave $e^(i omega tau)$ belongs to this function space only
 when $e^(i omega beta)=zeta_s$.  Hence
 
 $
-  omega_n^B&=(2 pi n)/beta=2 pi n T, \
-  omega_n^F&=((2n+1) pi)/beta=(2n+1) pi T,
-  quad n in ZZ.
+  omega_n^B & =(2 pi n)/beta=2 pi n T, \
+  omega_n^F & =((2n+1) pi)/beta=(2n+1) pi T,
+              quad n in ZZ.
 $ <eq:bosonic-fermionic-matsubara-frequencies>
 
 The integer $n$ labels a point on a frequency lattice.  In particular,
@@ -340,7 +340,7 @@ the finite thermal box is
 $
   u_(n bold(k))^((s)) (X)
   :=1/sqrt(beta V)
-    e^(i omega_n^s tau+i bold(p)_bold(k) dot bold(x)),
+  e^(i omega_n^s tau+i bold(p)_bold(k) dot bold(x)),
   quad
   X:=(tau,bold(x)).
 $ <eq:normalized-thermal-plane-wave-basis>
@@ -350,9 +350,9 @@ are integer multiples of $2 pi/beta$.  Combining temporal and spatial
 orthogonality therefore gives
 
 $
-  integral_0^beta dd(tau) integral_V dd(x,[3])
-    [u_(n bold(k))^((s)) (X)]^*
-    u_(m bold(l))^((s)) (X)
+  integral_0^beta dd(tau) integral_V dd(x, [3])
+  [u_(n bold(k))^((s)) (X)]^*
+  u_(m bold(l))^((s)) (X)
   =delta_(n m) delta_(bold(k) bold(l)).
 $ <eq:finite-thermal-box-orthogonality>
 
@@ -362,12 +362,10 @@ They belong to different function spaces, so
 on both factors.  Every field in that sector has the expansion
 
 $
-  f_s (X)
-  &=sum_(n in ZZ) sum_(bold(k) in ZZ^3)
-    u_(n bold(k))^((s)) (X) f_(n bold(k))^s, \
-  f_(n bold(k))^s
-  &=integral_0^beta dd(tau) integral_V dd(x,[3])
-    [u_(n bold(k))^((s)) (X)]^* f_s (X).
+          f_s (X) & =sum_(n in ZZ) sum_(bold(k) in ZZ^3)
+                    u_(n bold(k))^((s)) (X) f_(n bold(k))^s, \
+  f_(n bold(k))^s & =integral_0^beta dd(tau) integral_V dd(x, [3])
+                    [u_(n bold(k))^((s)) (X)]^* f_s (X).
 $ <eq:finite-thermal-box-fourier-transform>
 
 These equations are ordinary Fourier series in four compact directions.  No
@@ -379,30 +377,26 @@ Completeness of the basis means
 
 $
   sum_(n in ZZ) sum_(bold(k) in ZZ^3)
-    u_(n bold(k))^((s)) (X)
-    [u_(n bold(k))^((s)) (Y)]^*
+  u_(n bold(k))^((s)) (X)
+  [u_(n bold(k))^((s)) (Y)]^*
   =delta_beta^s (tau_x-tau_y)
-    delta_V^((3)) (bold(x)-bold(y)),
+  delta_V^((3)) (bold(x)-bold(y)),
 $ <eq:finite-thermal-box-completeness>
 
 where the temporal and spatial kernels are
 
 $
-  delta_beta^s (tau)
-  &:=1/beta sum_(n in ZZ) e^(i omega_n^s tau), \
-  delta_V^((3)) (bold(x))
-  &:=1/V sum_(bold(k) in ZZ^3)
-    e^(i bold(p)_bold(k) dot bold(x)).
+       delta_beta^s (tau) & :=1/beta sum_(n in ZZ) e^(i omega_n^s tau), \
+  delta_V^((3)) (bold(x)) & :=1/V sum_(bold(k) in ZZ^3)
+                            e^(i bold(p)_bold(k) dot bold(x)).
 $ <eq:thermal-and-spatial-periodic-deltas>
 
 The spatial kernel is the periodic delta function in the box.  The two
 temporal kernels can be displayed as image sums on the covering line:
 
 $
-  delta_beta^B (tau)
-  &=sum_(r in ZZ) delta (tau-r beta), \
-  delta_beta^F (tau)
-  &=sum_(r in ZZ) (-1)^r delta (tau-r beta).
+  delta_beta^B (tau) & =sum_(r in ZZ) delta (tau-r beta), \
+  delta_beta^F (tau) & =sum_(r in ZZ) (-1)^r delta (tau-r beta).
 $ <eq:bosonic-fermionic-delta-image-sums>
 
 Thus $delta_beta^B (tau+beta)=delta_beta^B (tau)$, whereas
@@ -411,9 +405,9 @@ periodic delta function; it is the identity kernel on the antiperiodic
 function space.  More precisely, for $X$ in the half-open fundamental domain,
 
 $
-  integral_0^beta dd(tau_y) integral_V dd(y,[3])
-    delta_beta^s (tau_x-tau_y)
-    delta_V^((3)) (bold(x)-bold(y)) f_s (Y)
+  integral_0^beta dd(tau_y) integral_V dd(y, [3])
+  delta_beta^s (tau_x-tau_y)
+  delta_V^((3)) (bold(x)-bold(y)) f_s (Y)
   =f_s (X).
 $ <eq:thermal-delta-reproducing-property>
 
@@ -429,7 +423,7 @@ lattice becomes dense and
 
 $
   1/V sum_(bold(k) in ZZ^3)
-  arrow.r integral (dd(p,[3]))/((2 pi)^3)
+  arrow.r integral (dd(p, [3]))/((2 pi)^3)
   =:integral_bold(p).
 $ <eq:spatial-thermodynamic-limit>
 
@@ -437,21 +431,19 @@ The compact time direction remains discrete.  Define the Euclidean thermal
 four-momentum and its contraction with position by
 
 $
-  P_s&:=(omega_n^s,bold(p)), \
-  P_s dot X&:=omega_n^s tau+bold(p) dot bold(x), \
-  P_s^2&:=(omega_n^s)^2+bold(p)^2.
+        P_s & :=(omega_n^s,bold(p)), \
+  P_s dot X & :=omega_n^s tau+bold(p) dot bold(x), \
+      P_s^2 & :=(omega_n^s)^2+bold(p)^2.
 $ <eq:euclidean-thermal-four-momentum>
 
 The label $s$ records which frequency lattice is being summed.  We reserve
 the following symbols for bosonic and fermionic sum-integrals:
 
 $
-  integral_(P_B) F (P_B)
-  &:=T sum_(n in ZZ) integral_bold(p)
-    F (omega_n^B,bold(p)), \
-  integral_(P_F) F (P_F)
-  &:=T sum_(n in ZZ) integral_bold(p)
-    F (omega_n^F,bold(p)).
+  integral_(P_B) F (P_B) & :=T sum_(n in ZZ) integral_bold(p)
+                           F (omega_n^B,bold(p)), \
+  integral_(P_F) F (P_F) & :=T sum_(n in ZZ) integral_bold(p)
+                           F (omega_n^F,bold(p)).
 $ <eq:bosonic-fermionic-sum-integrals>
 
 The subscript $P_B$ or $P_F$ is part of the notation and must not be omitted
@@ -459,11 +451,9 @@ when the boundary-condition sector is ambiguous.  With these conventions,
 the Fourier transform used in calculations is
 
 $
-  f_s (X)
-  &=integral_(P_s) e^(i P_s dot X) f_s (P_s), \
-  f_s (P_s)
-  &=integral_0^beta dd(tau) integral dd(x,[3])
-    e^(-i P_s dot X) f_s (X).
+    f_s (X) & =integral_(P_s) e^(i P_s dot X) f_s (P_s), \
+  f_s (P_s) & =integral_0^beta dd(tau) integral dd(x, [3])
+              e^(-i P_s dot X) f_s (X).
 $ <eq:thermal-fourier-transform-continuum-space>
 
 For a real periodic scalar,
@@ -472,10 +462,10 @@ $-P_B=(-omega_n^B,-bold(p))$ corresponds to replacing $n$ by $-n$.
 The spatial continuum orthogonality relation is
 
 $
-  integral_0^beta dd(tau) integral dd(x,[3])
-    e^(i (P_s-Q_s) dot X)
+  integral_0^beta dd(tau) integral dd(x, [3])
+  e^(i (P_s-Q_s) dot X)
   =beta delta_(n m) (2 pi)^3
-    delta^((3)) (bold(p)-bold(q)),
+  delta^((3)) (bold(p)-bold(q)),
 $ <eq:thermal-plane-wave-orthogonality-continuum-space>
 
 where $P_s=(omega_n^s,bold(p))$ and
@@ -484,7 +474,7 @@ $Q_s=(omega_m^s,bold(q))$ belong to the same sector.  Completeness becomes
 $
   integral_(P_s) e^(i P_s dot (X-Y))
   =delta_beta^s (tau_x-tau_y)
-    delta^((3)) (bold(x)-bold(y)).
+  delta^((3)) (bold(x)-bold(y)).
 $ <eq:thermal-plane-wave-completeness-continuum-space>
 
 The factor $T=1/beta$ in the sum-integral is therefore forced by
@@ -494,9 +484,9 @@ identity kernel.
 The Fourier convention also turns derivatives into multiplication:
 
 $
-  partial_tau&arrow.r i omega_n^s, \
-  bold(nabla)&arrow.r i bold(p), \
-  -partial_tau^2-bold(nabla)^2&arrow.r P_s^2.
+                   partial_tau & arrow.r i omega_n^s, \
+                   bold(nabla) & arrow.r i bold(p), \
+  -partial_tau^2-bold(nabla)^2 & arrow.r P_s^2.
 $ <eq:thermal-fourier-derivative-rules>
 
 This is the promised diagonalization of the Euclidean kinetic operators.  We
@@ -510,10 +500,10 @@ Thus a boson times a boson and a fermion times a fermion are periodic, while a
 boson times a fermion is antiperiodic.  On the frequency lattices this becomes
 
 $
-  omega_n^B+omega_m^B&=omega_(n+m)^B, \
-  omega_n^F+omega_m^B&=omega_(n+m)^F, \
-  omega_n^F-omega_m^F&=omega_(n-m)^B, \
-  omega_n^F+omega_m^F&=omega_(n+m+1)^B.
+  omega_n^B+omega_m^B & =omega_(n+m)^B, \
+  omega_n^F+omega_m^B & =omega_(n+m)^F, \
+  omega_n^F-omega_m^F & =omega_(n-m)^B, \
+  omega_n^F+omega_m^F & =omega_(n+m+1)^B.
 $ <eq:matsubara-frequency-bookkeeping>
 
 These identities are the thermal version of energy bookkeeping.  If a
@@ -529,11 +519,11 @@ $ <eq:total-matsubara-frequency-index>
 Integration over one period then gives
 
 $
-  integral_0^beta dd(tau) integral dd(x,[3])
-    e^(i Omega tau+i sum_(a=1)^r bold(p)_a dot bold(x))
+  integral_0^beta dd(tau) integral dd(x, [3])
+  e^(i Omega tau+i sum_(a=1)^r bold(p)_a dot bold(x))
   =beta (2 pi)^3
-    delta_(N_Omega 0)
-    delta^((3)) (sum_(a=1)^r bold(p)_a).
+  delta_(N_Omega 0)
+  delta^((3)) (sum_(a=1)^r bold(p)_a).
 $ <eq:thermal-frequency-momentum-conservation>
 
 The temporal delta in @eq:thermal-frequency-momentum-conservation is a
@@ -566,9 +556,9 @@ large frequency,
 $
   T sum_(n in ZZ) F (omega_n^s)
   =1/(2 pi) sum_(n in ZZ)
-    Delta omega F (omega_n^s)
+  Delta omega F (omega_n^s)
   arrow.r integral_( -infinity)^infinity
-    (dd(p_4))/(2 pi) F (p_4)
+  (dd(p_4))/(2 pi) F (p_4)
 $ <eq:zero-temperature-matsubara-limit>
 
 as $T arrow.r 0$, or equivalently $beta arrow.r infinity$.  The half-step
@@ -576,10 +566,8 @@ offset of the fermionic lattice becomes irrelevant when the spacing tends to
 zero.  Consequently,
 
 $
-  integral_(P_B) F (P_B)
-  &arrow.r integral (dd(p_E,[4]))/((2 pi)^4) F (p_E), \
-  integral_(P_F) F (P_F)
-  &arrow.r integral (dd(p_E,[4]))/((2 pi)^4) F (p_E).
+  integral_(P_B) F (P_B) & arrow.r integral (dd(p_E, [4]))/((2 pi)^4) F (p_E), \
+  integral_(P_F) F (P_F) & arrow.r integral (dd(p_E, [4]))/((2 pi)^4) F (p_E).
 $ <eq:zero-temperature-sum-integral-limit>
 
 At the same time $delta_beta^s (tau)$ approaches the ordinary delta function
@@ -593,10 +581,1458 @@ Matsubara data have been organized; it is not an extra replacement inside the
 Fourier series.  For the rest of this chapter, the Euclidean label $P_B$ or
 $P_F$ will keep that distinction explicit.
 
-== Finite-Temperature Propagators: Scalar Field
+== Thermodynamics of Free Scalar Fields
 
-== Finite-Temperature Propagators: Dirac Field
+The first complete thermal field-theory calculation will be the partition
+function of a free scalar gas.  The field-theoretic starting point is the
+unnormalized Euclidean path integral on $S_beta^1 times RR^3$.  Section 3.2
+has already supplied the periodic Fourier basis and its bosonic Matsubara
+frequencies, so the remaining task is to diagonalize the quadratic kernel and
+evaluate its functional determinant.
 
-== Finite-Temperature Propagators: Gauge Field
+We first do this for one real scalar and extract its pressure after separating
+the vacuum contribution.  A real scalar has no symmetry-protected
+particle-number charge, so its chemical potential is fixed to zero.  The
+conserved $U (1)$ charge of a complex scalar then permits a genuine grand
+canonical ensemble and a pressure $p (T,mu)$.  Finally, adding sources to the
+same Gaussian shows how the determinant that controls thermodynamics is
+related to the inverse kernel that controls propagation.
 
-== Sum-Integration and Useful Techniques
+=== Real scalar functional determinant
+
+==== Periodic Gaussian in the Matsubara basis
+
+Write
+
+$
+  integral_beta dd(X)
+  :=integral_0^beta dd(tau) integral dd(x, [3]),
+  quad
+  X=(tau,bold(x)).
+$ <eq:thermal-spacetime-integral-shorthand>
+
+For a periodic real scalar, integration by parts in
+@eq:thermal-scalar-euclidean-action gives
+
+$
+  S_(E,beta) [phi] & =1/2 integral_beta dd(X)
+                     phi (X)cal(K)_0 phi (X), \
+          cal(K)_0 & :=-partial_tau^2-bold(nabla)^2+m^2.
+$ <eq:thermal-real-scalar-quadratic-kernel>
+
+To define the determinant before taking any continuum limit, return
+temporarily to the finite thermal box of @eq:finite-thermal-box-domain.
+Expanding in the normalized bosonic basis
+@eq:normalized-thermal-plane-wave-basis gives
+
+$
+  phi (X)
+  =sum_(n in ZZ) sum_(bold(k) in ZZ^3)
+  u_(n bold(k))^((B)) (X)phi_(n bold(k)),
+  quad
+  phi_(-n,-bold(k))=phi_(n bold(k))^*.
+$ <eq:thermal-real-scalar-finite-box-expansion>
+
+With
+$E_k:=sqrt(bold(p)_bold(k)^2+m^2)$, the derivative rules of
+@eq:thermal-fourier-derivative-rules reduce the action to
+
+$
+  S_(E,beta) [phi]
+  =1/2 sum_(n in ZZ) sum_(bold(k) in ZZ^3)
+  phi_(-n,-bold(k))
+  [(omega_n^B)^2+E_k^2]
+  phi_(n bold(k)).
+$ <eq:thermal-real-scalar-diagonal-action>
+
+The unnormalized thermal path integral is therefore a regulated product of
+ordinary Gaussians:
+
+$
+  Z_(beta,r) & :=integral_("periodic") cal(D) phi
+               e^(-S_(E,beta) [phi]) \
+             & =cal(N)_r [upright("det")_B cal(K)_0]^(-1/2).
+$ <eq:thermal-real-scalar-functional-determinant>
+
+The subscript $B$ means that the determinant is taken on the periodic
+bosonic function space.  The exponent $-1/2$ follows from the real Gaussian;
+the reality relation in @eq:thermal-real-scalar-finite-box-expansion ensures
+that $P_B$ and $-P_B$ are not counted as independent complex fields.  Taking
+the logarithm gives
+
+$
+  log Z_(beta,r)
+  =-1/2 sum_(n in ZZ) sum_(bold(k) in ZZ^3)
+  log[(omega_n^B)^2+E_k^2]
+  +log cal(N)_r.
+$ <eq:thermal-real-scalar-trace-log>
+
+The measure normalization $cal(N)_r$ is fixed by the time-sliced construction
+of Section 3.1.  Its field-independent part will not affect the
+vacuum-subtracted thermal pressure below.
+
+==== Matsubara log-sum and pressure
+
+Introduce the one-mode Matsubara sum
+
+$
+  cal(I)_B (E)
+  :=T sum_(n in ZZ)
+  log[(omega_n^B)^2+E^2].
+$ <eq:bosonic-matsubara-log-sum-definition>
+
+It is easier to differentiate this expression before summing.  The standard
+bosonic series on the frequency lattice of
+@eq:bosonic-fermionic-matsubara-frequencies gives
+
+$
+  (partial cal(I)_B (E))/(partial E) & =2 E T sum_(n in ZZ)
+                                       1/((omega_n^B)^2+E^2) \
+                                     & =coth(beta E/2)
+                                       =1+2 n_B (E), \
+                             n_B (E) & :=1/(e^(beta E)-1).
+$ <eq:bosonic-propagator-sum>
+
+Integrating with respect to $E$ yields
+
+$
+  cal(I)_B (E)
+  =E+2 T log(1-e^(-beta E))+C (T),
+$ <eq:bosonic-matsubara-log-sum>
+
+where $C (T)$ is independent of $E$ and is absorbed into the regulated
+measure normalization.  Substituting this result into
+@eq:thermal-real-scalar-trace-log and using the thermodynamic limit
+@eq:spatial-thermodynamic-limit gives
+
+$
+  T/V log Z_(beta,r)
+  =-1/2 integral_bold(p) E_p
+  -T integral_bold(p)
+  log(1-e^(-beta E_p)),
+  quad
+  E_p:=sqrt(bold(p)^2+m^2).
+$ <eq:thermal-real-scalar-pressure-before-subtraction>
+
+The first term is the zero-temperature vacuum pressure
+$p_("vac")=-1/2 integral_bold(p)E_p$.  It is ultraviolet divergent and must be
+fixed by a vacuum-energy renormalization condition.  Subtracting it defines
+the thermal partition function and pressure:
+
+$
+  1/V log Z_(beta,r,"th") & :=-integral_bold(p)
+                            log(1-e^(-beta E_p)), \
+                  p_r (T) & :=T/V log Z_(beta,r,"th") \
+                          & =-T integral_bold(p)
+                            log(1-e^(-beta E_p)).
+$ <eq:thermal-real-scalar-pressure>
+
+The corresponding thermal energy density is
+
+$
+  epsilon_r (T)
+  :=-1/V
+  (partial log Z_(beta,r,"th"))/(partial beta)
+  =integral_bold(p) E_p n_B (E_p).
+$ <eq:thermal-real-scalar-energy-density>
+
+An integration by parts gives an equivalent pressure formula,
+
+$
+  p_r (T)
+  =1/3 integral_bold(p)
+  (bold(p)^2)/(E_p)n_B (E_p).
+$ <eq:thermal-real-scalar-pressure-kinetic-form>
+
+For a massless real scalar, with the exactly constant mode regulated before
+taking $m arrow.r 0$,
+
+$
+  p_r (T)=pi^2/90 T^4,
+  quad
+  epsilon_r (T)=pi^2/30 T^4=3 p_r (T).
+$ <eq:massless-real-scalar-pressure>
+
+This coefficient counts one real bosonic degree of freedom.  The derivation
+has used only the periodic path integral, the Matsubara spectrum, and a
+vacuum subtraction; no Fock-space trace was required.
+
+A chemical potential may couple only to an exactly conserved charge.  The
+free real-scalar oscillator number happens to commute with the free
+Hamiltonian, but no local symmetry protects it once interactions are
+allowed.  The equilibrium real scalar therefore has $mu=0$.
+
+=== Complex scalar grand canonical ensemble
+
+==== Chemical potential in the Euclidean kernel
+
+The complex scalar has the conserved charge @eq:complex-scalar-charge-operator,
+so one may define
+
+$
+  cal(Z)_(beta,mu)
+  :=upright("Tr")
+  e^(-beta [hat(H)-mu hat(Q)]),
+  quad
+  [hat(H),hat(Q)]=0.
+$ <eq:complex-scalar-grand-canonical-ensemble>
+
+The phase-space derivation of the thermal path integral now uses
+$hat(H)-mu hat(Q)$ as the generator around the Euclidean circle.  After the
+Wick rotation gives the first-order Euclidean action
+
+$
+  S_(E,beta,mu)^((1))
+  :=integral_beta dd(X)
+  [
+    pi^dagger pi
+    -i pi (partial_tau-mu)phi
+    -i pi^dagger (partial_tau+mu)phi^dagger
+    +bold(nabla)phi^dagger dot bold(nabla)phi
+    +m^2 phi^dagger phi
+  ].
+$ <eq:complex-scalar-grand-canonical-phase-space-action>
+
+The momentum-dependent terms complete the square as
+
+$
+  pi^dagger pi
+  -i pi (partial_tau-mu)phi
+  -i pi^dagger (partial_tau+mu)phi^dagger & =[pi^dagger-i (partial_tau-mu)phi]
+                                            [pi-i (partial_tau+mu)phi^dagger] \
+                                          & quad +(partial_tau+mu)phi^dagger
+                                            (partial_tau-mu)phi.
+$ <eq:complex-scalar-grand-canonical-momentum-square>
+
+Integrating over $pi$ and $pi^dagger$ leaves a field-independent determinant
+and gives the configuration-space functional
+
+$
+  cal(Z)_(beta,mu)
+  =integral_("periodic") cal(D) phi cal(D) phi^dagger
+  e^(-S_(E,beta,mu) [phi,phi^dagger]),
+$ <eq:complex-scalar-grand-canonical-path-integral>
+
+with
+
+$
+  S_(E,beta,mu) [phi,phi^dagger]
+  :=integral_beta dd(X)
+  [
+    (partial_tau+mu)phi^dagger (X)
+    (partial_tau-mu)phi (X)
+    +bold(nabla)phi^dagger (X) dot bold(nabla)phi (X)
+    +m^2 phi^dagger (X)phi (X)
+  ].
+$ <eq:complex-scalar-chemical-potential-action>
+
+Both integration variables remain periodic.  The chemical potential appears
+as a constant imaginary Euclidean gauge potential.  A field redefinition can
+move it into a twisted boundary condition, but one must not include both the
+shifted kernel and the twist at the same time.
+
+After integrating by parts, the operator acting on $phi$ is
+
+$
+  cal(K)_mu
+  :=-(partial_tau-mu)^2-bold(nabla)^2+m^2.
+$ <eq:complex-scalar-chemical-potential-kernel>
+
+Using the bosonic Fourier transform of Section 3.2,
+
+$
+  S_(E,beta,mu)
+  =integral_(P_B)
+  phi^dagger (-P_B)
+  [(omega_n^B+i mu)^2+E_p^2]
+  phi (P_B).
+$ <eq:complex-scalar-shifted-matsubara-action>
+
+The shifted eigenvalues are complex mode by mode, but the paired determinant
+is real.  Its real part is bounded below in the normal phase.  In particular,
+the static homogeneous mode has eigenvalue $m^2-mu^2$, so Gaussian
+convergence requires
+
+$
+  abs(mu)<m.
+$ <eq:complex-scalar-chemical-potential-bound>
+
+At $abs(mu)=m$ this mode becomes a zero mode and the uncondensed Gaussian
+description fails.  A fixed charge density beyond that point requires a
+Bose--Einstein condensate.
+
+==== Determinant, grand potential, and charge density
+
+A complex Gaussian produces one inverse determinant rather than the inverse
+square root appropriate to a real field:
+
+$
+  cal(Z)_(beta,mu)
+  =cal(N)_c [upright("det")_B cal(K)_mu]^(-1).
+$ <eq:complex-scalar-grand-functional-determinant>
+
+Define
+
+$
+  cal(I)_B (E,mu)
+  :=T sum_(n in ZZ)
+  log[(omega_n^B+i mu)^2+E^2].
+$ <eq:complex-scalar-shifted-log-sum-definition>
+
+Differentiating with respect to $E$ gives
+
+$
+  (partial cal(I)_B (E,mu))/(partial E) & =2 E T sum_(n in ZZ)
+                                          1/((omega_n^B+i mu)^2+E^2) \
+                                        & =1+n_B (E-mu)+n_B (E+mu).
+$ <eq:complex-scalar-shifted-propagator-sum>
+
+Consequently,
+
+$
+  cal(I)_B (E,mu)
+  =E
+  +T log(1-e^(-beta (E-mu)))
+  +T log(1-e^(-beta (E+mu)))
+  +C (T).
+$ <eq:complex-scalar-shifted-log-sum>
+
+The integration constant has been fixed by requiring
+$cal(I)_B (E,mu)-cal(I)_B (E,0) arrow.r 0$ as $E arrow.r infinity$; a
+charge-preserving regulator therefore introduces no additional
+$mu$-dependent normalization.  The $E$ term is the complex scalar's
+zero-point energy: a complex field has two real degrees of freedom.  After
+subtracting this vacuum term, the thermal grand potential and pressure are
+
+$
+  Omega_c (T,mu) & :=-T log cal(Z)_(beta,mu,"th"), \
+      p_c (T,mu) & :=- (Omega_c (T,mu))/V \
+                 & =-T integral_bold(p)
+                   [
+                     log(1-e^(-beta (E_p-mu)))
+                     +log(1-e^(-beta (E_p+mu)))
+                   ].
+$ <eq:complex-scalar-grand-canonical-pressure>
+
+The two logarithms are the particle and antiparticle contributions.  The
+charge density follows directly from the grand potential:
+
+$
+  q (T,mu)
+  :=(partial p_c (T,mu))/(partial mu)
+  =integral_bold(p)
+  [
+    n_B (E_p-mu)-n_B (E_p+mu)
+  ].
+$ <eq:complex-scalar-grand-canonical-charge-density>
+
+The pressure is even in $mu$ and the charge density is odd.  At zero chemical
+potential,
+
+$
+  p_c (T,0)=2 p_r (T),
+  quad
+  q (T,0)=0.
+$ <eq:complex-scalar-zero-mu-thermodynamics>
+
+Thus the factor of two follows directly from the power of the functional
+determinant.  For a massless complex scalar at $mu=0$, after regulating the
+exactly constant mode, $p_c (T,0)=pi^2 T^4/45$.
+
+=== Thermal propagators from the same Gaussian
+
+==== Real scalar inverse kernel
+
+Introduce a periodic source into the unnormalized real-scalar functional:
+
+$
+  Z_(beta,r) [J]
+  :=integral_("periodic") cal(D) phi
+  exp[
+    -S_(E,beta) [phi]
+    +integral_beta dd(X)J (X)phi (X)
+  ].
+$ <eq:thermal-real-scalar-sourced-functional>
+
+Completing the square gives
+
+$
+  Z_(beta,r) [J]
+  =Z_(beta,r) [0]
+  exp[
+    1/2 integral_beta dd(X) integral_beta dd(Y)
+    J (X)G_beta (X-Y)J (Y)
+  ].
+$ <eq:thermal-real-scalar-sourced-gaussian>
+
+The determinant remains in $Z_(beta,r) [0]$ and determines the pressure.
+Dividing by this factor gives the normalized generating functional of
+@eq:free-thermal-scalar-master-functional.  The inverse kernel is
+
+$
+  G_beta (P_B)
+  =1/(P_B^2+m^2)
+  =1/((omega_n^B)^2+E_p^2).
+$ <eq:thermal-real-scalar-propagator-momentum-space>
+
+In coordinate space,
+
+$
+  G_beta (X-Y)
+  =integral_(P_B)
+  (e^(i P_B dot (X-Y)))/(P_B^2+m^2),
+$ <eq:thermal-real-scalar-propagator-coordinate-space>
+
+and completeness @eq:thermal-plane-wave-completeness-continuum-space gives
+
+$
+  [-partial_(tau_x)^2-bold(nabla)_x^2+m^2]
+  G_beta (X-Y)
+  =delta_beta^B (tau_x-tau_y)
+  delta^((3)) (bold(x)-bold(y)).
+$ <eq:thermal-real-scalar-green-equation>
+
+The propagator is periodic in its imaginary-time argument.  For
+$0<=tau<=beta$, its mixed representation is
+
+$
+  G_beta (tau,bold(p)) & :=T sum_(n in ZZ)
+                         (e^(i omega_n^B tau))/((omega_n^B)^2+E_p^2) \
+                       & =1/(2 E_p)
+                         [
+                           (1+n_B (E_p))e^(-E_p tau)
+                           +n_B (E_p)e^(E_p tau)
+                         ].
+$ <eq:thermal-scalar-mixed-propagator-closed-form>
+
+At $tau=0$, this reduces to the propagator sum used in
+@eq:bosonic-propagator-sum.  The equality of the values at $tau=0$ and
+$tau=beta$ is the bosonic KMS condition.  As $T arrow.r 0$, the occupation
+number vanishes and $G_beta (tau,bold(p))$ approaches
+$e^(-E_p abs(tau))/(2 E_p)$.
+
+==== Charged propagators at nonzero chemical potential
+
+Use imaginary-time evolution generated by
+$hat(H)-mu hat(Q)$, matching the periodic variables in
+@eq:complex-scalar-grand-canonical-path-integral.  If evolution is instead
+defined with $hat(H)$, the same chemical potential is transferred from the
+kernel to a twisted KMS boundary condition.
+
+Introduce independent periodic sources through
+$integral_beta dd(X)[overline(J) (X)phi (X)+phi^dagger (X)J (X)]$.  The
+complex Gaussian gives
+
+$
+  cal(Z)_(beta,mu) [overline(J),J]
+  =cal(Z)_(beta,mu) [0,0]
+  exp[
+    integral_beta dd(X) integral_beta dd(Y)
+    overline(J) (X)G_beta^((+)) (X-Y;mu)J (Y)
+  ].
+$ <eq:complex-scalar-grand-canonical-sourced-gaussian>
+
+The two orientations use this inverse kernel and its transpose.  In momentum
+space, define
+
+$
+  G_beta^((+)) (P_B;mu) & :=1/((omega_n^B+i mu)^2+E_p^2), \
+  G_beta^((-)) (P_B;mu) & :=1/((omega_n^B-i mu)^2+E_p^2)
+                          =G_beta^((+)) (-P_B;mu).
+$ <eq:complex-scalar-shifted-propagators>
+
+Here $G_beta^((+))$ contracts $phi$ with $phi^dagger$, while
+$G_beta^((-))$ contracts $phi^dagger$ with $phi$.  For
+$0<=tau<=beta$ their mixed forms are
+
+$
+  G_beta^((+)) (tau,bold(p);mu) & =1/(2 E_p)
+                                  [
+                                    (1+n_B (E_p-mu))e^(-(E_p-mu)tau)
+                                    +n_B (E_p+mu)e^((E_p+mu)tau)
+                                  ], \
+  G_beta^((-)) (tau,bold(p);mu) & =1/(2 E_p)
+                                  [
+                                    (1+n_B (E_p+mu))e^(-(E_p+mu)tau)
+                                    +n_B (E_p-mu)e^((E_p-mu)tau)
+                                  ].
+$ <eq:complex-scalar-shifted-mixed-propagators>
+
+The identities
+$n_B (x)e^(beta x)=1+n_B (x)$ make both expressions periodic.  Reversing the
+orientation exchanges particle and antiparticle weights.  At $mu=0$ they
+coincide with the real-scalar kernel, and charge conservation gives
+
+$
+  chevron.l T_tau hat(phi) (X)hat(phi)^dagger (Y)
+  chevron.r_(beta,mu=0) & =G_beta (X-Y), \
+  chevron.l T_tau hat(phi)^dagger (X)hat(phi) (Y)
+  chevron.r_(beta,mu=0) & =G_beta (Y-X), \
+  chevron.l T_tau hat(phi) (X)hat(phi) (Y)
+  chevron.r_(beta,mu=0) & =0.
+$ <eq:thermal-complex-scalar-oriented-contractions>
+
+The same shifted inverse that appears here also generated
+@eq:complex-scalar-shifted-propagator-sum and hence the grand canonical
+pressure.  This is the central field-theory relation: the trace-log of the
+quadratic kernel counts thermal states, while its inverse is the thermal
+two-point function.
+== Thermodynamics of a Free Dirac Field
+
+The free Dirac field has the exact global $U (1)$ symmetry constructed in
+Chapter 2.  Its conserved charge counts particles minus antiparticles, so a
+chemical potential is physically meaningful and the natural object is the
+grand canonical partition function $cal(Z)_(beta,mu)$.  As in Section 3.3,
+the main calculation is field theoretic: construct the Euclidean quadratic
+kernel on the thermal circle, evaluate its functional determinant, and
+extract the pressure and charge density.  The thermal propagator appears only
+at the end as the inverse of this same kernel.
+
+Two fermionic features will control the answer.  The coherent-state trace
+makes the fields antiperiodic and hence selects $omega_n^F=(2n+1)pi T$.
+Berezin integration places the determinant in the numerator rather than the
+denominator.  Together they turn the Bose--Einstein logarithms of the complex
+scalar into Fermi--Dirac logarithms and remove the bosonic bound on $mu$.
+
+=== Grand canonical Grassmann functional
+
+==== Conserved charge and Euclidean kernel
+
+The normal-ordered charge @eq:dirac-normal-ordered-charge assigns charge
+$+1$ to a particle and $-1$ to an antiparticle.  Since it commutes with the
+free Hamiltonian, define
+
+$
+  cal(Z)_(beta,mu)
+  :=upright("Tr")
+  e^(-beta [hat(H)-mu hat(Q)]),
+  quad
+  [hat(H),hat(Q)]=0.
+$ <eq:dirac-grand-canonical-ensemble>
+
+The coherent-state construction of Chapter 1 first gives the Euclidean
+bilinear
+
+$
+  S_(E,beta,mu)
+  =integral_beta dd(X)
+  Psi^dagger (X)
+  [partial_tau+cal(H)_D-mu]Psi (X),
+$ <eq:dirac-grand-canonical-hamiltonian-action>
+
+where $cal(H)_D$ is the one-particle Hamiltonian of
+@eq:dirac-hamiltonian-equation.  To write this covariantly after the fixed
+rotation $t=-i tau$, retain the Chapter 2 matrices as the underlying matrix
+representation but define
+
+$
+                          tensor(gamma_E, +4) & :=tensor(gamma, +0), \
+                          tensor(gamma_E, +i) & :=-i tensor(gamma, +i), \
+  [tensor(gamma_E, +a),tensor(gamma_E, +b)]_+ & =2 tensor(delta, +a, +b)1_4.
+$ <eq:thermal-euclidean-gamma-basis>
+
+Thus the Minkowski matrices can still be used, but only with the spatial
+factors $-i$ required by @eq:euclidean-gamma-continuation.  The unmodified
+$tensor(gamma, +mu)$ obey the mostly-plus Minkowski algebra and must not be
+treated as a Euclidean Clifford basis.
+
+Using $Psi^dagger=overline(Psi)tensor(gamma, +0)$ in the time-sliced
+bilinear rewrites @eq:dirac-grand-canonical-hamiltonian-action as
+
+$
+  S_(E,beta,mu) [overline(Psi),Psi]
+  :=integral_beta dd(X)
+  overline(Psi) (X)cal(D)_(E,mu)Psi (X),
+$ <eq:dirac-grand-canonical-euclidean-action>
+
+with
+
+$
+  cal(D)_(E,mu)
+  :=tensor(gamma_E, +4)(partial_tau-mu)
+  +tensor(gamma_E, +i)tensor(partial, -i)+m.
+$ <eq:dirac-chemical-potential-kernel>
+
+Inside the Berezin integral, $Psi$ and $overline(Psi)$ are subsequently
+independent Grassmann variables.  Both remain antiperiodic,
+
+$
+            Psi (tau+beta,bold(x)) & =-Psi (tau,bold(x)), \
+  overline(Psi) (tau+beta,bold(x)) & =-overline(Psi) (tau,bold(x)).
+$ <eq:thermal-dirac-antiperiodic-fields>
+
+Here imaginary-time evolution is generated by $hat(H)-mu hat(Q)$, so $mu$
+appears in the kernel while the boundary condition remains antiperiodic.  A
+nonperiodic field redefinition can instead transfer $mu$ into a twisted KMS
+condition, but the shift and the twist must not be imposed simultaneously.
+The term $-mu overline(Psi)tensor(gamma_E, +4)Psi$ is the coupling to the
+conserved charge density, or equivalently to a constant imaginary Euclidean
+$U (1)$ gauge potential.
+
+==== Fermionic Matsubara determinant
+
+Choose opposite Fourier phases for the paired variables,
+
+$
+            Psi (X) & =integral_(P_F) e^(i P_F dot X)Psi (P_F), \
+  overline(Psi) (X) & =integral_(P_F) e^(-i P_F dot X)overline(Psi) (P_F).
+$ <eq:thermal-dirac-fourier-expansion>
+
+The action becomes
+
+$
+  S_(E,beta,mu)
+  =integral_(P_F)
+  overline(Psi) (P_F)
+  cal(D)_(E,mu) (P_F)Psi (P_F),
+$ <eq:thermal-dirac-shifted-diagonal-action>
+
+where
+
+$
+  cal(D)_(E,mu) (P_F) & :=i tensor(gamma_E, +4)(omega_n^F+i mu)
+                        +i tensor(gamma_E, +i)tensor(p, -i)+m \
+                      & =i tensor(gamma, +0)(omega_n^F+i mu)
+                        +tensor(gamma, +i)tensor(p, -i)+m.
+$ <eq:thermal-dirac-shifted-momentum-kernel>
+
+The second line is the form to use when calculating directly with the
+Chapter 2 Minkowski matrices.  It keeps the Wick-rotation factors and the
+Fourier convention $e^(i omega_n^F tau+i bold(p) dot bold(x))$ explicit.
+
+The regulated Grassmann Gaussian gives a determinant rather than an inverse
+determinant:
+
+$
+  cal(Z)_(beta,mu)
+  =cal(N)_D upright("det")_F cal(D)_(E,mu).
+$ <eq:dirac-grand-functional-determinant>
+
+At each thermal momentum, the spinor determinant reduces to
+
+$
+  upright("det")_4 cal(D)_(E,mu) (P_F)
+  =[(omega_n^F+i mu)^2+E_p^2]^2,
+  quad
+  E_p:=sqrt(bold(p)^2+m^2).
+$ <eq:dirac-shifted-spinor-determinant>
+
+The square is the twofold spin degeneracy.  Although an individual shifted
+eigenvalue is complex, the mode with $(-omega_n^F,-bold(p))$ supplies its
+complex conjugate, so the complete determinant is real.  In the finite box,
+
+$
+  log cal(Z)_(beta,mu)
+  =2 sum_(n in ZZ) sum_(bold(k) in ZZ^3)
+  log[(omega_n^F+i mu)^2+E_k^2]
+  +log cal(N)_D.
+$ <eq:dirac-grand-canonical-trace-log>
+
+=== Grand potential, pressure, and charge
+
+==== Shifted Matsubara log-sum
+
+Define the one-mode sum
+$
+  cal(I)_F (E,mu)
+  :=T sum_(n in ZZ)
+  log[(omega_n^F+i mu)^2+E^2].
+$ <eq:dirac-shifted-log-sum-definition>
+
+As for the scalar determinant, differentiate before summing.  The fermionic
+frequency lattice gives
+
+$
+  (partial cal(I)_F (E,mu))/(partial E) & =2 E T sum_(n in ZZ)
+                                          1/((omega_n^F+i mu)^2+E^2) \
+                                        & =1-n_F (E-mu)-n_F (E+mu), \
+                                n_F (x) & :=1/(e^(beta x)+1).
+$ <eq:dirac-shifted-propagator-sum>
+
+Integrating with respect to $E$ gives
+
+$
+  cal(I)_F (E,mu)
+  =E
+  +T log(1+e^(-beta (E-mu)))
+  +T log(1+e^(-beta (E+mu)))
+  +C_F (T).
+$ <eq:dirac-shifted-log-sum>
+
+The integration constant is fixed by requiring
+$cal(I)_F (E,mu)-cal(I)_F (E,0) arrow.r 0$ as $E arrow.r infinity$.
+A regulator that preserves the vector $U (1)$ symmetry therefore introduces
+no additional $mu$-dependent term.  Multiplication by the spin factor in
+@eq:dirac-grand-canonical-trace-log shows that the first term produces the
+negative Dirac-sea vacuum energy, or equivalently a positive divergent vacuum
+pressure $2 integral_bold(p)E_p$.  We subtract it with the same fixed vacuum
+renormalization condition for every $T$ and $mu$.
+
+==== Thermodynamic observables
+
+After this vacuum subtraction and the spatial thermodynamic limit, define
+
+$
+  Omega_D (T,mu) & :=-T log cal(Z)_(beta,mu,"sub"), \
+      p_D (T,mu) & :=- (Omega_D (T,mu))/V \
+                 & =2T integral_bold(p)
+                   [
+                     log(1+e^(-beta (E_p-mu)))
+                     +log(1+e^(-beta (E_p+mu)))
+                   ].
+$ <eq:dirac-grand-canonical-pressure>
+
+The factor two counts spin.  The two logarithms count particles of charge
+$+1$ and antiparticles of charge $-1$.  Differentiating the pressure gives the
+net charge density,
+
+$
+  q_D (T,mu)
+  :=(partial p_D (T,mu))/(partial mu)
+  =2 integral_bold(p)
+  [
+    n_F (E_p-mu)-n_F (E_p+mu)
+  ].
+$ <eq:dirac-grand-canonical-charge-density>
+
+With $s_D:=(partial p_D)/(partial T)$, the vacuum-subtracted internal-energy
+density follows from $epsilon_D=-p_D+T s_D+mu q_D$, or directly by
+differentiating the thermal trace:
+
+$
+  epsilon_D (T,mu)
+  =2 integral_bold(p) E_p
+  [
+    n_F (E_p-mu)+n_F (E_p+mu)
+  ].
+$ <eq:dirac-grand-canonical-energy-density>
+
+An integration by parts gives the kinetic form of the pressure,
+
+$
+  p_D (T,mu)
+  =2/3 integral_bold(p) (bold(p)^2)/(E_p)
+  [
+    n_F (E_p-mu)+n_F (E_p+mu)
+  ].
+$ <eq:dirac-grand-canonical-pressure-kinetic-form>
+
+These formulas make the symmetries transparent: $p_D$ and $epsilon_D$ are
+even in $mu$, while $q_D$ is odd.  At zero chemical potential,
+
+$
+  p_D (T,0)
+  =4T integral_bold(p)log(1+e^(-beta E_p)),
+  quad
+  q_D (T,0)=0.
+$ <eq:dirac-zero-chemical-potential-thermodynamics>
+
+The factor four now has a direct interpretation: two spin states for each of
+the particle and antiparticle branches.
+
+==== Fermi surface and the massless limit
+
+There is no analogue of the complex-scalar restriction $abs(mu)<m$.
+Berezin integration is algebraic and does not require a positive quadratic
+form, while Pauli exclusion prevents unlimited occupation of one mode.  At
+zero temperature,
+
+$
+  n_F (E-mu) & arrow.r theta (mu-E), \
+  n_F (E+mu) & arrow.r theta (-mu-E).
+$ <eq:zero-temperature-fermi-distributions>
+
+Thus $abs(mu)=m$ is a density threshold rather than an instability.  The
+zero-temperature Fermi momentum is
+
+$
+  p_F:=sqrt(mu^2-m^2)
+  quad "for" quad abs(mu)>m.
+$ <eq:dirac-fermi-momentum>
+
+The occupied particle sea for $mu>m$, or antiparticle sea for $mu < -m$, has
+
+$
+  q_D (0,mu)
+  =cases(
+    upright("sgn") (mu)(p_F^3)/(3 pi^2) & abs(mu)>m,
+    0 & abs(mu)<=m
+  ).
+$ <eq:zero-temperature-dirac-charge-density>
+
+For $abs(mu)<m$, the vacuum-subtracted zero-temperature pressure also
+vanishes.  At any nonzero temperature the Fermi--Dirac tails smooth this
+threshold.
+
+For one massless Dirac field the momentum integrals can be done exactly:
+
+$
+        p_D (T,mu) & =7 pi^2/180 T^4+mu^2 T^2/6+mu^4/(12 pi^2), \
+        q_D (T,mu) & =mu T^2/3+mu^3/(3 pi^2), \
+  epsilon_D (T,mu) & =3 p_D (T,mu).
+$ <eq:massless-dirac-grand-canonical-thermodynamics>
+
+At $mu=0$, the pressure is $7/8$ of the massless bosonic pressure per matched
+degree of freedom.  This factor is produced by the antiperiodic Matsubara
+lattice, not by an externally inserted state-counting rule.
+
+=== Thermal propagator from the same kernel
+
+The propagator is now a secondary output of the thermodynamic calculation.
+Adding independent antiperiodic Grassmann sources in the order
+$overline(eta)Psi+overline(Psi)eta$ gives
+
+$
+  cal(Z)_(beta,mu) [overline(eta),eta]
+  =cal(Z)_(beta,mu) [0,0]
+  exp[
+    integral_beta dd(X) integral_beta dd(Y)
+    overline(eta) (X)S_(beta,mu) (X-Y)eta (Y)
+  ],
+$ <eq:dirac-grand-canonical-sourced-gaussian>
+
+where the inverse of @eq:thermal-dirac-shifted-momentum-kernel is
+
+$
+  S_(beta,mu) (P_F) & =[cal(D)_(E,mu) (P_F)]^(-1) \
+                    & =[-i tensor(gamma_E, +4)(omega_n^F+i mu)
+                        -i tensor(gamma_E, +i)tensor(p, -i)+m]/
+                      ((omega_n^F+i mu)^2+E_p^2).
+$ <eq:dirac-grand-canonical-propagator>
+
+Consequently,
+
+$
+  cal(D)_(E,mu,x)S_(beta,mu) (X-Y)
+  =delta_beta^F (tau_x-tau_y)
+  delta^((3)) (bold(x)-bold(y))1_4.
+$ <eq:dirac-grand-canonical-green-equation>
+
+To display the particle and antiparticle weights, introduce
+
+$
+  g_(beta,mu)^F (tau,bold(p))
+  :=T sum_(n in ZZ)
+  (e^(i omega_n^F tau))/
+  ((omega_n^F+i mu)^2+E_p^2).
+$ <eq:dirac-shifted-scalar-denominator>
+
+For $0<tau<beta$,
+
+$
+  g_(beta,mu)^F (tau,bold(p))
+  =1/(2 E_p)
+  [
+    (1-n_F (E_p-mu))e^(-(E_p-mu)tau)
+    -n_F (E_p+mu)e^((E_p+mu)tau)
+  ].
+$ <eq:dirac-shifted-scalar-denominator-closed-form>
+
+Applying the spinor numerator yields
+
+$
+  S_(beta,mu) (tau,bold(p)) & =((1-n_F (E_p-mu))/(2 E_p))
+                              [
+                                E_p tensor(gamma_E, +4)
+                                -i tensor(gamma_E, +i)tensor(p, -i)+m
+                              ]e^(-(E_p-mu)tau) \
+                            & quad +((n_F (E_p+mu))/(2 E_p))
+                              [
+                                E_p tensor(gamma_E, +4)
+                                +i tensor(gamma_E, +i)tensor(p, -i)-m
+                              ]e^((E_p+mu)tau).
+$ <eq:dirac-grand-canonical-mixed-propagator>
+
+The same occupations that appear in the pressure and charge density therefore
+control propagation.  The identities
+$n_F (x)e^(beta x)=1-n_F (x)$ imply antiperiodicity and the endpoint jump
+
+$
+  S_(beta,mu) (tau+beta,bold(p)) & =-S_(beta,mu) (tau,bold(p)), \
+   S_(beta,mu) (0^+,bold(p))
+   +S_(beta,mu) (beta^-,bold(p)) & =tensor(gamma_E, +4).
+$ <eq:dirac-grand-canonical-propagator-checks>
+
+The jump is independent of both $T$ and $mu$ because it is fixed by the
+canonical equal-time anticommutator.  In contrast, the smooth parts remember
+the thermal state through $n_F (E_p-mu)$ and $n_F (E_p+mu)$.  This again
+exhibits the central relation of a Gaussian field theory: the trace-log of the
+quadratic kernel gives thermodynamics, while the inverse kernel gives the
+two-point function.
+
+== Thermodynamics of a Free Photon Field
+
+We now treat the photon provisionally as a free massless spin-one field.  The
+phrase "spin one" must be interpreted carefully for a massless particle: the
+physical one-particle states have helicities $lambda=+1$ and $lambda=-1$,
+not the three polarizations of a massive vector.  We therefore start from the
+physical transverse field already constructed in Chapter 2.  Its functional
+determinant gives the blackbody partition function, while its inverse gives a
+thermal transverse propagator as a secondary result.
+
+This reduced treatment is sufficient for free-photon thermodynamics.  A
+systematic covariant path integral must instead introduce a gauge-fixing
+condition and the associated determinant before inverting the four-component
+kernel.  That construction, and the distinction between a gauge-dependent
+potential propagator and gauge-invariant observables, will be taken up when
+gauge fields are used dynamically.
+
+=== Physical transverse modes
+
+==== Reduced Euclidean action
+
+Choose the radiation-gauge representative of
+@eq:maxwell-radiation-gauge,
+
+$
+  tensor(A,-0)=0,
+  quad
+  tensor(partial,+i)tensor(A,-i)=0.
+$ <eq:thermal-photon-radiation-gauge>
+
+The remaining field $tensor(A^T,-i)$ is periodic on the thermal circle.  With
+the fixed Wick rotation $t=-i tau$, its free Euclidean action is
+
+$
+  S_(E,beta,gamma) [A^T] & :=1/2 integral_beta dd(X)
+                            tensor(A^T,-i) (X)
+                            cal(K)_gamma
+                            tensor(A^T,+i) (X), \
+              cal(K)_gamma & :=-partial_tau^2-bold(nabla)^2, \
+  tensor(A^T,-i) (tau+beta,bold(x))
+                            & =tensor(A^T,-i) (tau,bold(x)).
+$ <eq:thermal-transverse-photon-action>
+
+For nonzero spatial momentum define the transverse projector
+
+$
+  tensor(P^T,-i,-j) (bold(p))
+  :=tensor(delta,-i,-j)
+    -(tensor(p,-i)tensor(p,-j))/(bold(p)^2).
+$ <eq:thermal-transverse-projector>
+
+It obeys
+
+$
+  tensor(p,+i)tensor(P^T,-i,-j) (bold(p)) & =0, \
+  tensor(P^T,-i,+k) (bold(p))
+  tensor(P^T,-k,-j) (bold(p))
+    & =tensor(P^T,-i,-j) (bold(p)), \
+  tensor(delta,+i,+j)tensor(P^T,-i,-j) (bold(p)) & =2.
+$ <eq:thermal-transverse-projector-properties>
+
+The last line is the field-theoretic degree-of-freedom count.  It is the same
+two-dimensional polarization space derived in
+@eq:maxwell-physical-polarization-space and
+@eq:maxwell-transverse-polarization-completeness.  Equivalently, choose two
+real orthonormal transverse vectors $bold(e)_a (bold(p))$, $a=1,2$.  In the
+finite box the action diagonalizes as
+
+$
+  S_(E,beta,gamma)
+  =1/2 sum_(a=1)^2 sum_(n in ZZ) sum_(bold(k) != bold(0))
+  A_(a,-n,-bold(k))
+  [(omega_n^B)^2+bold(p)_bold(k)^2]
+  A_(a,n,bold(k)).
+$ <eq:thermal-transverse-photon-diagonal-action>
+
+The circular combinations of these two linear polarizations are precisely
+the helicity $plus.minus 1$ modes of
+@eq:maxwell-transverse-mode-expansion.  No temporal or longitudinal
+oscillator belongs to the physical thermal ensemble.
+
+==== Why the photon chemical potential vanishes
+
+The free number operator obtained from the two oscillator families happens
+to commute with the free Hamiltonian.  This accidental conservation is not
+protected by an exact global phase symmetry: photon emission and absorption
+change the number of photons, while preserving energy, momentum, and any
+matter charge.  The Maxwell $U (1)$ gauge transformation is a redundancy of
+the potential, not a global photon-number symmetry.  Consequently an
+equilibrium photon gas has
+
+$
+  mu_gamma=0.
+$ <eq:equilibrium-photon-chemical-potential>
+
+A nonzero effective photon chemical potential can be useful in a driven or
+approximately number-conserving medium, but it does not describe the free
+equilibrium radiation field considered here.
+
+=== Transverse functional determinant
+
+The unnormalized periodic path integral over the reduced field is
+
+$
+  cal(Z)_(beta,gamma)
+  & :=integral_("periodic, transverse") cal(D) A^T
+      e^(-S_(E,beta,gamma) [A^T]) \
+  & =cal(N)_gamma
+      [upright("det")'_B cal(K)_gamma]^(-1).
+$ <eq:thermal-photon-functional-determinant>
+
+Each transverse polarization is one real Gaussian and contributes the power
+$-1/2$; the trace of the projector is two, so the combined power is $-1$.
+The prime indicates that the spatially homogeneous finite-volume sector is
+set aside.  In particular, the exactly constant potential is a flat mode of
+the derivative-only action, and the transverse projector is not defined at
+$bold(p)=bold(0)$.  The spatially homogeneous sector is subextensive,
+contributing at order
+$V^0$, and therefore does not affect the pressure in the thermodynamic limit.
+
+Taking the logarithm of @eq:thermal-photon-functional-determinant gives
+
+$
+  log cal(Z)_(beta,gamma)
+  =-sum_(n in ZZ) sum_(bold(k) != bold(0))
+    log[(omega_n^B)^2+bold(p)_bold(k)^2]
+    +log cal(N)_gamma.
+$ <eq:thermal-photon-trace-log>
+
+Thus the photon trace-log is twice the massless real-scalar trace-log of
+@eq:thermal-real-scalar-trace-log.  Using
+@eq:bosonic-matsubara-log-sum before taking the spatial thermodynamic limit
+gives
+
+$
+  T/V log cal(Z)_(beta,gamma)
+  =-integral_bold(p) abs(bold(p))
+   -2T integral_bold(p)
+    log(1-e^(-beta abs(bold(p)))).
+$ <eq:thermal-photon-pressure-before-subtraction>
+
+The first term is the zero-point pressure of the two helicities.  As for the
+scalar and Dirac fields, it is removed by a fixed vacuum-energy
+renormalization condition.  The remaining term is finite and extensive.
+
+=== Blackbody thermodynamics
+
+Define the vacuum-subtracted grand potential and pressure by
+
+$
+  Omega_gamma (T) & :=-T log cal(Z)_(beta,gamma,"th"), \
+      p_gamma (T) & :=-(Omega_gamma (T))/V \
+                  & =-2T integral_bold(p)
+                    log(1-e^(-beta abs(bold(p)))).
+$ <eq:thermal-photon-pressure>
+
+The same determinant gives the energy density
+
+$
+  epsilon_gamma (T)
+  :=-1/V (partial log cal(Z)_(beta,gamma,"th"))/(partial beta)
+  =2 integral_bold(p) abs(bold(p))
+    n_B (abs(bold(p))).
+$ <eq:thermal-photon-energy-density>
+
+An integration by parts in the pressure integral yields
+
+$
+  p_gamma (T)
+  =2/3 integral_bold(p) abs(bold(p))
+    n_B (abs(bold(p)))
+  =1/3 epsilon_gamma (T).
+$ <eq:thermal-photon-equation-of-state>
+
+The equation of state is therefore that of an isotropic gas of massless
+modes.  Evaluating the radial integrals gives the blackbody results
+
+$
+        p_gamma (T) & =pi^2/45 T^4, \
+  epsilon_gamma (T) & =pi^2/15 T^4, \
+        s_gamma (T) & :=(partial p_gamma (T))/(partial T)
+                      =4 pi^2/45 T^3.
+$ <eq:blackbody-thermodynamics>
+
+The energy per unit volume and angular-frequency interval is the Planck
+spectrum,
+
+$
+  rho_gamma (omega,T)
+  :=omega^3/(pi^2 [e^(beta omega)-1]),
+  quad
+  epsilon_gamma (T)
+  =integral_0^infinity dd(omega) rho_gamma (omega,T).
+$ <eq:planck-energy-spectrum>
+
+For reference, the mean occupation density is
+
+$
+  n_gamma (T)
+  :=2 integral_bold(p)n_B (abs(bold(p)))
+  =(2 upright("zeta") (3))/(pi^2) T^3.
+$ <eq:thermal-photon-occupation-density>
+
+This $n_gamma$ is a useful statistical observable, not the density of a
+conserved charge.  It therefore does not introduce a chemical potential into
+@eq:thermal-photon-pressure.
+
+=== Thermal transverse propagator
+
+To invert the same kernel, add a periodic transverse source.  Completing the
+square gives
+
+$
+  cal(Z)_(beta,gamma) [J^T]
+  =cal(Z)_(beta,gamma) [0]
+  exp[
+    1/2 integral_beta dd(X) integral_beta dd(Y)
+    tensor(J^T,+i) (X)
+    tensor(D_beta^T,-i,-j) (X-Y)
+    tensor(J^T,+j) (Y)
+  ].
+$ <eq:thermal-transverse-photon-sourced-gaussian>
+
+For $bold(p)!=bold(0)$, the momentum-space inverse on the physical subspace is
+
+$
+  tensor(D_beta^T,-i,-j) (P_B)
+  =(tensor(P^T,-i,-j) (bold(p)))/(P_B^2).
+$ <eq:thermal-transverse-photon-propagator>
+
+Consequently,
+
+$
+  [-partial_(tau_x)^2-bold(nabla)_x^2]
+  tensor(D_beta^T,-i,-j) (X-Y)
+  =delta_beta^B (tau_x-tau_y)
+   tensor(delta^T,-i,-j) (bold(x)-bold(y)),
+$ <eq:thermal-transverse-photon-green-equation>
+
+where the spatial transverse delta distribution is
+@eq:maxwell-transverse-delta.  For $0<=tau<=beta$ and nonzero spatial
+momentum, the mixed representation is
+
+$
+  tensor(D_beta^T,-i,-j) (tau,bold(p))
+  =(tensor(P^T,-i,-j) (bold(p)))/(2 abs(bold(p)))
+  [
+    (1+n_B (abs(bold(p))))e^(-abs(bold(p))tau)
+    +n_B (abs(bold(p)))e^(abs(bold(p))tau)
+  ].
+$ <eq:thermal-transverse-photon-mixed-propagator>
+
+The Bose--Einstein identity used in
+@eq:thermal-scalar-mixed-propagator-closed-form makes this expression
+periodic in $tau$.  The occupation factor is the same one that appeared in
+the energy density, as expected from the trace-log/inverse-kernel relation.
+Equation @eq:thermal-transverse-photon-propagator is the physical
+radiation-gauge propagator; it is not a covariant propagator for all four
+components of the gauge potential.
+
+== Matsubara Sums and Contour Methods
+
+The thermodynamic calculations in this chapter repeatedly reduced a
+functional determinant to a one-mode logarithmic sum.  Two formulas were used
+without derivation: the bosonic propagator sum
+@eq:bosonic-propagator-sum and its shifted fermionic counterpart
+@eq:dirac-shifted-propagator-sum.  We now derive both by one contour method.
+
+The central idea is to replace the discrete frequency lattice by the poles of
+a meromorphic thermal kernel.  Bose--Einstein or Fermi--Dirac statistics then
+enters through the choice of kernel, while the poles of the propagator supply
+the on-shell energies.  This separation is especially useful at nonzero
+chemical potential.
+
+=== From trace-logs to convergent sums
+
+For either statistics, the determinant produced a sum of the form
+
+$
+  cal(I)_s (E,mu)
+  :=T sum_(n in ZZ)
+  log[(omega_n^s+i mu)^2+E^2],
+  quad s=B,F.
+$ <eq:unified-shifted-log-sum>
+
+Taken literally, this sum is ultraviolet divergent and the logarithm also
+requires a branch convention.  Differentiation with respect to $E$ removes
+both distractions:
+
+$
+  (partial cal(I)_s (E,mu))/(partial E)
+  =2 E cal(S)_s (E,mu),
+  quad
+  cal(S)_s (E,mu)
+  :=T sum_(n in ZZ)
+    1/((omega_n^s+i mu)^2+E^2).
+$ <eq:log-sum-derivative-reduction>
+
+The summand in $cal(S)_s$ falls as $1/n^2$, so the symmetric Matsubara sum is
+absolutely convergent.  Once it is evaluated, integrating with respect to
+$E$ reconstructs the trace-log up to an $E$-independent normalization.  This
+is why Sections 3.3 and 3.4 differentiated before summing.
+
+Introduce a complex energy variable $z=i omega$ and define
+
+$
+  h_mu (z;E)
+  :=1/(E^2-(z-mu)^2).
+$ <eq:shifted-propagator-meromorphic-function>
+
+At a Matsubara frequency,
+
+$
+  h_mu (i omega_n^s;E)
+  =1/((omega_n^s+i mu)^2+E^2).
+$ <eq:shifted-propagator-matsubara-values>
+
+Thus the chemical potential moves the poles of $h_mu$ but does not move the
+Matsubara lattice.  The two physical poles and their residues are
+
+$
+  z_+&=mu+E,
+  &quad upright("Res")_(z=z_+) h_mu (z;E)&=-1/(2 E), \
+  z_-&=mu-E,
+  &quad upright("Res")_(z=z_-) h_mu (z;E)&=+1/(2 E).
+$ <eq:shifted-propagator-poles-and-residues>
+
+=== Thermal kernels and the master contour
+
+Define the two meromorphic thermal kernels
+
+$
+  cal(k)_B (z)&:=n_B (z)=1/(e^(beta z)-1), \
+  cal(k)_F (z)&:=-n_F (z)=-1/(e^(beta z)+1).
+$ <eq:bosonic-fermionic-contour-kernels>
+
+Their poles lie precisely on the corresponding imaginary-frequency lattice:
+
+$
+  upright("Res")_(z=i omega_n^B) cal(k)_B (z)
+  =upright("Res")_(z=i omega_n^F) cal(k)_F (z)
+  =T.
+$ <eq:thermal-kernel-matsubara-residues>
+
+The minus sign in $cal(k)_F=-n_F$ compensates the residue $-T$ of $n_F$.
+Consequently the same counterclockwise contour prescription works in both
+sectors.  Let $cal(C)_s$ surround the poles $z=i omega_n^s$ while excluding
+the poles of a meromorphic function $f$.  With a symmetric regulator and
+sufficient decay at infinity,
+
+$
+  T sum_(n in ZZ) f (i omega_n^s)
+  &=1/(2 pi i) integral_(cal(C)_s) dd(z)
+    cal(k)_s (z)f (z) \
+  &=-sum_(z_* in cal(P) (f))
+    upright("Res")_(z=z_*) [cal(k)_s (z)f (z)].
+$ <eq:matsubara-master-contour-formula>
+
+Here $cal(P) (f)$ is the set of poles of $f$.  The second line follows by
+deforming the contour away from the Matsubara poles and onto the poles of
+$f$.  The new small contours have the opposite orientation, which produces
+the displayed minus sign.
+
+#figure(
+  cetz.canvas(length: 0.78cm, {
+    import cetz.draw: *
+
+    let axis-color = rgb("#657b85")
+    let boson-color = rgb("#36a6b6")
+    let fermion-color = rgb("#e2b55b")
+    let pole-color = rgb("#d86483")
+    let contour-color = rgb("#317782")
+
+    line((-3.5, 0), (3.6, 0),
+      stroke: 0.7pt + axis-color,
+      mark: (end: ">"))
+    line((0, -2.8), (0, 2.9),
+      stroke: 0.7pt + axis-color,
+      mark: (end: ">"))
+    content((3.72, -0.05), text(size: 8pt, fill: axis-color)[$upright("Re") z$],
+      anchor: "west")
+    content((0.08, 3.02), text(size: 8pt, fill: axis-color)[$upright("Im") z$],
+      anchor: "south-west")
+
+    for y in (-2, 0, 2) {
+      circle((0, y), radius: 0.075, fill: boson-color, stroke: boson-color)
+    }
+    for y in (-1, 1) {
+      circle((0, y), radius: 0.095, fill: white,
+        stroke: 1.2pt + fermion-color)
+    }
+
+    line((-0.58, -2.5), (0.58, -2.5),
+      stroke: 1.1pt + contour-color,
+      mark: (end: ">"))
+    line((0.58, -2.5), (0.58, 2.5),
+      stroke: 1.1pt + contour-color)
+    line((0.58, 2.5), (-0.58, 2.5),
+      stroke: 1.1pt + contour-color,
+      mark: (end: ">"))
+    line((-0.58, 2.5), (-0.58, -2.5),
+      stroke: 1.1pt + contour-color)
+    content((0.72, 2.15), text(size: 8pt, fill: contour-color)[$cal(C)_s$],
+      anchor: "west")
+
+    for x in (-2.05, 2.25) {
+      line((x - 0.12, -0.12), (x + 0.12, 0.12),
+        stroke: 1.25pt + pole-color)
+      line((x - 0.12, 0.12), (x + 0.12, -0.12),
+        stroke: 1.25pt + pole-color)
+      circle((x, 0), radius: 0.34,
+        stroke: (paint: pole-color, thickness: 0.8pt, dash: "dashed"))
+    }
+    content((-2.05, -0.48), text(size: 8pt, fill: pole-color)[$mu-E$],
+      anchor: "north")
+    content((2.25, -0.48), text(size: 8pt, fill: pole-color)[$mu+E$],
+      anchor: "north")
+
+    circle((-3.08, 2.35), radius: 0.07,
+      fill: boson-color, stroke: boson-color)
+    content((-2.88, 2.35), text(size: 7.5pt, fill: axis-color)[bosonic poles],
+      anchor: "west")
+    circle((-3.08, 1.93), radius: 0.09,
+      fill: white, stroke: 1.1pt + fermion-color)
+    content((-2.88, 1.93), text(size: 7.5pt, fill: axis-color)[fermionic poles],
+      anchor: "west")
+  }),
+  caption: [
+    The regulated Matsubara contour in the complex $z$ plane.  Filled cyan
+    points show $i omega_n^B$ and open gold points show $i omega_n^F$; only
+    the family selected by $s$ is a pole of $cal(k)_s$.  The crosses are the
+    propagator poles $mu plus.minus E$.  Deformation of $cal(C)_s$ produces
+    oppositely oriented small contours around these physical poles.
+  ],
+) <fig:matsubara-contour-deformation>
+
+The diagram @fig:matsubara-contour-deformation overlays the two frequency
+lattices.  In an actual calculation one uses only one thermal kernel and one
+pole family.  The drawing also makes the role of $mu$ transparent: it shifts
+the physical poles horizontally, whereas the imaginary-axis lattice remains
+fixed by the thermal boundary condition.
+
+=== Bosonic and fermionic propagator sums
+
+Apply @eq:matsubara-master-contour-formula to $f=h_mu$.  Using
+@eq:shifted-propagator-poles-and-residues gives the common intermediate
+result
+
+$
+  cal(S)_s (E,mu)
+  =[cal(k)_s (mu+E)-cal(k)_s (mu-E)]/(2 E).
+$ <eq:shifted-propagator-contour-intermediate-result>
+
+==== Bosonic lattice
+
+For bosons, $cal(k)_B=n_B$.  The identity
+
+$
+  n_B (-x)=-[1+n_B (x)]
+$ <eq:bose-distribution-reflection-identity>
+
+then gives
+
+$
+  T sum_(n in ZZ)
+  1/((omega_n^B+i mu)^2+E^2)
+  =[1+n_B (E-mu)+n_B (E+mu)]/(2 E).
+$ <eq:bosonic-shifted-contour-sum>
+
+For the complex scalar this formula holds in the normal region
+$abs(mu)<E$.  At $mu=0$ it reduces to
+
+$
+  T sum_(n in ZZ) 1/((omega_n^B)^2+E^2)
+  =[1+2 n_B (E)]/(2 E)
+  =1/(2 E)coth(beta E/2).
+$ <eq:bosonic-unshifted-contour-sum>
+
+Multiplying by $2E$ reproduces @eq:bosonic-propagator-sum.  Multiplying the
+shifted result by $2E$ reproduces
+@eq:complex-scalar-shifted-propagator-sum.  In the contour picture, the
+condensation boundary is equally direct: as $mu arrow.r E$, the pole
+$z_-=mu-E$ collides with the bosonic zero-frequency pole at $z=0$.
+
+==== Fermionic lattice
+
+For fermions, $cal(k)_F=-n_F$.  Now use
+
+$
+  n_F (-x)=1-n_F (x)
+$ <eq:fermi-distribution-reflection-identity>
+
+to obtain
+
+$
+  T sum_(n in ZZ)
+  1/((omega_n^F+i mu)^2+E^2)
+  =[1-n_F (E-mu)-n_F (E+mu)]/(2 E).
+$ <eq:fermionic-shifted-contour-sum>
+
+After multiplication by $2E$, this is precisely
+@eq:dirac-shifted-propagator-sum.  At zero chemical potential,
+
+$
+  T sum_(n in ZZ) 1/((omega_n^F)^2+E^2)
+  =[1-2 n_F (E)]/(2 E)
+  =1/(2 E)tanh(beta E/2).
+$ <eq:fermionic-unshifted-contour-sum>
+
+There is no fermionic zero-frequency pole with which $z_-$ can collide.  This
+is the contour counterpart of the absence of a bosonic convergence bound on
+the Dirac chemical potential.
+
+=== Integrating back to the determinant
+
+Substitute the two contour sums into
+@eq:log-sum-derivative-reduction.  The required antiderivatives are
+
+$
+  (partial)/(partial E)
+  [T log(1-e^(-beta (E plus.minus mu)))]
+    &=n_B (E plus.minus mu), \
+  (partial)/(partial E)
+  [T log(1+e^(-beta (E plus.minus mu)))]
+    &=-n_F (E plus.minus mu).
+$ <eq:thermal-logarithm-antiderivatives>
+
+Therefore
+
+$
+  cal(I)_B (E,mu)
+  &=E
+    +T log(1-e^(-beta (E-mu)))
+    +T log(1-e^(-beta (E+mu)))
+    +C_B (T), \
+  cal(I)_F (E,mu)
+  &=E
+    +T log(1+e^(-beta (E-mu)))
+    +T log(1+e^(-beta (E+mu)))
+    +C_F (T).
+$ <eq:contour-derived-bosonic-fermionic-log-sums>
+
+These are the logarithmic sums used in Sections 3.3 and 3.4.  The first term
+is the temperature-independent vacuum contribution.  Contour integration
+determines the $E$ dependence but cannot fix $C_s (T)$, because that
+information was removed by differentiation.  The time-sliced measure or an
+equivalent reference normalization fixes this constant.  A regulator that
+preserves the charged-field $U (1)$ symmetry introduces no additional
+$mu$-dependent constant.
+
+=== After the sum: useful thermal moments
+
+Once the Matsubara sum has exposed $n_B$ or $n_F$, massless spatial integrals
+reduce to two standard moments.  Expanding the distributions as convergent
+series for $x>0$,
+
+$
+  n_B (x)&=sum_(ell=1)^infinity e^(-ell x), \
+  n_F (x)&=sum_(ell=1)^infinity (-1)^(ell-1)e^(-ell x),
+$ <eq:thermal-distribution-geometric-series>
+
+and integrating term by term gives, for $r>1$,
+
+$
+  integral_0^infinity dd(x) x^(r-1)n_B (x)
+    &=Gamma (r)upright("zeta") (r), \
+  integral_0^infinity dd(x) x^(r-1)n_F (x)
+    &=(1-2^(1-r))Gamma (r)upright("zeta") (r).
+$ <eq:bose-fermi-thermal-moments>
+
+After the rescaling $x=beta abs(bold(p))$, these identities produce the
+$T^4$ coefficients of the massless scalar, photon, and Dirac gases.  The
+factor $1-2^(1-r)$ becomes $7/8$ for the energy and pressure moment $r=4$.
+It is therefore another expression of the same distinction already visible
+in the thermal kernels: periodic and antiperiodic fields sample different
+Matsubara lattices.
