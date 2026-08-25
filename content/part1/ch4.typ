@@ -1,4 +1,5 @@
 #import "../../lib.typ": *
+#import "@preview/cetz:0.4.2"
 
 = From Correlation Functions to Scattering Amplitudes
 == Perturbative Correlation Functions
@@ -314,8 +315,9 @@ corrections in the interaction region.
 
 An amputated Green function is still off shell and is not yet a scattering
 amplitude.  Section 4.3 will determine the physical one-particle pole and its
-residue; Section 4.4 will then take the LSZ on-shell limit.  It is also possible
-for an amputated connected graph to remain one-particle reducible internally.
+residue; Section 4.4 will introduce the scattering operator, while the later
+LSZ section will take the on-shell limit.  It is also possible for an amputated
+connected graph to remain one-particle reducible internally.
 
 === One-particle reducibility
 
@@ -426,6 +428,291 @@ location fixes the physical mass, and its residue fixes the normalization of
 the asymptotic one-particle field.
 
 == One-Particle Poles and Field Normalization
+
+The full propagator introduced in Section 4.2 is still a correlation
+function of the chosen local field.  Scattering theory, however, refers to
+stable particles: states with a definite physical mass and the invariant
+normalization constructed in Chapter 2.  This section identifies those states
+inside the exact two-point function.  The pole position will define
+$m_"phys"$, while the pole residue will define $Z_phi$.  Their role in
+asymptotic fields and in the external legs of the $S$-matrix is deliberately
+left to the LSZ section.
+
+=== The exact two-point function and its one-particle contribution
+
+Let $ket(Omega)$ be the interacting translationally invariant vacuum.  In the
+unbroken $phi arrow.r -phi$-symmetric vacuum used here, every odd correlator
+vanishes.  The exact two-point function is therefore already connected, and
+we can calculate it directly:
+
+$
+  G_M (x-y)
+  :=chevron.l Omega|T hat(phi) (x) hat(phi) (y)|Omega chevron.r.
+$ <eq:chapter-four-exact-two-point>
+
+Assume that the theory has a stable spin-zero one-particle state $ket(p)$.
+Its normalization and mass shell are
+
+$
+  braket(p, q)
+  =2 E_p (2 pi)^3 delta^((3)) (bold(p)-bold(q)),
+  quad
+  E_p:=sqrt(bold(p)^2+m_"phys"^2),
+  quad
+  p^2=-m_"phys"^2.
+$ <eq:chapter-four-physical-one-particle-normalization>
+
+The vacuum is a scalar under translations and Lorentz transformations, and
+$hat(phi)$ is also a scalar.  Consequently its matrix element with a
+one-particle state can contain no vector other than the plane wave.  With the
+phase of $ket(p)$ chosen so that the coefficient is real and nonnegative,
+define
+
+$
+  chevron.l Omega|hat(phi) (x)|p chevron.r
+  =sqrt(Z_phi) e^(i p dot x),
+  quad
+  Z_phi>=0.
+$ <eq:chapter-four-one-particle-overlap>
+
+Translation covariance fixes the exponential: since
+$tensor(hat(P), +mu) ket(p)=tensor(p, +mu) ket(p)$ and the passive convention
+of Chapter 2 gives
+$hat(phi) (x)=e^(-i tensor(hat(P), +mu) tensor(x, -mu))
+hat(phi) (0)e^(i tensor(hat(P), +mu) tensor(x, -mu))$ inside a matrix
+element, the phase is precisely the book's convention
+$p dot x=-p^0 t+bold(p) dot bold(x)$.  The normalization of the state is
+important here: $Z_phi$ is not an arbitrary coefficient left over from a
+choice of delta-function normalization.
+
+To see how this matrix element enters the propagator, first consider the
+Wightman function
+
+$
+  W (x-y)
+  :=chevron.l Omega|hat(phi) (x)hat(phi) (y)|Omega chevron.r.
+$ <eq:chapter-four-wightman-function>
+
+Insert a complete set of exact energy-momentum eigenstates between the two
+fields.  Inserting the vacuum, one-particle, and multiparticle sectors means
+
+$
+  1=ketbra(Omega)+cal(I)_1+cal(I)_"multi".
+$ <eq:chapter-four-complete-state-sectors>
+
+The vacuum term vanishes here because the one-point function is zero.  With
+the invariant one-particle resolution
+$cal(I)_1=integral tilde(dd(p)) ket(p)ketbra(p)$ from @eq:one-particle-invariant-completeness,
+the one-particle part is
+
+$
+  W_1 (x-y) & = integral tilde(dd(p))
+              chevron.l Omega|hat(phi) (x)|p chevron.r
+              chevron.l p|hat(phi) (y)|Omega chevron.r \
+            & = Z_phi integral tilde(dd(p)) e^(i p dot (x-y)).
+$ <eq:chapter-four-one-particle-wightman>
+
+The remaining exact states give additional positive-energy contributions.
+For a scalar field, Lorentz invariance allows us to group all states with the
+same invariant mass $s=-p^2$ into a nonnegative spectral density.  Thus
+
+$
+  W (x-y)
+  =integral_0^infinity dd(s) rho (s)
+  integral (dd(p, [4]))/((2 pi)^3)
+  theta (tensor(p, +0)) delta (p^2+s) e^(i p dot (x-y)),
+$ <eq:chapter-four-wightman-spectral-representation>
+
+where the explicit four-dimensional factor is the positive-energy mass-$sqrt(s)$
+shell measure.  Equivalently,
+
+$
+  W (x-y)
+  =integral_0^infinity dd(s) rho (s) W_0 (x-y;s),
+  quad
+  W_0 (z;s):=integral (dd(p, [4]))/((2 pi)^3)
+  theta (tensor(p, +0)) delta (p^2+s) e^(i p dot z).
+$ <eq:chapter-four-wightman-spectral-representation-short>
+
+The one-particle matrix element @eq:chapter-four-one-particle-overlap fixes
+the delta-function part of the density:
+
+$
+  rho (s)
+  =Z_phi delta (s-m_"phys"^2)+rho_"cont" (s),
+  quad
+  rho_"cont" (s)>=0.
+$ <eq:chapter-four-spectral-density-decomposition>
+
+The positivity is not a perturbative claim.  Each contribution to $rho$ is a
+sum of absolute squares of matrix elements of $hat(phi)$, multiplied by
+positive phase-space measures.  A stable particle produces a delta function
+because all its states have the same invariant mass.  Multiparticle states
+have continuously variable invariant mass and therefore produce a continuum.
+If the field has a symmetry that forbids a two-particle matrix element, the
+continuum starts at the lightest allowed higher-particle threshold.  In the
+unbroken $phi arrow.r -phi$ vacuum of the present $phi^4$ example, the odd
+field $hat(phi)$ couples to odd-particle states, so absent a bound state the
+first generic continuum begins at $s=(3 m_"phys")^2$.
+
+#figure(
+  cetz.canvas(length: 0.82cm, {
+    import cetz.draw: *
+
+    let axis = rgb("#657b85")
+    let pole = rgb("#d86483")
+    let continuum = rgb("#36a6b6")
+    let threshold = rgb("#d09217")
+
+    line((0, 0), (7.25, 0), stroke: 0.8pt + axis, mark: (end: ">"))
+    line((0, 0), (0, 3.55), stroke: 0.8pt + axis, mark: (end: ">"))
+    content((7.3, -0.05), text(size: 8pt, fill: axis)[$s=mu^2$], anchor: "west")
+    content((0.08, 3.60), text(size: 8pt, fill: axis)[$rho (s)$], anchor: "south-west")
+
+    line((1.48, 0), (1.48, 2.42), stroke: 1.6pt + pole)
+    circle((1.48, 2.42), radius: 0.095, fill: pole, stroke: pole)
+    content((1.48, 2.72), text(size: 8pt, fill: pole)[$Z_phi delta (s-m_"phys"^2)$], anchor: "south")
+    line((3.15, 0), (3.15, 2.55), stroke: (paint: threshold, thickness: 0.9pt, dash: "dashed"))
+    content((3.15, -0.25), text(size: 8pt, fill: threshold)[$s_"th"$], anchor: "north")
+
+    let points = (
+      (3.15, 0.08),
+      (3.55, 0.24),
+      (3.95, 0.43),
+      (4.35, 0.66),
+      (4.75, 0.93),
+      (5.15, 1.23),
+      (5.55, 1.56),
+      (5.95, 1.91),
+      (6.35, 2.27),
+    )
+    for i in range(0, points.len() - 1) {
+      line(points.at(i), points.at(i + 1), stroke: 1.5pt + continuum)
+    }
+    content((5.78, 2.45), text(size: 8pt, fill: continuum)[$rho_"cont" (s)$], anchor: "west")
+    content((3.55, -0.60), text(size: 8pt, fill: axis)[discrete pole + continuum], anchor: "north")
+  }),
+  caption: [
+    Schematic Källén--Lehmann spectral weight.  The isolated delta function
+    at $s=m_"phys"^2$ represents a stable one-particle state.  Above the
+    first allowed threshold $s_"th"$, multiparticle states fill a continuum;
+    its detailed shape is theory-dependent and the sketch is not to scale.
+  ],
+) <fig:chapter-four-spectral-density>
+
+The spectral density makes the physical interpretation visible: the isolated
+pole is the part of the field that can create a single stable particle, while
+the continuum records states with more than one particle.  The exact
+time-ordered propagator follows directly from
+
+$
+  G_M (z)
+  =theta (z^0) W (z)+theta (-z^0) W (-z).
+$ <eq:chapter-four-time-ordering-from-wightman>
+
+Applying this operation to every mass component and using the free scalar result
+@eq:scalar-feynman-time-ordering gives the Källén--Lehmann representation
+
+$
+  G_M (z)
+  =integral_0^infinity dd(s) rho (s) Delta_F (z;s),
+  quad
+  Delta_F (p;s):=(-i)/(p^2+s-i 0).
+$ <eq:chapter-four-kallen-lehmann-coordinate>
+
+Fourier transformation with @eq:chapter-two-fourier-convention then yields
+
+$
+  G_M (p)
+  =integral_0^infinity dd(s) rho (s)
+  (-i)/(p^2+s-i 0).
+$ <eq:chapter-four-kallen-lehmann-momentum>
+
+Separating the delta function in @eq:chapter-four-spectral-density-decomposition
+shows the pole explicitly:
+
+$
+  G_M (p)
+  =(-i Z_phi)/(p^2+m_"phys"^2-i 0)
+  +G_"reg" (p),
+  quad
+  G_"reg" (p):=integral_0^infinity dd(s) rho_"cont" (s)
+  (-i)/(p^2+s-i 0).
+$ <eq:chapter-four-isolated-one-particle-pole>
+
+If $s_"th">m_"phys"^2$, then $G_"reg"$ is regular in a neighborhood of
+$p^2=-m_"phys"^2$.  The pole is therefore isolated.  By contrast, the
+continuum produces a nonanalyticity when the external invariant reaches its
+threshold; in perturbation theory this appears as a branch cut after the
+loop integrals are analytically continued.  A particle that can decay is not
+represented by an isolated real-axis delta function: its spectral weight is
+part of the continuum, and its resonance pole requires a separate complex
+analytic continuation.  Such an unstable excitation is not an asymptotic
+one-particle state for the LSZ construction.
+
+=== Reading the pole from the 1PI two-point kernel
+
+The spectral argument is exact and nonperturbative.  To connect it with the
+organization of Section 4.2, use translation invariance to diagonalize the
+convolution identity @eq:effective-action-inverse-propagator-identity:
+
+$
+  Gamma_M^((2)) (p) G_M (p)=i.
+$ <eq:chapter-four-momentum-space-inverse-two-point>
+
+For a scalar theory the 1PI kernel depends only on $p^2$.  Define the exact
+self-energy function by
+
+$
+  Gamma_M^((2)) (p)
+  :=-[p^2+m_0^2+Pi_M (p^2)],
+$ <eq:chapter-four-self-energy-definition>
+
+where $m_0$ is the regulated bare mass used in Section 4.1.  The full
+propagator is consequently
+
+$
+  G_M (p)
+  =(-i)/(p^2+m_0^2+Pi_M (p^2)-i 0).
+$ <eq:chapter-four-dyson-resummed-propagator>
+
+The physical pole is a zero of the inverse propagator on the real mass shell.
+Substituting $p^2=-m_"phys"^2$ gives the pole-mass equation
+
+$
+  m_0^2-m_"phys"^2+Pi_M (-m_"phys"^2)=0.
+$ <eq:chapter-four-pole-mass-equation>
+
+The equation is to be imposed before removing the regulator, with the same
+$i 0$ prescription used in the definition of $G_M$.  At a stable pole below
+the first continuum threshold, $Pi_M$ is real on the pole.  Above a threshold
+it develops an imaginary part, which is precisely the signal that the real
+isolated-particle interpretation has failed.
+
+Expand the inverse propagator around the pole.  With
+$q:=p^2+m_"phys"^2$ and assuming a simple pole,
+
+$
+  p^2+m_0^2+Pi_M (p^2) & =q [1+Pi_M (-m_"phys"^2)] + O(q^2) \
+                       & =Z_phi^(-1) q+O(q^2),
+$ <eq:chapter-four-inverse-propagator-pole-expansion>
+
+where the prime denotes differentiation with respect to the scalar argument
+$p^2$.  Comparing with the exact pole form @eq:chapter-four-isolated-one-particle-pole
+gives
+
+$
+  Z_phi^(-1)
+  =1+Pi'_M (-m_"phys"^2)
+  =-[(partial Gamma_M^((2)) (p))/(partial p^2)]_(p^2=-m_"phys"^2).
+$ <eq:chapter-four-pole-residue-from-self-energy>
+
+The two pieces of physical information are therefore separated cleanly:
+$Pi_M$ evaluated at the pole fixes the mass, while its slope fixes the residue.
+The residue depends on the interpolating field.  If the field is rescaled by
+a nonzero constant, $hat(phi) arrow.r c hat(phi)$, then
+$G_M arrow.r c^2 G_M$ and $Z_phi arrow.r c^2 Z_phi$; the pole position does
+not move.
 
 
 == S-Matrix and Scattering Operator

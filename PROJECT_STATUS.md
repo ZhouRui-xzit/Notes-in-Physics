@@ -1,6 +1,6 @@
 # QFT-for-Calculators Handoff
 
-Last updated: 2026-08-24
+Last updated: 2026-08-25
 
 ## Session startup
 
@@ -14,9 +14,9 @@ Last updated: 2026-08-24
 
 Chapter 3, *Free Fields at Finite Temperature*, is complete.  Chapter 4,
 *From Correlation Functions to Scattering Amplitudes*, is underway.  Sections
-4.1 and 4.2 now carry the calculation from normalized perturbative
-correlators through connected functions, full-propagator amputation, and 1PI
-proper vertices.
+4.1--4.3 now carry the calculation from normalized perturbative correlators
+through connected functions, full-propagator amputation, 1PI proper vertices,
+and the exact two-point spectral representation.
 
 ## Confirmed Chapter 3 outline
 
@@ -180,16 +180,25 @@ proper vertices.
   expansions, and the general bridge decomposition proving that derivatives
   of the effective action generate amputated 1PI vertices.
 
+- Section 4.3 now starts directly from the exact time-ordered two-point
+  function in the unbroken `phi arrow.r -phi` vacuum; it does not introduce a
+  shifted field or a vacuum-condensate parameter.  Inserting the vacuum,
+  one-particle, and multiparticle sectors gives the Wightman and
+  Källén--Lehmann representations, with a CeTZ sketch of the isolated pole and
+  continuum.  The 1PI two-point kernel then fixes the pole mass and the residue
+  `Z_phi`, and the regulated `phi^4` tadpole provides the first perturbative
+  check.  Translation covariance and the direct Wightman-to-Feynman
+  time-ordering step are written explicitly.
+
 ## Next work
 
-Develop Section 4.3, *One-Particle Poles and Field Normalization*, beginning
-with the exact two-point function and relating its pole location and residue
-to the physical mass and asymptotic field.  Then use that result in the LSZ
-reduction formula of Section 4.4.
+Develop Sections 4.4--4.7: introduce the in/out scattering operator, derive
+decay-rate and cross-section kinematics, then use the pole data in the LSZ
+reduction formula and collect the resulting scattering Feynman rules.
 
 ## Open decisions
 
-- The remaining Chapter 4 headings are provisional until Sections 4.3--4.5
+- The remaining Chapter 4 headings are provisional until Sections 4.4--4.7
   are developed in detail.
 
 ## Verification state
@@ -257,6 +266,12 @@ reduction formula of Section 4.4.
   were rendered and inspected for connected-function factors, full-propagator
   amputation, the 1PR/1PI distinction, effective-action signs, long-equation
   wrapping, equation-number collisions, and unresolved references.
+- `main.typ` compiled successfully after Section 4.3 was added and then
+  simplified to use the direct two-point correlator.  Physical pages 99--102
+  were rendered and visually inspected for the complete-state insertion,
+  positive-energy shell measure, spectral-density figure, Källén--Lehmann
+  denominators, pole expansion, equation labels, and visible overflow;
+  `git diff --check` reports no whitespace errors.
 - The Section 4.2 effective-action proof exercise was compiled and visually
   inspected on physical page 100.  Its inverse-Hessian identity, explicit
   three- and four-point formulas, bridge-decomposition argument, cross-
