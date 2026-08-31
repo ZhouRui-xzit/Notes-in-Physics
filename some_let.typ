@@ -85,7 +85,7 @@
   show-proposition,
 ) = make-frame(
   "proposition",
-  "Proposition",
+  "命题",
   inherited-levels: 1,
   render: colored-theorem-render(theorem-colors.proposition),
 )
@@ -97,7 +97,7 @@
   show-definition,
 ) = make-frame(
   "definition",
-  "Definition",
+  "定义",
   inherited-levels: 1,
   render: colored-theorem-render(theorem-colors.definition),
 )
@@ -109,7 +109,7 @@
   show-example,
 ) = make-frame(
   "example",
-  "Example",
+  "例",
   inherited-levels: 1,
   render: colored-theorem-render(theorem-colors.example),
 )
@@ -121,7 +121,7 @@
   show-problem,
 ) = make-frame(
   "problem",
-  "Exercise",
+  "习题",
   inherited-levels: 1,
   render: colored-theorem-render(theorem-colors.problem),
 )
@@ -177,7 +177,7 @@
 #let exc = exercise
 
 // Remark 独立且不带 QED；Proof 与 Solution 保持无框，并在末尾带 QED。
-#let remark(title: "Remark", body) = block(
+#let remark(title: "注", body) = block(
   width: 100%,
   breakable: true,
   fill: rgb("#f7f3fb"),
@@ -213,8 +213,8 @@
   ],
 )
 
-#let proof(title: "Proof", body) = qed-environment(title, body)
-#let solution(title: "Solution", body) = qed-environment(title, body)
+#let proof(title: "证明", body) = qed-environment(title, body)
+#let solution(title: "解", body) = qed-environment(title, body)
 #let sol = solution
 
 

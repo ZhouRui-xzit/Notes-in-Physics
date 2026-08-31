@@ -1,9 +1,9 @@
-\ifnum\outputmode=0
-  \def\pgfsysdriver{pgfsys-dvisvgm.def}
-\fi
+\def\pgfsysdriver{pgfsys-dvisvgm.def}
 \documentclass[tikz,border=5pt]{standalone}
 
 \usepackage{tikz-feynman}
+\usepackage[fontset=none]{ctex}
+\setCJKsansfont[Path=C:/Windows/Fonts/]{NotoSansSC-VF.ttf}
 
 \definecolor{qftink}{HTML}{26363F}
 \definecolor{qftmuted}{HTML}{657B85}
@@ -43,7 +43,7 @@
     \node[point label, below=3pt] at (z1) {$z_1$};
     \node[point label, below=3pt] at (z2) {$z_2$};
     \node[topology label] at (2.55,-1.85)
-      {$\mathcal T_{\mathrm{leg}}$: four choices of $a$};
+      {$\mathcal T_{\mathrm{leg}}$: $a$ 的四种选择};
   \end{scope}
 
   \begin{scope}[shift={(7.25,0)}]
@@ -70,7 +70,7 @@
     \node[point label, below=3pt] at (z1) {$z_1$};
     \node[point label, below=3pt] at (z2) {$z_2$};
     \node[topology label] at (2.48,-1.85)
-      {$\mathcal T_{\mathrm{fish}}$: three pair channels};
+      {$\mathcal T_{\mathrm{fish}}$: 三个配对道};
   \end{scope}
 \end{tikzpicture}
 \end{document}

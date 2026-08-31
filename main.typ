@@ -1,4 +1,4 @@
-#import "lib.typ":*
+#import "lib.typ": *
 
 #let mycolors = (
   coverrgb: rgb("#163b49"),

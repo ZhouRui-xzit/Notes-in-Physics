@@ -1,9 +1,9 @@
-\ifnum\outputmode=0
-  \def\pgfsysdriver{pgfsys-dvisvgm.def}
-\fi
+\def\pgfsysdriver{pgfsys-dvisvgm.def}
 \documentclass[tikz,border=5pt]{standalone}
 
 \usepackage{tikz-feynman}
+\usepackage[fontset=none]{ctex}
+\setCJKsansfont[Path=C:/Windows/Fonts/]{NotoSansSC-VF.ttf}
 
 \definecolor{qftink}{HTML}{26363F}
 \definecolor{qftmuted}{HTML}{657B85}
@@ -28,7 +28,7 @@
     \end{feynman}
     \node[point label, below=2pt] at (x) {$x$};
     \node[point label, below=2pt] at (y) {$y$};
-    \node[topology label] at (1.2,-0.72) {(a) free line};
+    \node[topology label] at (1.2,-0.72) {(a) 自由线};
   \end{scope}
 
   \begin{scope}[shift={(4.1,0)}]
@@ -43,7 +43,7 @@
     \draw[qft scalar] (z) .. controls +(0.58,0.92) and +(-0.58,0.92) .. (z);
     \node[point label, below=2pt] at (x) {$x$};
     \node[point label, below=2pt] at (y) {$y$};
-    \node[topology label] at (1.2,-0.72) {(b) tadpole};
+    \node[topology label] at (1.2,-0.72) {(b) 蝌蚪图};
   \end{scope}
 
   \begin{scope}[shift={(8.2,0)}]
@@ -62,7 +62,7 @@
     \end{feynman}
     \node[point label, below=2pt] at (x) {$x$};
     \node[point label, below=2pt] at (y) {$y$};
-    \node[topology label] at (1.6,-0.72) {(c) sunset};
+    \node[topology label] at (1.6,-0.72) {(c) 日落图};
   \end{scope}
 
   \begin{scope}[shift={(1.55,-3.0)}]
@@ -80,7 +80,7 @@
     \draw[qft scalar] (z2) .. controls +(0.52,0.86) and +(-0.52,0.86) .. (z2);
     \node[point label, below=2pt] at (x) {$x$};
     \node[point label, below=2pt] at (y) {$y$};
-    \node[topology label] at (1.8,-0.72) {(d) successive tadpoles};
+    \node[topology label] at (1.8,-0.72) {(d) 连续蝌蚪插入};
   \end{scope}
 
   \begin{scope}[shift={(7.1,-3.0)}]
@@ -98,7 +98,7 @@
     \draw[qft scalar] (z2) .. controls +(0.58,0.92) and +(-0.58,0.92) .. (z2);
     \node[point label, below=2pt] at (x) {$x$};
     \node[point label, below=2pt] at (y) {$y$};
-    \node[topology label] at (1.2,-0.72) {(e) tadpole-dressed insertion};
+    \node[topology label] at (1.2,-0.72) {(e) 蝌蚪修饰插入};
   \end{scope}
 \end{tikzpicture}
 \end{document}

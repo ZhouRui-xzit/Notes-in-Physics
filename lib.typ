@@ -20,9 +20,14 @@
   cover: colors.at("coverrgb", default: rgb("#173b49")),
 )
 
-#let heading-font = ("STIX Two Text",)
+#let heading-font = ("Noto Sans CJK SC",)
 
-#let body-font = ("STIX Two Text",)
+#let body-font = ("Noto Sans CJK SC",)
+
+// LXGW WenKai ships as a regular face.  The emphasis environment uses the
+// family itself as the visual contrast instead of synthesizing a slanted CJK
+// face.  Noto remains the fallback for glyphs outside WenKai's coverage.
+#let emphasis-font = ("LXGW WenKai", "Noto Sans CJK SC")
 
 #let math-font = ("STIX Two Math",)
 
@@ -82,7 +87,7 @@
         weight: "semibold",
         tracking: 0.13em,
         fill: p.muted,
-      )[QFT · CALCULATOR NOTES],
+      )[量子场论 · 手算笔记],
       text(
         font: heading-font,
         size: 8.3pt,
@@ -106,9 +111,9 @@
   context {
     let number = counter(heading).display(it.numbering)
     let kicker = if it.supplement == [Appendix] {
-      [APPENDIX · REFERENCE SECTOR]
+      [附录 · 参考资料]
     } else {
-      [QUANTUM FIELD SECTOR]
+      [量子场论 · 核心章节]
     }
     block(
       width: 100%,
@@ -333,7 +338,7 @@
         weight: "semibold",
         tracking: 0.20em,
         fill: p.sakura,
-      )[A HAND-CALCULATION FIELD GUIDE]
+      )[重在手算的量子场论指南]
       #v(4pt)
       #text(
         font: heading-font,
@@ -356,7 +361,7 @@
           size: 8pt,
           weight: "semibold",
           fill: p.muted,
-        )[AUTHOR],
+        )[作者],
         text(
           font: heading-font,
           size: 9pt,
@@ -376,10 +381,10 @@
       )
       #v(4pt)
       #text(
-          font: heading-font,
-          size: 7.8pt,
-          fill: p.muted,
-      )[#date · natural units · $c = hbar = k_B = 1$]
+        font: heading-font,
+        size: 7.8pt,
+        fill: p.muted,
+      )[#date · 自然单位制 · $c = hbar = k_B = 1$]
     ],
   ))
   pagebreak(weak: false)
@@ -390,17 +395,18 @@
     font: body-font,
     size: 11.2pt,
     fill: p.ink,
-    lang: "en",
+    lang: "zh",
+    region: "CN",
   )
   set par(
     justify: true,
-    first-line-indent: 1.45em,
-    leading: 0.68em,
+    first-line-indent: 2em,
+    leading: 0.78em,
   )
-  show strong: set text(font: body-font, weight: "semibold", fill: p.ink)
+  show strong: set text(font: body-font, weight: "bold", fill: p.ink)
   show emph: text.with(
-    font: body-font,
-    style: "italic",
+    font: emphasis-font,
+    style: "normal",
   )
   show math.equation: set text(font: math-font)
   show math.equation.where(block: true): set text(size: 11.2pt)
@@ -425,12 +431,12 @@
     let section = count.at(1, default: 0)
     numbering("(1.1.1)", chapter, section, n)
   })
-  set math.equation(supplement: [eq])
+  set math.equation(supplement: [式])
   set math.mat(row-gap: 0.85em, column-gap: 0.9em)
 
-  show figure.where(kind: table): set figure(supplement: [table])
+  show figure.where(kind: table): set figure(supplement: [表])
   show figure.where(kind: table): set figure.caption(position: top)
-  show figure.where(kind: image): set figure(supplement: [fig])
+  show figure.where(kind: image): set figure(supplement: [图])
 
   // One reference rule is easier to reason about than chained show rules.
   show ref: it => {
@@ -490,7 +496,7 @@
             weight: "semibold",
             tracking: 0.20em,
             fill: p.sakura,
-          )[SPECTRUM MAP]
+          )[全书导览]
           #v(3pt)
           #text(
             font: heading-font,
@@ -549,7 +555,7 @@
       it,
     )
 
-    outline(title: [Contents], depth: 2)
+    outline(title: [目录], depth: 2)
     pagebreak(weak: false)
   }
 
@@ -581,7 +587,7 @@
       outlined: true,
       bookmarked: true,
       numbering: none,
-      [Part #numbering("I", number): #title],
+      [第 #numbering("I", number) 部分：#title],
     )
 
     #place(top + right, dx: -34pt, dy: 24pt, text(
@@ -604,7 +610,7 @@
           weight: "semibold",
           tracking: 0.22em,
           fill: p.gold,
-        )[PART #numbering("I", number) · THEORY SECTOR]
+        )[第 #numbering("I", number) 部分 · 理论篇]
         #v(7pt)
         #text(
           font: heading-font,
@@ -662,7 +668,7 @@
         weight: "semibold",
         tracking: 0.18em,
         fill: p.sakura,
-      )[BEFORE THE CALCULATION]
+      )[写在计算之前]
       #v(3pt)
       #text(
         font: heading-font,
