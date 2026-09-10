@@ -61,6 +61,9 @@
 - Write concise, natural academic Chinese. Prefer direct statements of facts,
   conclusions, and causal relations; do not add rhetorical scaffolding merely
   to make a sentence sound emphatic.
+- Use “我们” naturally when introducing a choice, construction, or calculation
+  so the prose guides the reader through the physics. Give sentences clear
+  subjects without mechanically repeating the same opening in every sentence.
 - Give each paragraph one controlling purpose. Put the question, obstacle, or
   claim near the beginning; let the equations and reasoning resolve it; close
   with the physical or mathematical consequence.
@@ -107,6 +110,8 @@
 - Use established Chinese terminology for the surrounding physics and
   mathematics. When several Chinese translations exist, choose one term for
   the chapter and use it consistently.
+- Keep conventional Feynman-diagram names in English, such as tadpole, sunset,
+  and fish; use “tadpole 图” rather than translating the name into Chinese.
 - Keep symbols and abbreviations from carrying grammatical work that should be
   expressed in prose. Explain what an object does, not only what it is called.
 
@@ -180,6 +185,10 @@
   not mix them with the alternative `+2 tensor(eta,+mu,+nu)` convention.
 
 ## Typst mathematics
+
+- Attach derivative primes to the main symbol before its subscript: write
+  `Pi'_R` and `Pi'_"loop"`, not `Pi_R'` or `Pi_"loop"'`, which can attach
+  the prime to the subscript instead.
 
 - Use Physica's abstract-index helper for indexed tensors:
   `tensor(symbol, +upper, -lower)`. A leading `+` creates an upper index and a

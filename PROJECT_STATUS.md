@@ -1,6 +1,6 @@
 # QFT-for-Calculators Handoff
 
-Last updated: 2026-08-31
+Last updated: 2026-09-06
 
 ## Session startup
 
@@ -11,6 +11,24 @@ Last updated: 2026-08-31
    history is disposable context.
 
 ## Current milestone
+
+The Chapter 5 preface and all of Section 5.1 are Chinese-first and visually
+verified. The current main line is dimensional regularization with on-shell
+renormalization: m is the pole mass, the renormalized field has unit pole
+residue, and lambda is defined by the threshold amplitude at s=4m^2, t=u=0.
+Counterterms include the finite parts required by these conditions. Other
+subtraction schemes are not introduced; the user will revisit them later.
+The opening now motivates counterterms as a re-expression of the regulated
+bare theory in physical parameters, even when loop corrections are finite.
+It distinguishes this change of variables from the substantive requirement
+that a finite set of local counterterms render all ordinary correlators finite.
+Section 5.1.5 now defines omega through common Euclidean loop-momentum
+scaling, derives the measure and propagator powers and radial convergence
+criterion, explains both graph-counting identities, and distinguishes overall
+UV behavior from subdivergences before identifying the needed local terms.
+Diagram names such as tadpole remain English, and the prose uses “我们”
+naturally to guide the derivation. Sections 5.2--5.6 remain English heading
+placeholders. The next development milestone is Section 5.2.
 
 The Chinese rewrite and focused concision pass of Chapter 4, *From Correlation
 Functions to Scattering Amplitudes*, are complete and visually verified.
@@ -31,10 +49,10 @@ the conversion of invariant amplitudes into rates and cross sections, and the
 LSZ relation between scattering matrix elements and pole-normalized amputated
 correlators, through to the momentum-space Feynman rules for constructing the
 amplitude.  Chapter 5, *phi^4 Theory at Zero Temperature*, is now underway.
-Its main line uses dimensional regularization and
-`overline(upright("MS"))`, computes the two-point function through
-`O(lambda^2)` before the four-point function, and extracts the pole mass and
-LSZ residue from the minimally subtracted propagator.
+Its main line uses dimensional regularization and on-shell conditions,
+computes the two-point function through `O(lambda^2)` before the four-point
+function, and fixes mass and field counterterms by the pole position and unit
+residue conditions.
 
 The Chinese-first editorial migration is the active book-wide direction.  The
 shared book template uses Noto Sans CJK SC for body text, strong emphasis, and
@@ -356,12 +374,14 @@ such as Wick, Feynman, Fourier, Jacobian, Matsubara, and KMS remain in English.
 - Section 5.1 starts the zero-temperature renormalization calculation in
   `d=4-2 epsilon`.  It defines the regulated bare theory, separates the
   canonical renormalized Lagrangian from its mass, field, and coupling
-  counterterms, fixes the `overline(upright("MS"))` pole convention, and lists
+  counterterms, fixes the on-shell normalization conditions, and lists
   the dimensionally regulated momentum-space rules.  Power counting derives
   `omega=4-E` and explains why the three counterterms suffice.  The section
-  distinguishes the ultraviolet field factor `Z_"ct"` from the LSZ pole
-  residue `Z_phi` and gives the equations that extract `m_"phys"` and `Z_phi`
-  from the finite minimally subtracted self-energy.
+  distinguishes the field factor `Z_"ct"` from the LSZ pole residue `Z_phi=1`.
+  It derives `delta Z=-Pi_loop'(-m^2)` and
+  `delta m^2=-Pi_loop(-m^2)-m^2 Pi_loop'(-m^2)` with the existing mostly-plus
+  self-energy and Lagrangian counterterm conventions. The coupling is fixed
+  by `cal(M)(4m^2,0,0)=-lambda` in the four-dimensional limit.
 - The three Chapter 4 exercises prove that effective-action derivatives
   generate 1PI vertices, derive Equation 4.4.18 from the interaction-picture
   Volterra equation, and organize general two-to-two fixed-target laboratory
@@ -371,19 +391,20 @@ such as Wick, Feynman, Fourier, Jacobian, Matsubara, and KMS remain in English.
 
 ## Next work
 
-Continue the editorial migration with the Chinese rewrite of Chapter 5.  The
-next physics-development milestone remains Section 5.2: evaluate the massive one-loop
-tadpole in dimensional regularization, fix the leading
-`overline(upright("MS"))` mass counterterm, and show that its momentum
-independence leaves `Z_phi=1+O(lambda^2)`.
+Continue Chapter 5 in Chinese. Its preface and Section 5.1 rewrite are complete.
+The next physics-development milestone remains Section 5.2: evaluate the massive one-loop
+tadpole in dimensional regularization, fix the leading on-shell mass
+counterterm including its finite part, and show that momentum independence
+gives no field counterterm at this order. The renormalized self-energy then
+vanishes at one loop; two-loop field renormalization must maintain `Z_phi=1`.
 
 ## Open decisions
 
-- The Chapter 5 subtraction scheme is fixed: dimensional regularization and
-  `overline(upright("MS"))` form the body-text main line.  On-shell
-  renormalization is deferred to an exercise comparing its finite
-  counterterms and pole-normalized field with the minimally subtracted
-  parameters.
+- Chapter 5 currently uses dimensional regularization and on-shell
+  renormalization throughout. Do not introduce other subtraction schemes or
+  describe m and lambda as running with the auxiliary regulator scale mu.
+  The user will adjust the later renormalization-group discussion; retain
+  the existing Section 5.5--5.6 placeholders for now.
 - Chapter 4 is editorially complete. Separate notation review is needed for
   two pre-existing issues in Section 4.3: the inline single-particle
   completeness relation before Equation 4.3.6 contains `ket(p)ketbra(p)`
@@ -398,6 +419,38 @@ independence leaves `Z_phi=1+O(lambda^2)`.
   QCD.
 
 ## Verification state
+
+- Section 5.1.5 clarification: `main.typ` compiles without warnings and
+  `git diff --check` passes. PDF pages 125--129 (printed pages 121--125)
+  were rendered and inspected, from the subsection opening through the
+  Chapter 6 transition. All 13 headings and 18 previous labels remain;
+  five explanatory labels were added, giving 23 labels and 23 displayed
+  equations in Chapter 5. Scaling factors, the radial exponent omega-1,
+  references, and prime placement render correctly.
+
+- The counterterm-motivation revision compiles successfully. PDF pages
+  123--128 (printed pages 119--124) were visually checked through the
+  Chapter 6 opening. The 13 headings, 18 labels, and 19 displayed equations
+  are retained; the three loop-self-energy primes use `Pi'_"loop"`.
+  No mathematical content or on-shell conditions changed. Source whitespace
+  checks pass, and Chinese prose remains on one source line per paragraph.
+
+- Chapter 5 self-energy derivative primes now precede descriptive subscripts
+  in Typst (`Pi'_R`, `Pi'_"loop"`). `main.typ` recompiles successfully;
+  PDF page 126 (printed page 122) was re-rendered and checked for correct
+  prime placement. The convention is recorded in `AGENTS.md`.
+
+- 2026-09-06: `main.typ` compiles without warnings after the on-shell revision
+  of the Chapter 5 preface and Section 5.1. PDF pages 123--128 (printed
+  pages 119--124) were rendered and visually inspected, covering every revised
+  page, the remaining Chapter 5 placeholders, and the Chapter 6 opening.
+  The 13 headings remain. Five scheme-specific equation labels were replaced
+  and three self-energy/反项 derivation labels added: 18 unique labels and
+  19 displayed equations now remain. No figures, tables, or exercises changed.
+  The source contains no obsolete scheme discussion, Chinese diagram names,
+  Chinese full stops, trailing whitespace, or sentence-internal prose wrapping.
+  Counterterm signs were checked by substitution into both on-shell conditions.
+  `git diff --check` passes.
 
 - `tests/typography.typ` compiles successfully.  Its three-page PDF was
   rendered and visually inspected for body text, strong emphasis, the LXGW
@@ -553,15 +606,6 @@ independence leaves `Z_phi=1+O(lambda^2)`.
   labels, channel pairings, contribution labels, equation numbers, overflow,
   and references were checked; the exercise section begins cleanly on the
   following page.
-- `main.typ` compiled successfully after the Chapter 5 introduction and
-  Section 5.1 were added.  Physical pages 124--127 (PDF pages 127--130) were
-  rendered at 180 PPI and visually inspected for the barred MS and epsilon
-  notation, mostly-plus bare and counterterm Lagrangians, field-versus-pole
-  normalization symbols, long counterterm expansions, momentum-space rule
-  alignment, power-counting identities, pole equations, equation numbers,
-  overflow, and unresolved references.  PDF page 131 was also checked to
-  confirm the clean transition into the still-empty Section 5.2--5.6
-  skeleton.
 - `main.typ` compiled successfully after the Dyson-series and fixed-target
   scattering exercises were added.  Physical pages 112--114 were rendered
   and visually inspected for nested-integral limits, time-ordering factors,
