@@ -1,0 +1,722 @@
+{
+  "eq:additive-fock-space-four-momentum": {
+    "page": 34,
+    "kind": "式",
+    "number": "2.2.12"
+  },
+  "eq:chapter-four-connected-generator": {
+    "page": 99,
+    "kind": "式",
+    "number": "4.2.1"
+  },
+  "eq:chapter-four-dyson-series-hamiltonian": {
+    "page": 106,
+    "kind": "式",
+    "number": "4.4.18"
+  },
+  "eq:chapter-four-interaction-picture-evolution": {
+    "page": 105,
+    "kind": "式",
+    "number": "4.4.15"
+  },
+  "eq:chapter-four-mandelstam-sum": {
+    "page": 111,
+    "kind": "式",
+    "number": "4.5.34"
+  },
+  "eq:chapter-four-mostly-plus-mandelstam": {
+    "page": 111,
+    "kind": "式",
+    "number": "4.5.33"
+  },
+  "eq:chapter-four-two-to-two-differential-cross-section-t": {
+    "page": 111,
+    "kind": "式",
+    "number": "4.5.40"
+  },
+  "eq:chapter-two-fourier-convention": {
+    "page": 54,
+    "kind": "式",
+    "number": "2.8.1"
+  },
+  "eq:charge-generates-global-u1": {
+    "page": 37,
+    "kind": "式",
+    "number": "2.3.19"
+  },
+  "eq:chiral-gamma-matrices": {
+    "page": 45,
+    "kind": "式",
+    "number": "2.5.18"
+  },
+  "eq:complex-gaussian-N-source": {
+    "page": 12,
+    "kind": "式",
+    "number": "1.2.19"
+  },
+  "eq:complex-lorentz-algebra-split": {
+    "page": 43,
+    "kind": "式",
+    "number": "2.5.2"
+  },
+  "eq:complex-scalar-canonical-commutators": {
+    "page": 36,
+    "kind": "式",
+    "number": "2.3.8"
+  },
+  "eq:complex-scalar-charge-eigenstates": {
+    "page": 37,
+    "kind": "式",
+    "number": "2.3.18"
+  },
+  "eq:complex-scalar-charge-operator": {
+    "page": 37,
+    "kind": "式",
+    "number": "2.3.17"
+  },
+  "eq:complex-scalar-feynman-propagators": {
+    "page": 55,
+    "kind": "式",
+    "number": "2.8.9"
+  },
+  "eq:complex-scalar-global-u1": {
+    "page": 37,
+    "kind": "式",
+    "number": "2.3.15"
+  },
+  "eq:complex-scalar-ladder-commutators": {
+    "page": 36,
+    "kind": "式",
+    "number": "2.3.10"
+  },
+  "eq:complex-scalar-mode-expansion": {
+    "page": 36,
+    "kind": "式",
+    "number": "2.3.9"
+  },
+  "eq:complex-scalar-noether-current": {
+    "page": 37,
+    "kind": "式",
+    "number": "2.3.16"
+  },
+  "eq:complex-scalar-second-quantized-momentum": {
+    "page": 36,
+    "kind": "式",
+    "number": "2.3.11"
+  },
+  "eq:connected-four-point-decomposition": {
+    "page": 20,
+    "kind": "式",
+    "number": "1.4.21"
+  },
+  "eq:connected-four-point-from-proper-vertices": {
+    "page": 101,
+    "kind": "式",
+    "number": "4.2.14"
+  },
+  "eq:covariant-gauge-fixed-maxwell-action": {
+    "page": 55,
+    "kind": "式",
+    "number": "2.8.10"
+  },
+  "eq:covariant-photon-projectors": {
+    "page": 55,
+    "kind": "式",
+    "number": "2.8.13"
+  },
+  "eq:covariant-photon-propagator": {
+    "page": 56,
+    "kind": "式",
+    "number": "2.8.15"
+  },
+  "eq:dirac-adjoint-transformation": {
+    "page": 46,
+    "kind": "式",
+    "number": "2.6.4"
+  },
+  "eq:dirac-bilinear-list": {
+    "page": 47,
+    "kind": "式",
+    "number": "2.6.6"
+  },
+  "eq:dirac-block-generators": {
+    "page": 44,
+    "kind": "式",
+    "number": "2.5.9"
+  },
+  "eq:dirac-charge-commutators": {
+    "page": 52,
+    "kind": "式",
+    "number": "2.7.8"
+  },
+  "eq:dirac-covariant-field-anticommutator": {
+    "page": 53,
+    "kind": "式",
+    "number": "2.7.17"
+  },
+  "eq:dirac-energy-projectors": {
+    "page": 50,
+    "kind": "式",
+    "number": "2.6.37"
+  },
+  "eq:dirac-equal-time-canonical-anticommutator": {
+    "page": 51,
+    "kind": "式",
+    "number": "2.7.2"
+  },
+  "eq:dirac-equal-time-covariant-anticommutator": {
+    "page": 53,
+    "kind": "式",
+    "number": "2.7.18"
+  },
+  "eq:dirac-equal-time-spinor-normalization": {
+    "page": 50,
+    "kind": "式",
+    "number": "2.6.34"
+  },
+  "eq:dirac-even-observable-locality": {
+    "page": 53,
+    "kind": "式",
+    "number": "2.7.20"
+  },
+  "eq:dirac-fermionic-microcausality": {
+    "page": 53,
+    "kind": "式",
+    "number": "2.7.19"
+  },
+  "eq:dirac-feynman-green-equation": {
+    "page": 57,
+    "kind": "式",
+    "number": "2.8.24"
+  },
+  "eq:dirac-feynman-propagator": {
+    "page": 56,
+    "kind": "式",
+    "number": "2.8.23"
+  },
+  "eq:dirac-first-order-canonical-momenta": {
+    "page": 48,
+    "kind": "式",
+    "number": "2.6.19"
+  },
+  "eq:dirac-fock-antisymmetry": {
+    "page": 53,
+    "kind": "式",
+    "number": "2.7.13"
+  },
+  "eq:dirac-gamma-covariance": {
+    "page": 46,
+    "kind": "式",
+    "number": "2.5.23"
+  },
+  "eq:dirac-gamma-generator-commutator": {
+    "page": 45,
+    "kind": "式",
+    "number": "2.5.22"
+  },
+  "eq:dirac-gamma-generator-hermiticity": {
+    "page": 46,
+    "kind": "式",
+    "number": "2.6.1"
+  },
+  "eq:dirac-generator-lorentz-algebra": {
+    "page": 44,
+    "kind": "式",
+    "number": "2.5.11"
+  },
+  "eq:dirac-generators-from-blocks": {
+    "page": 44,
+    "kind": "式",
+    "number": "2.5.10"
+  },
+  "eq:dirac-global-phase-symmetry": {
+    "page": 48,
+    "kind": "式",
+    "number": "2.6.15"
+  },
+  "eq:dirac-hamiltonian-equation": {
+    "page": 48,
+    "kind": "式",
+    "number": "2.6.18"
+  },
+  "eq:dirac-ladder-anticommutators": {
+    "page": 51,
+    "kind": "式",
+    "number": "2.7.4"
+  },
+  "eq:dirac-momentum-space-equations": {
+    "page": 48,
+    "kind": "式",
+    "number": "2.6.22"
+  },
+  "eq:dirac-noether-current": {
+    "page": 48,
+    "kind": "式",
+    "number": "2.6.16"
+  },
+  "eq:dirac-normal-ordered-charge": {
+    "page": 52,
+    "kind": "式",
+    "number": "2.7.7"
+  },
+  "eq:dirac-normal-ordered-four-momentum": {
+    "page": 52,
+    "kind": "式",
+    "number": "2.7.6"
+  },
+  "eq:dirac-one-particle-states": {
+    "page": 52,
+    "kind": "式",
+    "number": "2.7.11"
+  },
+  "eq:dirac-operator-square": {
+    "page": 47,
+    "kind": "式",
+    "number": "2.6.13"
+  },
+  "eq:dirac-propagator-as-inverse": {
+    "page": 56,
+    "kind": "式",
+    "number": "2.8.21"
+  },
+  "eq:dirac-source-completion": {
+    "page": 56,
+    "kind": "式",
+    "number": "2.8.19"
+  },
+  "eq:dirac-spin-sums": {
+    "page": 50,
+    "kind": "式",
+    "number": "2.6.36"
+  },
+  "eq:dirac-time-ordered-mode-form": {
+    "page": 57,
+    "kind": "式",
+    "number": "2.8.26"
+  },
+  "eq:dirac-wightman-function": {
+    "page": 53,
+    "kind": "式",
+    "number": "2.7.21"
+  },
+  "eq:effective-action-inverse-propagator-identity": {
+    "page": 100,
+    "kind": "式",
+    "number": "4.2.13"
+  },
+  "eq:explicit-boosted-dirac-spinors": {
+    "page": 49,
+    "kind": "式",
+    "number": "2.6.31"
+  },
+  "eq:fermionic-euclidean-action": {
+    "page": 17,
+    "kind": "式",
+    "number": "1.3.24"
+  },
+  "eq:fermionic-four-point": {
+    "page": 16,
+    "kind": "式",
+    "number": "1.3.15"
+  },
+  "eq:fermionic-matrix-gaussian": {
+    "page": 15,
+    "kind": "式",
+    "number": "1.3.12"
+  },
+  "eq:fermionic-two-point": {
+    "page": 15,
+    "kind": "式",
+    "number": "1.3.14"
+  },
+  "eq:feynman-gauge-photon-propagator": {
+    "page": 56,
+    "kind": "式",
+    "number": "2.8.16"
+  },
+  "eq:finite-dirac-rotations-and-boosts": {
+    "page": 45,
+    "kind": "式",
+    "number": "2.5.13"
+  },
+  "eq:finite-weyl-transformations": {
+    "page": 43,
+    "kind": "式",
+    "number": "2.5.5"
+  },
+  "eq:fixed-argument-field-transformation": {
+    "page": 30,
+    "kind": "式",
+    "number": "2.1.13"
+  },
+  "eq:free-complex-boson-master-functional": {
+    "page": 19,
+    "kind": "式",
+    "number": "1.4.13"
+  },
+  "eq:free-complex-scalar-action": {
+    "page": 35,
+    "kind": "式",
+    "number": "2.3.4"
+  },
+  "eq:free-dirac-action": {
+    "page": 47,
+    "kind": "式",
+    "number": "2.6.9"
+  },
+  "eq:free-dirac-master-functional": {
+    "page": 20,
+    "kind": "式",
+    "number": "1.4.14"
+  },
+  "eq:free-maxwell-action": {
+    "page": 39,
+    "kind": "式",
+    "number": "2.4.9"
+  },
+  "eq:free-real-boson-master-functional": {
+    "page": 19,
+    "kind": "式",
+    "number": "1.4.12"
+  },
+  "eq:fresnel-slice": {
+    "page": 9,
+    "kind": "式",
+    "number": "1.1.14"
+  },
+  "eq:full-correlator-partition-formula": {
+    "page": 20,
+    "kind": "式",
+    "number": "1.4.20"
+  },
+  "eq:functional-complex-wick-theorem": {
+    "page": 14,
+    "kind": "式",
+    "number": "1.2.29"
+  },
+  "eq:functional-derivative-definition": {
+    "page": 18,
+    "kind": "式",
+    "number": "1.4.1"
+  },
+  "eq:functional-derivative-field": {
+    "page": 18,
+    "kind": "式",
+    "number": "1.4.2"
+  },
+  "eq:functional-derivative-kinetic-term": {
+    "page": 18,
+    "kind": "式",
+    "number": "1.4.5"
+  },
+  "eq:functional-derivative-linear-source": {
+    "page": 18,
+    "kind": "式",
+    "number": "1.4.3"
+  },
+  "eq:gamma-matrices-recover-dirac-generators": {
+    "page": 45,
+    "kind": "式",
+    "number": "2.5.20"
+  },
+  "eq:gauge-fixed-maxwell-inverse": {
+    "page": 55,
+    "kind": "式",
+    "number": "2.8.14"
+  },
+  "eq:gauge-fixed-maxwell-kernel": {
+    "page": 55,
+    "kind": "式",
+    "number": "2.8.12"
+  },
+  "eq:lattice-field-commutators": {
+    "page": 24,
+    "kind": "式",
+    "number": "1.5.20"
+  },
+  "eq:lattice-field-fourier-transform": {
+    "page": 23,
+    "kind": "式",
+    "number": "1.5.12"
+  },
+  "eq:lattice-scalar-action": {
+    "page": 22,
+    "kind": "式",
+    "number": "1.5.5"
+  },
+  "eq:lattice-scalar-dispersion": {
+    "page": 23,
+    "kind": "式",
+    "number": "1.5.14"
+  },
+  "eq:left-right-weyl-generators": {
+    "page": 43,
+    "kind": "式",
+    "number": "2.5.4"
+  },
+  "eq:lorentz-invariant-mass-shell-measure": {
+    "page": 33,
+    "kind": "式",
+    "number": "2.2.7"
+  },
+  "eq:lorentz-representation-generators": {
+    "page": 30,
+    "kind": "式",
+    "number": "2.1.8"
+  },
+  "eq:massive-pauli-jordan-distribution": {
+    "page": 53,
+    "kind": "式",
+    "number": "2.7.16"
+  },
+  "eq:massive-standard-boost": {
+    "page": 49,
+    "kind": "式",
+    "number": "2.6.28"
+  },
+  "eq:massive-standard-spinor-boost": {
+    "page": 49,
+    "kind": "式",
+    "number": "2.6.29"
+  },
+  "eq:massless-chirality-helicity-relation": {
+    "page": 51,
+    "kind": "式",
+    "number": "2.6.42"
+  },
+  "eq:massless-dirac-helicity-components": {
+    "page": 50,
+    "kind": "式",
+    "number": "2.6.40"
+  },
+  "eq:maxwell-canonical-momenta": {
+    "page": 40,
+    "kind": "式",
+    "number": "2.4.13"
+  },
+  "eq:maxwell-degenerate-kinetic-operator": {
+    "page": 40,
+    "kind": "式",
+    "number": "2.4.12"
+  },
+  "eq:maxwell-gauge-equivalence": {
+    "page": 39,
+    "kind": "式",
+    "number": "2.4.2"
+  },
+  "eq:maxwell-ladder-commutators": {
+    "page": 42,
+    "kind": "式",
+    "number": "2.4.28"
+  },
+  "eq:maxwell-polarization-conditions": {
+    "page": 41,
+    "kind": "式",
+    "number": "2.4.21"
+  },
+  "eq:maxwell-transverse-canonical-commutator": {
+    "page": 41,
+    "kind": "式",
+    "number": "2.4.26"
+  },
+  "eq:maxwell-transverse-delta": {
+    "page": 41,
+    "kind": "式",
+    "number": "2.4.27"
+  },
+  "eq:maxwell-transverse-mode-expansion": {
+    "page": 41,
+    "kind": "式",
+    "number": "2.4.25"
+  },
+  "eq:maxwell-transverse-polarization-completeness": {
+    "page": 41,
+    "kind": "式",
+    "number": "2.4.23"
+  },
+  "eq:minkowski-connected-correlators": {
+    "page": 21,
+    "kind": "式",
+    "number": "1.4.23"
+  },
+  "eq:minkowski-correlators-from-source": {
+    "page": 19,
+    "kind": "式",
+    "number": "1.4.11"
+  },
+  "eq:minkowski-effective-action": {
+    "page": 100,
+    "kind": "式",
+    "number": "4.2.10"
+  },
+  "eq:minkowski-operator-generating-functional": {
+    "page": 19,
+    "kind": "式",
+    "number": "1.4.9"
+  },
+  "eq:normalized-fermionic-gaussian": {
+    "page": 15,
+    "kind": "式",
+    "number": "1.3.13"
+  },
+  "eq:normalized-real-gaussian": {
+    "page": 10,
+    "kind": "式",
+    "number": "1.2.8"
+  },
+  "eq:one-pair-fermionic-source": {
+    "page": 15,
+    "kind": "式",
+    "number": "1.3.11"
+  },
+  "eq:orbital-lorentz-generator": {
+    "page": 31,
+    "kind": "式",
+    "number": "2.1.19"
+  },
+  "eq:passive-dirac-field-transformation": {
+    "page": 45,
+    "kind": "式",
+    "number": "2.5.14"
+  },
+  "eq:pauli-matrix-algebra": {
+    "page": 43,
+    "kind": "式",
+    "number": "2.5.3"
+  },
+  "eq:quantized-dirac-mode-expansion": {
+    "page": 51,
+    "kind": "式",
+    "number": "2.7.3"
+  },
+  "eq:quantum-field-covariance": {
+    "page": 31,
+    "kind": "式",
+    "number": "2.1.21"
+  },
+  "eq:real-gaussian-N-source": {
+    "page": 10,
+    "kind": "式",
+    "number": "1.2.7"
+  },
+  "eq:real-gaussian-two-and-four-point": {
+    "page": 11,
+    "kind": "式",
+    "number": "1.2.10"
+  },
+  "eq:real-scalar-canonical-commutators": {
+    "page": 33,
+    "kind": "式",
+    "number": "2.2.5"
+  },
+  "eq:real-scalar-ladder-commutators": {
+    "page": 33,
+    "kind": "式",
+    "number": "2.2.9"
+  },
+  "eq:real-scalar-mode-expansion": {
+    "page": 33,
+    "kind": "式",
+    "number": "2.2.8"
+  },
+  "eq:real-scalar-quadratic-operator": {
+    "page": 54,
+    "kind": "式",
+    "number": "2.8.2"
+  },
+  "eq:rest-dirac-spinor-eigenvalue-equations": {
+    "page": 48,
+    "kind": "式",
+    "number": "2.6.24"
+  },
+  "eq:rest-dirac-spinors": {
+    "page": 49,
+    "kind": "式",
+    "number": "2.6.26"
+  },
+  "eq:rotation-and-boost-generators": {
+    "page": 30,
+    "kind": "式",
+    "number": "2.1.9"
+  },
+  "eq:scalar-electrodynamics-preview": {
+    "page": 38,
+    "kind": "式",
+    "number": "2.3.26"
+  },
+  "eq:scalar-feynman-generating-functional": {
+    "page": 54,
+    "kind": "式",
+    "number": "2.8.4"
+  },
+  "eq:scalar-feynman-green-equation": {
+    "page": 54,
+    "kind": "式",
+    "number": "2.8.6"
+  },
+  "eq:scalar-feynman-propagator": {
+    "page": 54,
+    "kind": "式",
+    "number": "2.8.5"
+  },
+  "eq:scalar-feynman-time-ordering": {
+    "page": 55,
+    "kind": "式",
+    "number": "2.8.7"
+  },
+  "eq:scalar-field-mass-dimension": {
+    "page": 24,
+    "kind": "式",
+    "number": "1.5.25"
+  },
+  "eq:scalar-gauge-invariant-building-blocks": {
+    "page": 38,
+    "kind": "式",
+    "number": "2.3.25"
+  },
+  "eq:scalar-source-mass-dimension": {
+    "page": 25,
+    "kind": "式",
+    "number": "1.5.26"
+  },
+  "eq:second-quantized-scalar-observables": {
+    "page": 34,
+    "kind": "式",
+    "number": "2.2.10"
+  },
+  "eq:translation-generator-on-fields": {
+    "page": 31,
+    "kind": "式",
+    "number": "2.1.18"
+  },
+  "eq:trotter-step": {
+    "page": 8,
+    "kind": "式",
+    "number": "1.1.9"
+  },
+  "eq:two-spinor-basis-completeness": {
+    "page": 49,
+    "kind": "式",
+    "number": "2.6.25"
+  },
+  "eq:vector-lorentz-generators": {
+    "page": 31,
+    "kind": "式",
+    "number": "2.1.15"
+  },
+  "eq:weyl-conjugate-spinor": {
+    "page": 44,
+    "kind": "式",
+    "number": "2.5.7"
+  },
+  "eq:weyl-invariant-epsilon": {
+    "page": 44,
+    "kind": "式",
+    "number": "2.5.6"
+  },
+  "eq:weyl-su2-generators": {
+    "page": 43,
+    "kind": "式",
+    "number": "2.5.1"
+  }
+}

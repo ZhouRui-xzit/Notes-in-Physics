@@ -159,11 +159,25 @@
   label: label,
   body,
 )
+// Keep a problem and its following solution on one equation sequence, while
+// preserving the surrounding lecture's equation counter.
+#let problem-equation-count = state("qft-problem-equation-count", (0,))
+#let problem-equations(reset: false, body) = context {
+  let outer-count = counter(math.equation).get()
+  let prefix = (problem-counter.get)()
+  set math.equation(numbering: n => numbering("(1.1.1)", ..prefix, n))
+  counter(math.equation).update(if reset { (0,) } else { problem-equation-count.get() })
+  body
+  context {
+    problem-equation-count.update(counter(math.equation).get())
+    counter(math.equation).update(outer-count)
+  }
+}
 #let prob(title: "", label: none, body) = legacy-theorem(
   problem,
   title: title,
   label: label,
-  body,
+  problem-equations(reset: true, body),
 )
 // “Problem” and “Exercise” share one counter and one visual style.  The
 // exercise name reads more naturally in chapter-ending exercise sets, while
@@ -172,7 +186,7 @@
   problem,
   title: title,
   label: label,
-  body,
+  problem-equations(reset: true, body),
 )
 #let exc = exercise
 
@@ -214,7 +228,7 @@
 )
 
 #let proof(title: "证明", body) = qed-environment(title, body)
-#let solution(title: "解", body) = qed-environment(title, body)
+#let solution(title: "解", body) = qed-environment(title, problem-equations(body))
 #let sol = solution
 
 

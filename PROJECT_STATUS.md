@@ -1,6 +1,6 @@
 # QFT-for-Calculators Handoff
 
-Last updated: 2026-09-06
+Last updated: 2026-09-25
 
 ## Session startup
 
@@ -11,6 +11,185 @@ Last updated: 2026-09-06
    history is disposable context.
 
 ## Current milestone
+
+Exercise/solution equations now use chapter.problem.equation numbering in
+the shared `some_let.typ` environments. Each exercise resets the final number;
+its following solution continues it (5.1.1--5.1.3 in the prompt,
+5.1.4--5.1.15 in the solution). The surrounding lecture counter is restored.
+Both PDFs compile; all 105 workbook equation numbers are unique and have
+three parts, and labelled exercise equations agree across both outputs.
+Workbook PDF pages 3, 23, 25 and lecture page 140 were visually checked.
+
+All 42 exercises and the existing solution now live in `problems/ch1.typ`,
+`ch2.typ`, `ch4.typ`, and `ch5.typ`. Original lecture chapters include those
+files at their exercise sections, so there is one editable source per set.
+Migration verification confirms the complete bodies, labels, math and solution
+are unchanged apart from relative import paths. Edit future problems here.
+`problems/main.typ` and `problems/template.typ` build the independent
+"QFT Problems" workbook (30 pages), retaining original chapter/exercise numbers.
+`problems/build.py` builds the lecture, refreshes 144 external formula references
+and their PDF page links, then builds `problems/QFT-Problems.pdf`. See its README.
+Both PDFs compile; all 30 workbook pages were rendered and visually reviewed.
+Internal references remain local; external references explicitly read 讲义式.
+Source preservation checks and `git diff --check` pass. Earlier ch5 source
+locations in this log now refer to the extracted problems/ch5.typ content.
+
+The first effective-potential exercise now fixes its polynomial coefficients
+as a=0, b=m_R^2/2, c=lambda_R/4!, following the user's request to introduce
+renormalized parameters. Its solution rewrites the one-loop logarithm using
+M_R^2=m_R^2+lambda_R varphi_0^2/2, valid to this loop order. It explicitly
+distinguishes these coefficient definitions from derivative/on-shell conditions
+and notes that a=0 alone does not set the full V_eff(0) to zero.
+Compilation and visual review of the updated solution pass.
+
+The user's first effective-potential solution is organized into three numbered
+parts matching the questions, with consistent varphi_0 background notation.
+Corrected the quartic expansion, distinguished quadratic fluctuation action
+from the one-loop log determinant, clarified the source's role in maintaining
+arbitrary background, and corrected the polynomial to A+B X+C X^2.
+Completed the empty third part with polynomial coefficients and the positive
+large-field logarithm lambda^2/(256 pi^2). No subtraction scheme was added.
+The user calls this exercise 2.1 in a reduced chapter configuration; saved
+main.typ currently includes all chapters and compiles it as 5.1. Chapter
+switches were untouched. Compilation, whitespace checks and visual inspection
+of PDF 135--138 (solution and following exercise) pass.
+
+Exercises 5.8--5.13 now introduce the full Yukawa L_ren + L_ct, scalar and
+Dirac self-energies, the Yukawa vertex, four-meson vertex, and assembly of
+one-loop nucleon scattering including finite box/mixed four-point graphs.
+Six representative loop families are drawn in
+`fig/feynman/ch5-yukawa-loops.typ`; four-point permutations and counterterm
+graphs are assigned explicitly. Finite answers may remain parameter integrals.
+Conditions: d=4-2 epsilon, on-shell masses and unit residues; for this series
+0 < m < m_psi keeps meson-scattering threshold below nucleon pair production.
+g is fixed by the analytically continued on-shell pseudoscalar form factor
+F_5(-m^2)=1; no physical three-real-particle decay is implied. lambda keeps
+the four-meson threshold definition. No subtraction-only alternative is used.
+Dirac insertion is -i Sigma, S_R=i[-slash p-m_psi-Sigma_R]^-1; the field
+and mass counterterms follow that convention. The final task includes the
+finite g^4 and g^2 lambda mixed four-point diagrams needed for other channels.
+Six exercise labels, one figure label, and one equation label were added
+(five displayed equation blocks). Compilation and visual review of PDF
+138--141 pass, including loop arrows, formulas and chapter transition;
+`git diff --check` passes. Exercises are prompts, not a worked solution set.
+
+Tree exercises now use the user's reaction notation: n+ for nucleons,
+n- for antinucleons, upright m for mesons (distinct from italic mass m).
+Titles 5.4--5.7 are n+n+ -> n+n+, n+n- -> n+n-, n+n- -> mm,
+and n+m -> n+m; process statements and inverse/scalar channels match.
+The illustrative n+n+ -> n-n- is excluded by fermion-number conservation.
+Compilation and visual checks of PDF 137--139 pass; labels are unchanged.
+
+Exercises 5.3--5.7 are drafted. Exercise 5.3 derives gamma traces,
+Dirac-adjoint conjugation, the book's spin sums (-slash p +/- m_psi),
+and trace formulas for squared amplitudes and exchange interference.
+It distinguishes spin-sum traces from closed fermion loops. Four subsequent
+tree exercises cover psi psi, psi psibar elastic scattering, annihilation
+to two scalars (including its inverse), and psi phi scattering. They require
+all connected tree graphs, relative signs, interference, unpolarized squared
+amplitudes, and differential cross sections; symmetry/crossing reduces
+duplicate work. The last task adds scalar elastic scattering and checks
+coverage of all allowed 2-to-2 processes. Assume 0 < m < 2 m_psi for stable
+scalar external states. Five exercise labels and three displayed equations
+were added. `main.typ` compiles; PDF 136--139 and section/chapter transitions
+were visually reviewed. `git diff --check` passes.
+
+Exercise 5.2, "Yukawa 理论：Feynman 规则与有效势", is drafted.
+Three parts cover the pseudoscalar vertex -g gamma5, propagators and closed
+fermion-loop signs/traces; background determinant and its expansion into
+zero-momentum insertions; and the combined scalar/Dirac effective potential.
+For one four-component Dirac field, M_F^2 = m_psi^2 + g^2 varphi^2 and
+V_1,F = -4 J(M_F^2). The final task asks for the large-field logarithmic
+coefficient and its sign condition, with no counterterm calculation.
+The real pseudoscalar and real g use +g phi psibar i gamma5 psi and
+-lambda phi^4/4! in the Minkowski Lagrangian. A new exercise label and
+two displayed equations were added. Compilation and visual review pass.
+
+Exercise 5.1 was simplified at the user's request, following Weinberg II
+Section 16.2 (pp. 70--71): three tasks cover the background scalar mass,
+Gaussian logarithm, three derivatives with respect to mass squared, and
+integration back up to an undetermined quadratic polynomial in mass squared.
+It no longer depends on dimensional regularization, on-shell counterterms,
+or zero-momentum/threshold matching. Parameters are not preidentified with
+on-shell observables. This supersedes the six-part exercise description below.
+Compilation and visual review pass; the exercise fits PDF page 135.
+For the planned Yukawa model, real g times phi psibar i gamma5 psi is
+Hermitian; its overall sign is conventional for this single coupling.
+The quartic Minkowski interaction must be negative for positive tree potential.
+
+Exercise 5.1, "有效势：以实标量场为例", is now drafted in Section 5.5.
+Its six parts introduce constant-background effective potentials, derive the
+scalar Gaussian determinant and dimensional integral, reuse the existing
+on-shell counterterms (plus a vacuum-energy constant), distinguish the
+zero-momentum quartic vertex from threshold coupling, and assess large-field
+behavior within perturbative validity. One exercise label and six displayed
+equations were added; compilation and visual review of PDF 134--137 pass.
+This prepares a later Yukawa exercise, which has not yet been written.
+The user's proposed interaction needs an explicit scalar factor in the
+pseudoscalar Yukawa term and clarification of the quartic Minkowski sign;
+do not assume vacuum instability for arbitrary couplings.
+
+Sections 5.2 and 5.3 are complete. Section 5.2 now derives the massive
+tadpole, its Laurent expansion, and the full on-shell mass counterterm;
+the loop order is O(lambda), the Wick contour direction and Schwinger
+measure have been corrected, and delta Z = 0 and Pi_R = 0 follow explicitly.
+Section 5.3 reconstructs the connected four-point function from the full
+external propagators and amputated vertex, evaluates the three fish channels,
+fixes delta lambda at threshold, and derives the finite amplitude, its
+physical branches, optical-theorem check, and consistently truncated NLO
+cross section. The new channel figure is in `fig/feynman/ch5-fish.typ`.
+The chapter preface now reflects this sequence; Section 5.1 and the later
+placeholders are otherwise unchanged from the pre-edit working copy.
+Added 39 equation labels and one figure label. Compilation, numerical
+integral/closed-form comparisons, regulator-limit checks, and visual review
+pass (PDF 123 and 129--135, including the next chapter transition).
+Sections 5.4 (RGE) and 5.5 (exercises) remain placeholders.
+
+Earlier milestones below are historical; the current section status above
+supersedes their unfinished-section notes.
+
+Section 5.1 has been rewritten using `skills.md`: the prose now introduces
+each construction through the calculation it addresses, explains the
+on-shell conditions and power-counting steps, and supplies descriptive
+captions for the existing diagrams. All seven subsection headings, 27
+displayed equations, 31 labels, and four figures were preserved against the
+pre-edit working copy. The chapter preface and Section 5.2 onward were not
+changed. `main.typ` compiles without warnings; all affected pages and the
+transition to Section 5.2 were visually checked (PDF 123--129, printed
+119--125). Source checks pass for whitespace, ASCII sentence endings,
+and single-line prose paragraphs. The next physics-development work is
+still the unfinished Section 5.2 draft, including its recorded order and
+Wick-rotation issues.
+
+Added `skills.md`, a Chinese physics-writing guide based on Yu Zhaohuan's
+`1807_QFT.pdf` (2026-09-04 edition). The user's priority is natural Chinese
+exposition, not a physics-content digest. The guide records source-page
+examples, paragraph construction, formula explanations, and original
+before/after rewrites. Use it when revising prose alongside `AGENTS.md`.
+The existing Chapter 5 working changes were preserved. `main.typ` compiled
+successfully to a temporary baseline PDF; this documentation task does not
+certify the unfinished Section 5.2 derivation or revise its content.
+
+The four-point representation is abstract, as requested: diagonally hatched full
+vertex = tree + white 1PI loop-correction blob + white circle with × for the
+coupling counterterm. The circled × denotes the counterterm, not the full vertex.
+`fig/feynman/ch5-four-point.typ` holds the drawing. No explicit one-loop
+graphs, channel pairings, or bubble integral are shown here. The white blob
+includes required counterterm insertions; the independent four-point
+counterterm is shown separately. The text relates the vertex to the on-shell
+amplitude.
+
+Section 5.1.7, Feynman 图表示, now uses the user-provided local
+`Cetz-Feynamn/` library. A book-side helper in
+`fig/feynman/ch5-two-point.typ` draws the full propagator as a circle with
+parallel diagonal hatching, the self-energy insertion as a circle marked 1PI,
+and the counterterm with the library's cross marker. The legend and Dyson
+series distinguish propagators from amputated insertions and verify the
+insertion factor -i Pi_R. The local library itself was not modified.
+The user's current outline has Sections 5.2--5.5 in Chinese; Section 5.2
+has an unfinished opening whose O(lambda^2) description of a one-loop
+self-energy needs correction when that section is developed (it starts at
+O(lambda)). The former Section 5.6 placeholder has been removed by the user.
 
 The Chapter 5 preface and all of Section 5.1 are Chinese-first and visually
 verified. The current main line is dimensional regularization with on-shell
@@ -391,12 +570,11 @@ such as Wick, Feynman, Fourier, Jacobian, Matsubara, and KMS remain in English.
 
 ## Next work
 
-Continue Chapter 5 in Chinese. Its preface and Section 5.1 rewrite are complete.
-The next physics-development milestone remains Section 5.2: evaluate the massive one-loop
-tadpole in dimensional regularization, fix the leading on-shell mass
-counterterm including its finite part, and show that momentum independence
-gives no field counterterm at this order. The renormalized self-energy then
-vanishes at one loop; two-loop field renormalization must maintain `Z_phi=1`.
+Sections 5.1--5.3 are complete. Section 5.5 has the introductory effective-potential
+exercise; next develop the user's Yukawa exercise after settling its model.
+Section 5.4 remains a placeholder. Await the user's intended scope for the RGE
+discussion; the existing on-shell parameters must not silently be replaced
+by parameters in another subtraction scheme.
 
 ## Open decisions
 
@@ -404,7 +582,7 @@ vanishes at one loop; two-loop field renormalization must maintain `Z_phi=1`.
   renormalization throughout. Do not introduce other subtraction schemes or
   describe m and lambda as running with the auxiliary regulator scale mu.
   The user will adjust the later renormalization-group discussion; retain
-  the existing Section 5.5--5.6 placeholders for now.
+  the existing Section 5.4--5.5 placeholders for now.
 - Chapter 4 is editorially complete. Separate notation review is needed for
   two pre-existing issues in Section 4.3: the inline single-particle
   completeness relation before Equation 4.3.6 contains `ket(p)ketbra(p)`
@@ -419,6 +597,35 @@ vanishes at one loop; two-loop field renormalization must maintain `Z_phi=1`.
   QCD.
 
 ## Verification state
+
+- Abstract four-point revision compiles and PDF page 129 was visually
+  checked. The channel-momentum and bubble-integral labels were removed;
+  the figure and general vertex-decomposition label remain. The hatched full
+  vertex, white 1PI circle, and white circled × counterterm are distinguished.
+
+- Four-point addition: `main.typ` compiles; the diagram page and transitions
+  were rendered and checked (PDF pages 128--131). One figure and three
+  equation labels were added. Channel labels, the solid tree vertex, crossed
+  counterterm, gray 1PI marker, and integral denominators render correctly.
+  `git diff --check` passes.
+
+- Renormalized self-energy circles (-i Pi_R) now have light-gray fill in
+  the legend, decomposition, and Dyson series; Pi_loop circles remain white.
+  The decomposition caption states this distinction. Compilation and visual
+  review of PDF page 128 pass.
+
+- The full-propagator marker now has diagonal hatch strokes clipped to the
+  circle. An additional self-energy decomposition figure explicitly includes
+  the counterterm cross, with labels distinguishing Pi_R from Pi_loop.
+  Dyson insertions include both loop and counterterm contributions.
+  `main.typ` compiles; PDF pages 128--129 were re-rendered and inspected.
+
+- 2026-09-10: `main.typ` compiles without warnings with the local CeTZ
+  Feynman helper. The new subsection and its transition were rendered and
+  inspected on PDF pages 127--129 (printed pages 123--125). Two figures and
+  three equation labels were added; existing equations and labels remain.
+  The legend, 1PI lettering, slash marks, cross marker, Dyson chains and
+  propagator denominator are legible. `git diff --check` passes.
 
 - Section 5.1.5 clarification: `main.typ` compiles without warnings and
   `git diff --check` passes. PDF pages 125--129 (printed pages 121--125)
