@@ -1,5 +1,6 @@
 #import "../lib.typ": *
 #import "../fig/feynman/ch5-yukawa-loops.typ": yukawa-loops
+#import "../fig/feynman/ch5-effective-potential.typ": effective-potential-loops
 
 #exercise(
   title: "有效势：以实标量场为例",
@@ -38,17 +39,26 @@
   + 将 $X=M^2 (varphi_0)$ 代回，证明未确定的部分只含常数、$varphi_0^2$ 和 $varphi_0^4$，可以分别归入真空能、质量项和四次项的系数. 将多项式记为 $a+b varphi_0^2+c varphi_0^4$，取 $a=0$、$b=m_R^2/2$、$c=lambda_R/(4!)$，用重整化参数写出单圈有效势. 最后求 $lambda varphi_0^2 >> m^2$ 时 $varphi_0^4 ln (varphi_0^2/kappa^2)$ 的系数，判断这个对数项使势向上还是向下弯曲.
 ]
 
+#pagebreak(weak: true)
 #sol[
   #let varphi = math.phi.alt
-  + *背景展开与单圈行列式.* 将场分成恒定背景与涨落，$phi=varphi_0+eta$. 树级势展开为
+  + #block(breakable: false)[
+    *背景展开与单圈行列式.* 将场分成恒定背景与涨落，$phi=varphi_0+eta$. 树级势展开为
 
     $
-      V_0 (varphi_0+eta)
-      &=V_0 (varphi_0)
-      +(m^2 varphi_0+lambda/(3!) varphi_0^3) eta \
-      &quad +1/2 (m^2+lambda/2 varphi_0^2) eta^2
-      +lambda/(3!) varphi_0 eta^3+lambda/(4!) eta^4.
+      V_0 (varphi_0+eta) & =V_0 (varphi_0)
+                           +(m^2 varphi_0+lambda/(3!) varphi_0^3) eta \
+                         & quad +1/2 (m^2+lambda/2 varphi_0^2) eta^2
+                           +lambda/(3!) varphi_0 eta^3+lambda/(4!) eta^4.
     $
+
+    #figure(
+      effective-potential-loops(),
+      caption: [有效势的圈数展开. 孤立点表示经典势，无顶点圆圈表示 Gaussian 行列式. 两圈的两个 1PI 真空图分别含一个四次顶点和两个三次顶点.],
+    ) <fig:chapter-five-effective-potential-loops>
+    ]
+
+    两圈图的实线采用背景质量 $M^2 (varphi_0)$，顶点由上式的三次项和四次项给出. 图中只列出拓扑结构，未标出积分、符号和对称因子.
 
     常数项给出树级有效势. 线性项由维持背景的外源处理：在树级取 $J_0=V'_0 (varphi_0)$，便可抵消作用量加源项中的线性涨落. 因而这里允许任意恒定背景；只有撤去外源后，背景才须满足完整有效势的驻点条件.
 
@@ -64,7 +74,7 @@
 
     $
       S_E^((2)) [eta;varphi_0]
-      =1/2 integral dd(x_E,[4]) eta K_E eta,
+      =1/2 integral dd(x_E, [4]) eta K_E eta,
       quad K_E=-partial_E^2+M^2 (varphi_0).
     $
 
@@ -79,11 +89,10 @@
     此处省略与背景无关的归一化常数. 在恒定背景下，平面波是 $K_E$ 的本征函数，本征值为 $k_E^2+M^2 (varphi_0)$. 取迹产生 Euclidean 四维体积 $cal(V)_(E,4)$，除去这一体积便得到
 
     $
-      V_1 (varphi_0)
-      &=(Gamma_(E,1) [varphi_0])/(cal(V)_(E,4)) \
-      &=1/2 integral (dd(k_E,[4]))/((2 pi)^4)
-        ln ((k_E^2+M^2 (varphi_0))/(kappa^2))
-      =cal(J) (M^2 (varphi_0)).
+      V_1 (varphi_0) & =(Gamma_(E,1) [varphi_0])/(cal(V)_(E,4)) \
+                     & =1/2 integral (dd(k_E, [4]))/((2 pi)^4)
+                       ln ((k_E^2+M^2 (varphi_0))/(kappa^2))
+                       =cal(J) (M^2 (varphi_0)).
     $
 
     因子 $1/2$ 来自实标量 Gaussian 积分的行列式幂次. 这里 $Gamma_E=cal(V)_(E,4) V_"eff"$，与 Minkowski 定义 $Gamma_M=-cal(V)_4 V_"eff"$ 的符号相容.
@@ -91,13 +100,12 @@
   + *对质量平方求导.* 将 $X>0$ 视为独立变量. 对正规化后的积分求三次导数，分母变成三次幂，积分已经紫外收敛，可以撤去正规化. 四维单位球面的面积为 $2 pi^2$，因此
 
     $
-      cal(J)''' (X)
-      &=integral (dd(k_E,[4]))/((2 pi)^4) 1/((k_E^2+X)^3) \
-      &=(2 pi^2)/((2 pi)^4)
-        integral_0^infinity dd(k) k^3/((k^2+X)^3) \
-      &=1/(16 pi^2) integral_0^infinity dd(y) y/((y+X)^3)
-      =1/(32 pi^2 X),
-      quad y=k^2.
+      cal(J)''' (X) & =integral (dd(k_E, [4]))/((2 pi)^4) 1/((k_E^2+X)^3) \
+                    & =(2 pi^2)/((2 pi)^4)
+                      integral_0^infinity dd(k) k^3/((k^2+X)^3) \
+                    & =1/(16 pi^2) integral_0^infinity dd(y) y/((y+X)^3)
+                      =1/(32 pi^2 X),
+                      quad y=k^2.
     $
 
     由于 $X^2 ln (X/(kappa^2))$ 的三阶导数是 $2/X$，积分三次得到
@@ -111,10 +119,9 @@
   + *代回背景质量.* 令 $X=m^2+lambda varphi_0^2/2$，多项式部分展开为
 
     $
-      A+B X+C X^2
-      &=(A+B m^2+C m^4) \
-      &quad +(lambda B/2+lambda C m^2) varphi_0^2
-      +(C lambda^2)/4 varphi_0^4.
+      A+B X+C X^2 & =(A+B m^2+C m^4) \
+                  & quad +(lambda B/2+lambda C m^2) varphi_0^2
+                    +(C lambda^2)/4 varphi_0^4.
     $
 
     它只改变真空能、质量项和四次项的系数. 将树级势一并计入，单圈近似下的有效势可写成
@@ -123,7 +130,7 @@
       V_"eff" (varphi_0)
       =a+b varphi_0^2+c varphi_0^4
       +([M^2 (varphi_0)]^2)/(64 pi^2)
-       ln ((M^2 (varphi_0))/(kappa^2)),
+      ln ((M^2 (varphi_0))/(kappa^2)),
     $
 
     其中 $a=A+B m^2+C m^4$，$b=m^2/2+lambda B/2+lambda C m^2$，$c=lambda/(4!)+C lambda^2/4$. 现在选择常数项为零，并用质量项与四次项的系数定义重整化参数：
@@ -138,7 +145,7 @@
       V_"eff" (varphi_0)
       =1/2 m_R^2 varphi_0^2+lambda_R/(4!) varphi_0^4
       +([M_R^2 (varphi_0)]^2)/(64 pi^2)
-        ln ((M_R^2 (varphi_0))/(kappa^2)).
+      ln ((M_R^2 (varphi_0))/(kappa^2)).
     $
 
     这些条件固定的是多项式部分. 对数项仍贡献原点处的常数、二阶和四阶导数，因此 $m_R$、$lambda_R$ 是按上述方式定义的参数. 同样，$a=0$ 后仍有 $V_"eff" (0)=(m_R^4)/(64 pi^2) ln (m_R^2/kappa^2)$；若要把完整真空能也设为零，可再减去这一与场无关的常数.
@@ -159,6 +166,7 @@
 
 
 
+#pagebreak(weak: true)
 #exercise(
   title: "Yukawa 理论：Feynman 规则与有效势",
   label: <ex:chapter-five-yukawa-potential>,
@@ -393,4 +401,3 @@
 
   + 将外腿交叉，说明如何得到 $n^+ n^+ arrow.r n^+ n^+$ 的单圈修正. 对 $n^+ n^- arrow.r "m" "m"$ 和 $n^+ "m" arrow.r n^+ "m"$，仅列出尚需补充的两核子两介子 1PI 单圈图，标记 $g^4$ 与 $g^2 lambda$ 阶并检查紫外收敛性. 结合四介子题，说明这组自能、顶点和有限四点图如何覆盖前面全部两体散射题.
 ]
-

@@ -1,6 +1,6 @@
 # QFT-for-Calculators Handoff
 
-Last updated: 2026-09-25
+Last updated: 2026-09-29
 
 ## Session startup
 
@@ -11,6 +11,19 @@ Last updated: 2026-09-25
    history is disposable context.
 
 ## Current milestone
+
+Exercise 5.1 now has a loop-topology figure directly below solution equation
+(5.1.4), kept on the same page. The reusable, independently compilable source
+is `fig/feynman/ch5-effective-potential.typ`: classical V_0, the one-loop
+Gaussian determinant, and the two-loop double-bubble and sunset vacuum graphs.
+The caption distinguishes the determinant symbol from propagator graphs;
+the text states that coefficients/integrals are omitted. One figure label was
+added; exercise and equation counts are unchanged (105 workbook equations).
+`python problems/build.py` passes, refreshing all 144 lecture references.
+Lecture PDF 135--138 and workbook PDF 23--26 were rendered and inspected,
+including equation/figure placement and the next exercise. `git diff --check`
+passes. The figure is a topology guide; two-loop evaluation remains outside
+the current exercise's scope.
 
 Exercise/solution equations now use chapter.problem.equation numbering in
 the shared `some_let.typ` environments. Each exercise resets the final number;
